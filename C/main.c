@@ -1,6 +1,7 @@
 
 #include "functions/convolution.h"
 #include "functions/pooling.h"
+#include <math.h>
 
 #define STB_IMAGE_IMPLEMENTATION
 #include "tools/stb_image.h"
@@ -10,14 +11,17 @@
 
 // usage: main.exe path_to_img.jpg -c path_to_convolution_output.jpg -p path_to_pooling_output.jpg
 // -c flag to perform convolution and provide a path to the output file
-// -p flag to perform pooling and provide a path to the output file
+// -p flag to perform max pooling and provide a path to the output file
+// -m flag to perform min pooling and provide a path to the output file
 
 int main(int argc, char* argv[]){
     char* file;
     int convolution_selected = 0;
     char* convolution_output;
-    int pooling_selected = 0;
-    char* pooling_output;
+    int max_pooling_selected = 0;
+    char* max_pooling_output;
+    int min_pooling_selected = 0;
+    char* min_pooling_output;
 
     //argument parsing
     if(argc<2){
@@ -31,8 +35,11 @@ int main(int argc, char* argv[]){
             convolution_selected = 1;
             convolution_output = argv[i+1];
         } else if(strcmp(argv[i],"-p")==0){
-            pooling_selected = 1;
-            pooling_output = argv[i+1];
+            max_pooling_selected = 1;
+            max_pooling_output = argv[i+1];
+        } else if(strcmp(argv[i],"-m")==0){
+            min_pooling_selected = 1;
+            min_pooling_output = argv[i+1];
         }
     }
 
@@ -43,12 +50,34 @@ int main(int argc, char* argv[]){
 
     //perform convolution
     if(convolution_selected){
-        convolution_2d(imageData,width,height,channels,convolution_output);
+        unsigned char* imageDataCopy = malloc((width*height*channels) + ((4*height)+(4*width)+(4*4))); //Basic size + borders(2px)
+        //create black edges around image
+        black_borders(imageDataCopy,imageData,width,height,channels);
+
+        //perform convolution
+        convolution_2d(imageDataCopy,width,height,channels);
+
+        //write image
+        int success = stbi_write_jpg(convolution_output, width+4, height+4, 3, imageDataCopy, 90); // 90 is the quality
+
+        if (success) {
+            printf("Image saved successfully.\n");
+        } else {
+            printf("Failed to save image.\n");
+        }
+
+        // Clean up
+        free(imageDataCopy);
     }
     //perform pooling
-    if(pooling_selected){
-        image_pooling(imageData,width,height,channels,pooling_output);
+    if(max_pooling_selected){
+        image_pooling_max(imageData,width,height,channels,max_pooling_output);
     }
+    //perform pooling
+    if(min_pooling_selected){
+        image_pooling_min(imageData,width,height,channels,max_pooling_output);
+    }
+
 
     //cleanup
     stbi_image_free(imageData);
