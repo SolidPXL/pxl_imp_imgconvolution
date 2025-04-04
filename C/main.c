@@ -34,6 +34,7 @@ int main(int argc, char* argv[]){
         if(strcmp(argv[i],"-c")==0){
             convolution_selected = 1;
             convolution_output = argv[i+1];
+            //printf("selected convolution and saving to %s\n",argv[i+1]);
         } else if(strcmp(argv[i],"-p")==0){
             max_pooling_selected = 1;
             max_pooling_output = argv[i+1];
@@ -46,16 +47,17 @@ int main(int argc, char* argv[]){
     
     int width, height, channels;
     // Load the image into a buffer
-    unsigned char* imageData = stbi_load("image.jpg", &width, &height, &channels, 0);
+    unsigned char* imageData = stbi_load(file, &width, &height, &channels, 0);
+    //printf("loaded img\n");
 
     //perform convolution
     if(convolution_selected){
-        unsigned char* imageDataCopy = malloc((width*height*channels) + ((4*height)+(4*width)+(4*4))); //Basic size + borders(2px)
+        unsigned char* imageDataCopy = malloc((width+4)*(height+4)*channels); //Basic size + borders(2px)
         //create black edges around image
         black_borders(imageDataCopy,imageData,width,height,channels);
 
         //perform convolution
-        convolution_2d(imageDataCopy,width,height,channels);
+        convolution_2d(imageDataCopy,(width+4),(height+4),channels);
 
         //write image
         int success = stbi_write_jpg(convolution_output, width+4, height+4, 3, imageDataCopy, 90); // 90 is the quality
