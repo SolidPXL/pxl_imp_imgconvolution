@@ -12,7 +12,7 @@
 // usage: main.exe path_to_img.jpg -c path_to_convolution_output.jpg -p path_to_pooling_output.jpg
 // -c flag to perform convolution and provide a path to the output file
 // -p flag to perform max pooling and provide a path to the output file
-// -m flag to perform min pooling and provide a path to the output file
+// -a flag to perform average pooling and provide a path to the output file
 
 int main(int argc, char* argv[]){
     char* file;
@@ -20,8 +20,8 @@ int main(int argc, char* argv[]){
     char* convolution_output;
     int max_pooling_selected = 0;
     char* max_pooling_output;
-    int min_pooling_selected = 0;
-    char* min_pooling_output;
+    int average_pooling_selected = 0;
+    char* average_pooling_output;
 
     //argument parsing
     if(argc<2){
@@ -38,9 +38,9 @@ int main(int argc, char* argv[]){
         } else if(strcmp(argv[i],"-p")==0){
             max_pooling_selected = 1;
             max_pooling_output = argv[i+1];
-        } else if(strcmp(argv[i],"-m")==0){
-            min_pooling_selected = 1;
-            min_pooling_output = argv[i+1];
+        } else if(strcmp(argv[i],"-a")==0){
+            average_pooling_selected = 1;
+            average_pooling_output = argv[i+1];
         }
     }
 
@@ -73,11 +73,34 @@ int main(int argc, char* argv[]){
     }
     //perform pooling
     if(max_pooling_selected){
-        image_pooling_max(imageData,width,height,channels,max_pooling_output);
+        unsigned char* imageDataCopy = malloc((width/2)*(height/2)*channels); //Basic size + borders(2px)
+        image_pooling_max(imageDataCopy,imageData,width,height,channels);
+
+        //write image
+        int success = stbi_write_jpg(max_pooling_output, width/2, height/2, 3, imageDataCopy, 90); // 90 is the quality
+
+        if (success) {
+            printf("Image saved successfully.\n");
+        } else {
+            printf("Failed to save image.\n");
+        }
+
+        // Clean up
+        free(imageDataCopy);
     }
     //perform pooling
-    if(min_pooling_selected){
-        image_pooling_min(imageData,width,height,channels,max_pooling_output);
+    if(average_pooling_selected){
+        unsigned char* imageDataCopy = malloc((width/2)*(height/2)*channels); //Basic size + borders(2px)
+        image_pooling_average(imageDataCopy,imageData,width,height,channels);
+
+        //write image
+        int success = stbi_write_jpg(average_pooling_output, width/2, height/2, 3, imageDataCopy, 90); // 90 is the quality
+
+        if (success) {
+            printf("Image saved successfully.\n");
+        } else {
+            printf("Failed to save image.\n");
+        }
     }
 
 

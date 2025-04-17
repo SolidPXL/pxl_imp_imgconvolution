@@ -1,4 +1,5 @@
 #include "convolution.h"
+#include "tasklib.h"
 
 float convolution_matrix[3][3]={{-1.0f,1.0f,-1.0f},{1.0f,0.0f,1.0f},{-1.0f,1.0f,-1.0f}};
 
@@ -17,9 +18,6 @@ void black_borders(char* dest, char* src, int width, int height, int channels){
     }
 }
 
-int getPixel(int row, int column,int width, int channels){
-    return (row*width*channels)+(column*channels);
-}
 
 void convolution_2d(char* imgData, int width, int height, int channels){
     char* result = malloc(width*height*channels);
