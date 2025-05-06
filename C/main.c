@@ -3,13 +3,16 @@
 #include "functions/pooling.h"
 #include <math.h>
 
+//compile using 
+//gcc main.c -pg functions/tasklib.c functions/convolution.c functions/pooling.c -o main -lm
+
 #define STB_IMAGE_IMPLEMENTATION
 #include "tools/stb_image.h"
 #define STB_IMAGE_WRITE_IMPLEMENTATION
 #include "tools/stb_image_write.h"
 
 
-// usage: main.exe path_to_img.jpg -c path_to_convolution_output.jpg -p path_to_pooling_output.jpg
+// usage: main.exe path_to_img.jpg -c path_to_convolution_output.jpg -p path_to_pooling_output.jpg -a path_to_averagePool_output.jpg
 // -c flag to perform convolution and provide a path to the output file
 // -p flag to perform max pooling and provide a path to the output file
 // -a flag to perform average pooling and provide a path to the output file
