@@ -65,10 +65,8 @@ int main(int argc, char* argv[]){
 
     //Gpu memory pointer used only if a function has to execute kernels on the original image, which is not every function
     uint8_t* imageData_gpu = NULL;
-    if(max_pooling_selected||average_pooling_selected){
-        cudaMalloc(&imageData_gpu,width*height*channels);
-        cudaMemcpy(imageData_gpu, imageData, width * height * channels, cudaMemcpyHostToDevice);
-    }
+    cudaMalloc(&imageData_gpu,width*height*channels);
+    cudaMemcpy(imageData_gpu, imageData, width * height * channels, cudaMemcpyHostToDevice);
 
     
     //Schedule all operations
@@ -80,13 +78,10 @@ int main(int argc, char* argv[]){
 
     //perform convolution
     if(convolution_selected){
-        cudaMallocManaged(&convolution_outbuffer,(width+4)*(height+4)*channels); //Basic size + borders(2px)
-
-        //create black edges around image on CPU since it doesnt take as much compute time
-        black_borders((uint8_t*)convolution_outbuffer,imageData,width,height,channels);
+        cudaMalloc(&convolution_outbuffer,width*height*channels);
 
         //perform convolution on GPU
-        convolution_2d<<<8,16>>>((uint8_t*)convolution_outbuffer,(width+4),(height+4),channels);
+        convolution_2d<<<512,256>>>((RGB*)convolution_outbuffer,(RGB*)imageData_gpu,width,height,width*height);
     }
     //perform pooling
     if(max_pooling_selected){
@@ -106,7 +101,10 @@ int main(int argc, char* argv[]){
     //write images
     if(convolution_selected){
         //write image
-        int success = stbi_write_jpg(convolution_output, width+4, height+4, 3, convolution_outbuffer, 90); // 90 is the quality
+        void* out = malloc(width*height*channels);
+        cudaMemcpy(out,convolution_outbuffer,width*height*channels,cudaMemcpyDeviceToHost);
+
+        int success = stbi_write_jpg(convolution_output, width, height, 3, out, 90); // 90 is the quality
 
         if (success) {
             printf("Image saved successfully.\n");

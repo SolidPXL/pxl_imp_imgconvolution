@@ -1,5 +1,6 @@
 #include "convolution.h"
 #include "tasklib.h"
+#include <stdio.h>
 
 __device__ float convolution_matrix[3][3]={{-1.0f,1.0f,-1.0f},{1.0f,0.0f,1.0f},{-1.0f,1.0f,-1.0f}};
 
@@ -19,33 +20,48 @@ void black_borders(uint8_t* dest, uint8_t* src, int width, int height, int chann
 }
 
 
-__global__ void convolution_2d(uint8_t* imgData, int width, int height, int channels){
-    uint8_t* result;
-    cudaMalloc(&result,width*height*channels);
-    for(int i=1;i<height-1;i++){
-        //rows
-        for(int j=1;j<width-1;j++){
-            //columns
-            for(int k=0;k<channels;k++){
-                //channels
+__global__ void convolution_2d(RGB* dest, RGB* src, int width, int height, int N){
+    // int idx = (stridesize * stride) + (blockIdx.x * blockDim.x + threadIdx.x);
+    // int i = idx*byte_per_pixel;
+    // if(i>N) return;
 
-                result[getPixel_gpu(i,j,width,channels)+k] = 
-                (imgData[getPixel_gpu(i-1,j-1,width,channels)+k]*convolution_matrix[0][0]) +
-                (imgData[getPixel_gpu(i-1,j  ,width,channels)+k]*convolution_matrix[0][1]) +
-                (imgData[getPixel_gpu(i-1,j+1,width,channels)+k]*convolution_matrix[0][2]) +
-                (imgData[getPixel_gpu(i  ,j-1,width,channels)+k]*convolution_matrix[1][0]) +
-                (imgData[getPixel_gpu(i  ,j  ,width,channels)+k]*convolution_matrix[1][1]) +
-                (imgData[getPixel_gpu(i  ,j+1,width,channels)+k]*convolution_matrix[1][2]) +
-                (imgData[getPixel_gpu(i+1,j-1,width,channels)+k]*convolution_matrix[2][0]) +
-                (imgData[getPixel_gpu(i+1,j  ,width,channels)+k]*convolution_matrix[2][1]) +
-                (imgData[getPixel_gpu(i+1,j+1,width,channels)+k]*convolution_matrix[2][2]);
+    for (int i = (blockIdx.x * blockDim.x + threadIdx.x);i < N;i += blockDim.x * gridDim.x) 
+    {
+        int row = i/width;
+        int column = i-(row*width);
 
-            }
-            
+        dest[i].r = 
+        convolution_matrix[0][0]*src[getPixel_gpu(clamp_gpu(row-1,0,height),clamp_gpu(column-1,0,width),width)].r +
+        convolution_matrix[0][1]*src[getPixel_gpu(clamp_gpu(row-1,0,height),clamp_gpu(column  ,0,width),width)].r +
+        convolution_matrix[0][2]*src[getPixel_gpu(clamp_gpu(row-1,0,height),clamp_gpu(column+1,0,width),width)].r +
+        convolution_matrix[1][0]*src[getPixel_gpu(clamp_gpu(row  ,0,height),clamp_gpu(column-1,0,width),width)].r +
+        convolution_matrix[1][1]*src[getPixel_gpu(clamp_gpu(row  ,0,height),clamp_gpu(column  ,0,width),width)].r +
+        convolution_matrix[1][2]*src[getPixel_gpu(clamp_gpu(row  ,0,height),clamp_gpu(column+1,0,width),width)].r +
+        convolution_matrix[2][0]*src[getPixel_gpu(clamp_gpu(row+1,0,height),clamp_gpu(column-1,0,width),width)].r +
+        convolution_matrix[2][1]*src[getPixel_gpu(clamp_gpu(row+1,0,height),clamp_gpu(column  ,0,width),width)].r +
+        convolution_matrix[2][2]*src[getPixel_gpu(clamp_gpu(row+1,0,height),clamp_gpu(column+1,0,width),width)].r;
 
-        }
+        dest[i].g = 
+        convolution_matrix[0][0]*src[getPixel_gpu(clamp_gpu(row-1,0,height),clamp_gpu(column-1,0,width),width)].g +
+        convolution_matrix[0][1]*src[getPixel_gpu(clamp_gpu(row-1,0,height),clamp_gpu(column  ,0,width),width)].g +
+        convolution_matrix[0][2]*src[getPixel_gpu(clamp_gpu(row-1,0,height),clamp_gpu(column+1,0,width),width)].g +
+        convolution_matrix[1][0]*src[getPixel_gpu(clamp_gpu(row  ,0,height),clamp_gpu(column-1,0,width),width)].g +
+        convolution_matrix[1][1]*src[getPixel_gpu(clamp_gpu(row  ,0,height),clamp_gpu(column  ,0,width),width)].g +
+        convolution_matrix[1][2]*src[getPixel_gpu(clamp_gpu(row  ,0,height),clamp_gpu(column+1,0,width),width)].g +
+        convolution_matrix[2][0]*src[getPixel_gpu(clamp_gpu(row+1,0,height),clamp_gpu(column-1,0,width),width)].g +
+        convolution_matrix[2][1]*src[getPixel_gpu(clamp_gpu(row+1,0,height),clamp_gpu(column  ,0,width),width)].g +
+        convolution_matrix[2][2]*src[getPixel_gpu(clamp_gpu(row+1,0,height),clamp_gpu(column+1,0,width),width)].g;
+
+        dest[i].b = 
+        convolution_matrix[0][0]*src[getPixel_gpu(clamp_gpu(row-1,0,height),clamp_gpu(column-1,0,width),width)].b +
+        convolution_matrix[0][1]*src[getPixel_gpu(clamp_gpu(row-1,0,height),clamp_gpu(column  ,0,width),width)].b +
+        convolution_matrix[0][2]*src[getPixel_gpu(clamp_gpu(row-1,0,height),clamp_gpu(column+1,0,width),width)].b +
+        convolution_matrix[1][0]*src[getPixel_gpu(clamp_gpu(row  ,0,height),clamp_gpu(column-1,0,width),width)].b +
+        convolution_matrix[1][1]*src[getPixel_gpu(clamp_gpu(row  ,0,height),clamp_gpu(column  ,0,width),width)].b +
+        convolution_matrix[1][2]*src[getPixel_gpu(clamp_gpu(row  ,0,height),clamp_gpu(column+1,0,width),width)].b +
+        convolution_matrix[2][0]*src[getPixel_gpu(clamp_gpu(row+1,0,height),clamp_gpu(column-1,0,width),width)].b +
+        convolution_matrix[2][1]*src[getPixel_gpu(clamp_gpu(row+1,0,height),clamp_gpu(column  ,0,width),width)].b +
+        convolution_matrix[2][2]*src[getPixel_gpu(clamp_gpu(row+1,0,height),clamp_gpu(column+1,0,width),width)].b;
     }
-    memcpy(imgData,result,width*height*channels);
-    free(result);
     
 }
