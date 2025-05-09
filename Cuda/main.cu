@@ -20,17 +20,6 @@
 
 int deviceIdx = 0;
 cudaDeviceProp deviceProp;
-
-int getOptimalBlockSize(size_t N, void* kernel) {
-    int minGridSize = 0, blockSize = 0;
-    cudaOccupancyMaxPotentialBlockSize(
-        &minGridSize, &blockSize,
-        (const void*)kernel,
-        0,  // dynamic shared memory
-        0   // device
-    );
-    return blockSize;
-}
 	
 
 int main(int argc, char* argv[]){
@@ -96,34 +85,19 @@ int main(int argc, char* argv[]){
         //create black edges around image on CPU since it doesnt take as much compute time
         black_borders((uint8_t*)convolution_outbuffer,imageData,width,height,channels);
 
-
-        int blockSize = getOptimalBlockSize((width+4)*(height+4), (void*)convolution_2d);
-        int gridSize = ((width+4)*(height+4) + blockSize - 1) / blockSize;
-        // printf("scheduling convolution on %d blocks with %d threads \n",gridSize,blockSize);
-
         //perform convolution on GPU
-        convolution_2d<<<gridSize,blockSize>>>((uint8_t*)convolution_outbuffer,(width+4),(height+4),channels);
+        convolution_2d<<<8,16>>>((uint8_t*)convolution_outbuffer,(width+4),(height+4),channels);
     }
     //perform pooling
     if(max_pooling_selected){
         cudaMalloc(&maxpool_outbuffer,(width/2)*(height/2)*channels); //half the original size
 
-        int blockSize = getOptimalBlockSize((width/2)*(height/2), (void*)image_pooling_max);
-        int gridSize = ((width/2)*(height/2) + blockSize - 1) / blockSize;
-
-        // printf("scheduling max_pooling on %d blocks with %d threads \n",gridSize,blockSize);
-
-        image_pooling_max<<<gridSize,blockSize>>>((uint8_t*)maxpool_outbuffer,imageData,width,height,channels);
+        image_pooling_max<<<8,16>>>((uint8_t*)maxpool_outbuffer,imageData,width,height,channels);
     }
     if(average_pooling_selected){
         cudaMalloc(&avgpool_outbuffer,(width/2)*(height/2)*channels); //Half the original size
 
-        int blockSize = getOptimalBlockSize((width/2)*(height/2), (void*)image_pooling_average);
-        int gridSize = ((width/2)*(height/2) + blockSize - 1) / blockSize;
-
-        // printf("scheduling average pooling on %d blocks with %d threads \n",gridSize,blockSize);
-
-        image_pooling_average<<<gridSize,blockSize>>>((uint8_t*)avgpool_outbuffer,imageData,width,height,channels);
+        image_pooling_average<<<8,16>>>((uint8_t*)avgpool_outbuffer,imageData,width,height,channels);
     }
 
     //synq devices
