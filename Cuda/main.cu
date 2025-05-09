@@ -34,8 +34,8 @@ int main(int argc, char* argv[]){
     //cuda related tasks
 	cudaSetDevice(deviceIdx);
 	cudaGetDeviceProperties(&deviceProp, deviceIdx);
-	printf("GPU is %s, index set is %d\n",deviceProp.name, deviceIdx);
-    printf("Device has max %d threads per block\n",deviceProp.maxThreadsPerBlock);
+	//printf("GPU is %s, index set is %d\n",deviceProp.name, deviceIdx);
+    //printf("Device has max %d threads per block\n",deviceProp.maxThreadsPerBlock);
 
     //argument parsing
     if(argc<2){
@@ -81,18 +81,18 @@ int main(int argc, char* argv[]){
         cudaMalloc(&convolution_outbuffer,width*height*channels);
 
         //perform convolution on GPU
-        convolution_2d<<<512,256>>>((RGB*)convolution_outbuffer,(RGB*)imageData_gpu,width,height,width*height);
+        convolution_2d<<<512,256>>>((uint8_t*)convolution_outbuffer,(uint8_t*)imageData_gpu,width,height,channels,width*height*channels);
     }
     //perform pooling
     if(max_pooling_selected){
         cudaMalloc(&maxpool_outbuffer,(width/2)*(height/2)*channels); //half the original size
 
-        image_pooling_max<<<8,16>>>((uint8_t*)maxpool_outbuffer,imageData,width,height,channels);
+        image_pooling_max<<<256,128>>>((uint8_t*)maxpool_outbuffer,(uint8_t*)imageData_gpu,width,height,channels,(width/2)*(height/2)*channels);
     }
     if(average_pooling_selected){
         cudaMalloc(&avgpool_outbuffer,(width/2)*(height/2)*channels); //Half the original size
 
-        image_pooling_average<<<8,16>>>((uint8_t*)avgpool_outbuffer,imageData,width,height,channels);
+        image_pooling_average<<<256,128>>>((uint8_t*)avgpool_outbuffer,(uint8_t*)imageData_gpu,width,height,channels,(width/2)*(height/2)*channels);
     }
 
     //synq devices
@@ -101,18 +101,19 @@ int main(int argc, char* argv[]){
     //write images
     if(convolution_selected){
         //write image
-        void* out = malloc(width*height*channels);
-        cudaMemcpy(out,convolution_outbuffer,width*height*channels,cudaMemcpyDeviceToHost);
+        void* imageDataResult = malloc(width*height*channels);
+        cudaMemcpy(imageDataResult,convolution_outbuffer,width*height*channels,cudaMemcpyDeviceToHost);
 
-        int success = stbi_write_jpg(convolution_output, width, height, 3, out, 90); // 90 is the quality
+        int success = stbi_write_jpg(convolution_output, width, height, 3, imageDataResult, 90); // 90 is the quality
 
         if (success) {
-            printf("Image saved successfully.\n");
+            //printf("Image saved successfully.\n");
         } else {
             printf("Failed to save image.\n");
         }
 
         // Clean up
+        free(imageDataResult);
         cudaFree(convolution_outbuffer);
     }
 
@@ -120,10 +121,11 @@ int main(int argc, char* argv[]){
         //write image
         void* imageDataResult = malloc((width/2)*(height/2)*channels);
         cudaMemcpy(imageDataResult,maxpool_outbuffer,(width/2)*(height/2)*channels,cudaMemcpyDeviceToHost);
+
         int success = stbi_write_jpg(max_pooling_output, width/2, height/2, 3, imageDataResult, 90); // 90 is the quality
 
         if (success) {
-            printf("Image saved successfully.\n");
+            //printf("Image saved successfully.\n");
         } else {
             printf("Failed to save image.\n");
         }
@@ -137,10 +139,11 @@ int main(int argc, char* argv[]){
         //write image
         void* imageDataResult = malloc((width/2)*(height/2)*channels);
         cudaMemcpy(imageDataResult,avgpool_outbuffer,(width/2)*(height/2)*channels,cudaMemcpyDeviceToHost);
+
         int success = stbi_write_jpg(average_pooling_output, width/2, height/2, 3, imageDataResult, 90); // 90 is the quality
 
         if (success) {
-            printf("Image saved successfully.\n");
+            //printf("Image saved successfully.\n");
         } else {
             printf("Failed to save image.\n");
         }

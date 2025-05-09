@@ -11,8 +11,8 @@ typedef struct {
 
 inline int getPixel(int row, int column,int width, int channels);
 
-__device__ inline int32_t getPixel_gpu(int32_t row, int32_t column,int32_t width){
-    return row*width+column;
+__device__ inline int32_t getPixel_gpu(int32_t row, int32_t column,int32_t width,uint32_t channels){
+    return (row*width*channels)+(column*channels);
 }
 
 __device__ inline int32_t clamp_gpu(int32_t i, int32_t min,int32_t max){
