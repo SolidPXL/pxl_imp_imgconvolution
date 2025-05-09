@@ -20,6 +20,17 @@
 
 int deviceIdx = 0;
 cudaDeviceProp deviceProp;
+
+int getOptimalBlockSize(size_t N, void* kernel) {
+    int minGridSize = 0, blockSize = 0;
+    cudaOccupancyMaxPotentialBlockSize(
+        &minGridSize, &blockSize,
+        (const void*)kernel,
+        0,  // dynamic shared memory
+        0   // device
+    );
+    return blockSize;
+}
 	
 
 int main(int argc, char* argv[]){
@@ -71,20 +82,57 @@ int main(int argc, char* argv[]){
     }
 
     
+    //Schedule all operations
+    void* convolution_outbuffer = NULL;
+    void* maxpool_outbuffer = NULL;
+    void* avgpool_outbuffer = NULL;
+
+
 
     //perform convolution
     if(convolution_selected){
-        uint8_t* imageDataCopy; 
-        cudaMallocManaged(&imageDataCopy,(width+4)*(height+4)*channels); //Basic size + borders(2px)
+        cudaMallocManaged(&convolution_outbuffer,(width+4)*(height+4)*channels); //Basic size + borders(2px)
 
         //create black edges around image on CPU since it doesnt take as much compute time
-        black_borders(imageDataCopy,imageData,width,height,channels);
+        black_borders((uint8_t*)convolution_outbuffer,imageData,width,height,channels);
+
+
+        int blockSize = getOptimalBlockSize((width+4)*(height+4), (void*)convolution_2d);
+        int gridSize = ((width+4)*(height+4) + blockSize - 1) / blockSize;
+        // printf("scheduling convolution on %d blocks with %d threads \n",gridSize,blockSize);
 
         //perform convolution on GPU
-        convolution_2d<<<8,16>>>(imageDataCopy,(width+4),(height+4),channels);
+        convolution_2d<<<gridSize,blockSize>>>((uint8_t*)convolution_outbuffer,(width+4),(height+4),channels);
+    }
+    //perform pooling
+    if(max_pooling_selected){
+        cudaMalloc(&maxpool_outbuffer,(width/2)*(height/2)*channels); //half the original size
 
+        int blockSize = getOptimalBlockSize((width/2)*(height/2), (void*)image_pooling_max);
+        int gridSize = ((width/2)*(height/2) + blockSize - 1) / blockSize;
+
+        // printf("scheduling max_pooling on %d blocks with %d threads \n",gridSize,blockSize);
+
+        image_pooling_max<<<gridSize,blockSize>>>((uint8_t*)maxpool_outbuffer,imageData,width,height,channels);
+    }
+    if(average_pooling_selected){
+        cudaMalloc(&avgpool_outbuffer,(width/2)*(height/2)*channels); //Half the original size
+
+        int blockSize = getOptimalBlockSize((width/2)*(height/2), (void*)image_pooling_average);
+        int gridSize = ((width/2)*(height/2) + blockSize - 1) / blockSize;
+
+        // printf("scheduling average pooling on %d blocks with %d threads \n",gridSize,blockSize);
+
+        image_pooling_average<<<gridSize,blockSize>>>((uint8_t*)avgpool_outbuffer,imageData,width,height,channels);
+    }
+
+    //synq devices
+    cudaDeviceSynchronize();
+
+    //write images
+    if(convolution_selected){
         //write image
-        int success = stbi_write_jpg(convolution_output, width+4, height+4, 3, imageDataCopy, 90); // 90 is the quality
+        int success = stbi_write_jpg(convolution_output, width+4, height+4, 3, convolution_outbuffer, 90); // 90 is the quality
 
         if (success) {
             printf("Image saved successfully.\n");
@@ -93,17 +141,13 @@ int main(int argc, char* argv[]){
         }
 
         // Clean up
-        cudaFree(imageDataCopy);
+        cudaFree(convolution_outbuffer);
     }
-    //perform pooling
-    if(max_pooling_selected){
-        uint8_t* imageDataCopy;
-        cudaMalloc(&imageDataCopy,(width/2)*(height/2)*channels); //half the original size
-        image_pooling_max<<<8,16>>>(imageDataCopy,imageData,width,height,channels);
 
+    if(max_pooling_selected){
         //write image
         void* imageDataResult = malloc((width/2)*(height/2)*channels);
-        cudaMemcpy(imageDataResult,imageDataCopy,(width/2)*(height/2)*channels,cudaMemcpyDeviceToHost);
+        cudaMemcpy(imageDataResult,maxpool_outbuffer,(width/2)*(height/2)*channels,cudaMemcpyDeviceToHost);
         int success = stbi_write_jpg(max_pooling_output, width/2, height/2, 3, imageDataResult, 90); // 90 is the quality
 
         if (success) {
@@ -114,18 +158,13 @@ int main(int argc, char* argv[]){
 
         // Clean up
         free(imageDataResult);
-        cudaFree(imageDataCopy);
+        cudaFree(maxpool_outbuffer);
     }
+
     if(average_pooling_selected){
-        uint8_t* imageDataCopy;
-        cudaMalloc(&imageDataCopy,(width/2)*(height/2)*channels); //Half the original size
-
-
-        image_pooling_average<<<8,16>>>(imageDataCopy,imageData,width,height,channels);
-
         //write image
         void* imageDataResult = malloc((width/2)*(height/2)*channels);
-        cudaMemcpy(imageDataResult,imageDataCopy,(width/2)*(height/2)*channels,cudaMemcpyDeviceToHost);
+        cudaMemcpy(imageDataResult,avgpool_outbuffer,(width/2)*(height/2)*channels,cudaMemcpyDeviceToHost);
         int success = stbi_write_jpg(average_pooling_output, width/2, height/2, 3, imageDataResult, 90); // 90 is the quality
 
         if (success) {
@@ -135,10 +174,9 @@ int main(int argc, char* argv[]){
         }
         // Clean up
         free(imageDataResult);
-        cudaFree(imageDataCopy);
-    }
+        cudaFree(avgpool_outbuffer);
 
-    //write images
+    }
 
 
 
