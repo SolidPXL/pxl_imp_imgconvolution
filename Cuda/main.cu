@@ -1,6 +1,7 @@
 
 #include "functions/convolution.h"
 #include "functions/pooling.h"
+#include "cuda_runtime.h"
 #include <math.h>
 
 //compile command
@@ -17,6 +18,10 @@
 // -p flag to perform max pooling and provide a path to the output file
 // -a flag to perform average pooling and provide a path to the output file
 
+int deviceIdx = 0;
+cudaDeviceProp deviceProp;
+	
+
 int main(int argc, char* argv[]){
     char* file;
     int convolution_selected = 0;
@@ -25,6 +30,12 @@ int main(int argc, char* argv[]){
     char* max_pooling_output;
     int average_pooling_selected = 0;
     char* average_pooling_output;
+
+    //cuda related tasks
+	cudaSetDevice(deviceIdx);
+	cudaGetDeviceProperties(&deviceProp, deviceIdx);
+	printf("GPU is %s, index set is %d\n",deviceProp.name, deviceIdx);
+    printf("Device has max %d threads per block\n",deviceProp.maxThreadsPerBlock);
 
     //argument parsing
     if(argc<2){
@@ -58,6 +69,7 @@ int main(int argc, char* argv[]){
         cudaMalloc(&imageData_gpu,width*height*channels);
         cudaMemcpy(imageData_gpu, imageData, width * height * channels, cudaMemcpyHostToDevice);
     }
+
     
 
     //perform convolution
@@ -90,7 +102,9 @@ int main(int argc, char* argv[]){
         image_pooling_max<<<8,16>>>(imageDataCopy,imageData,width,height,channels);
 
         //write image
-        int success = stbi_write_jpg(max_pooling_output, width/2, height/2, 3, imageDataCopy, 90); // 90 is the quality
+        void* imageDataResult = malloc((width/2)*(height/2)*channels);
+        cudaMemcpy(imageDataResult,imageDataCopy,(width/2)*(height/2)*channels,cudaMemcpyDeviceToHost);
+        int success = stbi_write_jpg(max_pooling_output, width/2, height/2, 3, imageDataResult, 90); // 90 is the quality
 
         if (success) {
             printf("Image saved successfully.\n");
@@ -99,17 +113,20 @@ int main(int argc, char* argv[]){
         }
 
         // Clean up
+        free(imageDataResult);
         cudaFree(imageDataCopy);
     }
     if(average_pooling_selected){
         uint8_t* imageDataCopy;
-        cudaMalloc(&imageDataCopy,(width/2)*(height/2)*channels); //Basic size + borders(2px)
+        cudaMalloc(&imageDataCopy,(width/2)*(height/2)*channels); //Half the original size
 
 
         image_pooling_average<<<8,16>>>(imageDataCopy,imageData,width,height,channels);
 
         //write image
-        int success = stbi_write_jpg(average_pooling_output, width/2, height/2, 3, imageDataCopy, 90); // 90 is the quality
+        void* imageDataResult = malloc((width/2)*(height/2)*channels);
+        cudaMemcpy(imageDataResult,imageDataCopy,(width/2)*(height/2)*channels,cudaMemcpyDeviceToHost);
+        int success = stbi_write_jpg(average_pooling_output, width/2, height/2, 3, imageDataResult, 90); // 90 is the quality
 
         if (success) {
             printf("Image saved successfully.\n");
@@ -117,8 +134,12 @@ int main(int argc, char* argv[]){
             printf("Failed to save image.\n");
         }
         // Clean up
+        free(imageDataResult);
         cudaFree(imageDataCopy);
     }
+
+    //write images
+
 
 
     //cleanup
