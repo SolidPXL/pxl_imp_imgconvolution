@@ -1,0 +1,7 @@
+conv2d_edge_linebuf_RAM_AUTO_1R1W
+conv2d_edge_linebuf_1_RAM_1WNR_AUTO_1R1W
+conv2d_edge_gmem0_m_axi
+conv2d_edge_gmem1_m_axi
+conv2d_edge_control_s_axi
+conv2d_edge_flow_control_loop_delay_pipe
+conv2d_edge

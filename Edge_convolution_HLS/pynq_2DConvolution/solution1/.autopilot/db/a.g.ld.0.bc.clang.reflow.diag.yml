@@ -1,0 +1,431 @@
+--- !Passed
+Pass:            reflow-infer-unroll
+Name:            ImplicitUnroll
+DebugLoc:        { File: pynq_2DConvolution/source/conv2d_edge.cpp, Line: 44, 
+                   Column: 34 }
+Function:        _Z11conv2d_edgePA256_K7ap_uintILi8EEPA254_S0_
+Args:            
+  - String:          'Loop '''
+  - LoopName:        VITIS_LOOP_44_3
+  - String:          ''' is marked as complete unroll implied by the pipeline pragma'
+...
+--- !Passed
+Pass:            reflow-infer-unroll
+Name:            ImplicitUnroll
+DebugLoc:        { File: pynq_2DConvolution/source/conv2d_edge.cpp, Line: 46, 
+                   Column: 19 }
+Function:        _Z11conv2d_edgePA256_K7ap_uintILi8EEPA254_S0_
+Args:            
+  - String:          'Loop '''
+  - LoopName:        VITIS_LOOP_46_4
+  - String:          ''' is marked as complete unroll implied by the pipeline pragma'
+...
+--- !Passed
+Pass:            reflow-infer-unroll
+Name:            ImplicitUnroll
+DebugLoc:        { File: pynq_2DConvolution/source/conv2d_edge.cpp, Line: 53, 
+                   Column: 34 }
+Function:        _Z11conv2d_edgePA256_K7ap_uintILi8EEPA254_S0_
+Args:            
+  - String:          'Loop '''
+  - LoopName:        VITIS_LOOP_53_5
+  - String:          ''' is marked as complete unroll implied by the pipeline pragma'
+...
+--- !Passed
+Pass:            reflow-infer-unroll
+Name:            ImplicitUnroll
+DebugLoc:        { File: pynq_2DConvolution/source/conv2d_edge.cpp, Line: 55, 
+                   Column: 19 }
+Function:        _Z11conv2d_edgePA256_K7ap_uintILi8EEPA254_S0_
+Args:            
+  - String:          'Loop '''
+  - LoopName:        VITIS_LOOP_55_6
+  - String:          ''' is marked as complete unroll implied by the pipeline pragma'
+...
+--- !Passed
+Pass:            reflow-pragma-loop-unroll
+Name:            PragmaFullyUnroll
+DebugLoc:        { File: pynq_2DConvolution/source/conv2d_edge.cpp, Line: 7, 
+                   Column: 0 }
+Function:        _Z11conv2d_edgePA256_K7ap_uintILi8EEPA254_S0_
+Args:            
+  - String:          'Unrolling loop '''
+  - LoopName:        VITIS_LOOP_44_3
+  - String:          ''' ('
+  - LoopLoc:         'pynq_2DConvolution/source/conv2d_edge.cpp:44:34'
+  - String:          ') '
+  - String:          'in function '''
+  - String:          conv2d_edge
+  - String:          ''' completely with a factor of '
+  - Factor:          '3'
+...
+--- !Passed
+Pass:            reflow-pragma-loop-unroll
+Name:            PragmaFullyUnroll
+DebugLoc:        { File: pynq_2DConvolution/source/conv2d_edge.cpp, Line: 7, 
+                   Column: 0 }
+Function:        _Z11conv2d_edgePA256_K7ap_uintILi8EEPA254_S0_
+Args:            
+  - String:          'Unrolling loop '''
+  - LoopName:        VITIS_LOOP_46_4
+  - String:          ''' ('
+  - LoopLoc:         'pynq_2DConvolution/source/conv2d_edge.cpp:46:19'
+  - String:          ') '
+  - String:          'in function '''
+  - String:          conv2d_edge
+  - String:          ''' completely with a factor of '
+  - Factor:          '3'
+...
+--- !Passed
+Pass:            reflow-pragma-loop-unroll
+Name:            PragmaFullyUnroll
+DebugLoc:        { File: pynq_2DConvolution/source/conv2d_edge.cpp, Line: 7, 
+                   Column: 0 }
+Function:        _Z11conv2d_edgePA256_K7ap_uintILi8EEPA254_S0_
+Args:            
+  - String:          'Unrolling loop '''
+  - LoopName:        VITIS_LOOP_46_4
+  - String:          ''' ('
+  - LoopLoc:         'pynq_2DConvolution/source/conv2d_edge.cpp:46:19'
+  - String:          ') '
+  - String:          'in function '''
+  - String:          conv2d_edge
+  - String:          ''' completely with a factor of '
+  - Factor:          '3'
+...
+--- !Passed
+Pass:            reflow-pragma-loop-unroll
+Name:            PragmaFullyUnroll
+DebugLoc:        { File: pynq_2DConvolution/source/conv2d_edge.cpp, Line: 7, 
+                   Column: 0 }
+Function:        _Z11conv2d_edgePA256_K7ap_uintILi8EEPA254_S0_
+Args:            
+  - String:          'Unrolling loop '''
+  - LoopName:        VITIS_LOOP_46_4
+  - String:          ''' ('
+  - LoopLoc:         'pynq_2DConvolution/source/conv2d_edge.cpp:46:19'
+  - String:          ') '
+  - String:          'in function '''
+  - String:          conv2d_edge
+  - String:          ''' completely with a factor of '
+  - Factor:          '3'
+...
+--- !Passed
+Pass:            reflow-pragma-loop-unroll
+Name:            PragmaFullyUnroll
+DebugLoc:        { File: pynq_2DConvolution/source/conv2d_edge.cpp, Line: 7, 
+                   Column: 0 }
+Function:        _Z11conv2d_edgePA256_K7ap_uintILi8EEPA254_S0_
+Args:            
+  - String:          'Unrolling loop '''
+  - LoopName:        VITIS_LOOP_53_5
+  - String:          ''' ('
+  - LoopLoc:         'pynq_2DConvolution/source/conv2d_edge.cpp:53:34'
+  - String:          ') '
+  - String:          'in function '''
+  - String:          conv2d_edge
+  - String:          ''' completely with a factor of '
+  - Factor:          '3'
+...
+--- !Passed
+Pass:            reflow-pragma-loop-unroll
+Name:            PragmaFullyUnroll
+DebugLoc:        { File: pynq_2DConvolution/source/conv2d_edge.cpp, Line: 7, 
+                   Column: 0 }
+Function:        _Z11conv2d_edgePA256_K7ap_uintILi8EEPA254_S0_
+Args:            
+  - String:          'Unrolling loop '''
+  - LoopName:        VITIS_LOOP_55_6
+  - String:          ''' ('
+  - LoopLoc:         'pynq_2DConvolution/source/conv2d_edge.cpp:55:19'
+  - String:          ') '
+  - String:          'in function '''
+  - String:          conv2d_edge
+  - String:          ''' completely with a factor of '
+  - Factor:          '3'
+...
+--- !Passed
+Pass:            reflow-pragma-loop-unroll
+Name:            PragmaFullyUnroll
+DebugLoc:        { File: pynq_2DConvolution/source/conv2d_edge.cpp, Line: 7, 
+                   Column: 0 }
+Function:        _Z11conv2d_edgePA256_K7ap_uintILi8EEPA254_S0_
+Args:            
+  - String:          'Unrolling loop '''
+  - LoopName:        VITIS_LOOP_55_6
+  - String:          ''' ('
+  - LoopLoc:         'pynq_2DConvolution/source/conv2d_edge.cpp:55:19'
+  - String:          ') '
+  - String:          'in function '''
+  - String:          conv2d_edge
+  - String:          ''' completely with a factor of '
+  - Factor:          '3'
+...
+--- !Passed
+Pass:            reflow-pragma-loop-unroll
+Name:            PragmaFullyUnroll
+DebugLoc:        { File: pynq_2DConvolution/source/conv2d_edge.cpp, Line: 7, 
+                   Column: 0 }
+Function:        _Z11conv2d_edgePA256_K7ap_uintILi8EEPA254_S0_
+Args:            
+  - String:          'Unrolling loop '''
+  - LoopName:        VITIS_LOOP_55_6
+  - String:          ''' ('
+  - LoopLoc:         'pynq_2DConvolution/source/conv2d_edge.cpp:55:19'
+  - String:          ') '
+  - String:          'in function '''
+  - String:          conv2d_edge
+  - String:          ''' completely with a factor of '
+  - Factor:          '3'
+...
+--- !Passed
+Pass:            reflow-array-partition
+Name:            ArrayXform
+DebugLoc:        { File: pynq_2DConvolution/source/conv2d_edge.cpp, Line: 23, 
+                   Column: 10 }
+Function:        _Z11conv2d_edgePA256_K7ap_uintILi8EEPA254_S0_
+Args:            
+  - String:          'Applying '
+  - String:          array_partition
+  - String:          ' to '''
+  - UOName:          linebuf
+  - String:          ''':'
+  - String:          ' '
+  - Mode:            Complete
+  - String:          ' partitioning'
+  - String:          ' on dimension '
+  - Dim:             '1'
+  - String:          .
+...
+--- !Passed
+Pass:            reflow-aggr
+Name:            AggrSucc
+Function:        apatb_conv2d_edge_ir
+Args:            
+  - String:          'Aggregating '
+  - HwTyName:        maxi
+  - String:          ' variable '''
+  - Name:            output
+  - String:          ''' with '
+  - AggregateTypeName: 'compact=none'
+  - String:          ' mode in '
+  - Bitwidth:        '8'
+  - String:          '-bits'
+...
+--- !Passed
+Pass:            reflow-aggr
+Name:            AggrSucc
+Function:        apatb_conv2d_edge_ir
+Args:            
+  - String:          'Aggregating '
+  - HwTyName:        maxi
+  - String:          ' variable '''
+  - Name:            input
+  - String:          ''' with '
+  - AggregateTypeName: 'compact=none'
+  - String:          ' mode in '
+  - Bitwidth:        '8'
+  - String:          '-bits'
+...
+--- !Passed
+Pass:            reflow-burst-inference
+Name:            BurstInferred
+DebugLoc:        { File: pynq_2DConvolution/source/conv2d_edge.cpp, Line: 32, 
+                   Column: 19 }
+Function:        _Z11conv2d_edgePA256_K7ap_uintILi8EEPA254_S0_
+Args:            
+  - String:          'Sequential '
+  - Direction:       read
+  - String:          ' of length '
+  - Length:          '65536'
+  - String:          ' has been inferred'
+  - String:          ' _XLX_SEP_ '
+  - AccessID:        input1seq
+  - ArrayName:       input
+  - String:          ' '
+  - BundleName:      gmem0
+  - String:          ' '
+  - LoopName:        VITIS_LOOP_32_1
+  - String:          ' '
+  - LoopLoc:         'pynq_2DConvolution/source/conv2d_edge.cpp:32:19'
+  - String:          ' '
+  - Function:        'conv2d_edge(ap_uint<8> const (*) [256], ap_uint<8> (*) [254])'
+    DebugLoc:        { File: pynq_2DConvolution/source/conv2d_edge.cpp, 
+                       Line: 7, Column: 0 }
+  - String:          ' '
+  - String:          ' _XLX_SEP_ '
+  - OrigAccess:      load
+    DebugLoc:        { File: pynq_2DConvolution/source/conv2d_edge.cpp, 
+                       Line: 39, Column: 29 }
+  - OrigDirection:   read
+  - OrigID:          for.body4.load.18
+...
+--- !Passed
+Pass:            reflow-burst-inference
+Name:            BurstInferred
+DebugLoc:        { File: pynq_2DConvolution/source/conv2d_edge.cpp, Line: 32, 
+                   Column: 19 }
+Function:        _Z11conv2d_edgePA256_K7ap_uintILi8EEPA254_S0_
+Args:            
+  - String:          'Sequential '
+  - Direction:       write
+  - String:          ' of length '
+  - Length:          '64516'
+  - String:          ' has been inferred'
+  - String:          ' _XLX_SEP_ '
+  - AccessID:        output2seq
+  - ArrayName:       output
+  - String:          ' '
+  - BundleName:      gmem1
+  - String:          ' '
+  - LoopName:        VITIS_LOOP_32_1
+  - String:          ' '
+  - LoopLoc:         'pynq_2DConvolution/source/conv2d_edge.cpp:32:19'
+  - String:          ' '
+  - Function:        'conv2d_edge(ap_uint<8> const (*) [256], ap_uint<8> (*) [254])'
+    DebugLoc:        { File: pynq_2DConvolution/source/conv2d_edge.cpp, 
+                       Line: 7, Column: 0 }
+  - String:          ' '
+  - String:          ' _XLX_SEP_ '
+  - OrigAccess:      store
+    DebugLoc:        { File: pynq_2DConvolution/source/conv2d_edge.cpp, 
+                       Line: 66, Column: 42 }
+  - OrigDirection:   write
+  - OrigID:          VITIS_LOOP_44_3.store.57
+...
+--- !Missed
+Pass:            reflow-burst-widen
+Name:            GreaterOrEqualThreshold
+DebugLoc:        { File: pynq_2DConvolution/source/conv2d_edge.cpp, Line: 32, 
+                   Column: 19 }
+Function:        _Z11conv2d_edgePA256_K7ap_uintILi8EEPA254_S0_
+Args:            
+  - String:          'Could not widen since type '
+  - Type:            i8
+  - String:          ' size is greater than or equal to the max_widen_bitwidth threshold of '
+  - Threshold:       '0'
+  - String:          ' _XLX_SEP_ '
+  - OrigAccess:      call
+    DebugLoc:        { File: pynq_2DConvolution/source/conv2d_edge.cpp, 
+                       Line: 32, Column: 19 }
+  - OrigDirection:   read
+  - OrigID:          input1seq
+  - ArrayName:       input
+  - String:          ' '
+  - BundleName:      gmem0
+  - String:          ' '
+  - LoopName:        VITIS_LOOP_33_2
+  - String:          ' '
+  - LoopLoc:         'pynq_2DConvolution/source/conv2d_edge.cpp:33:26'
+  - String:          ' '
+  - Function:        'conv2d_edge(ap_uint<8> const (*) [256], ap_uint<8> (*) [254])'
+    DebugLoc:        { File: pynq_2DConvolution/source/conv2d_edge.cpp, 
+                       Line: 7, Column: 0 }
+  - String:          ' '
+...
+--- !Passed
+Pass:            reflow-burst-summary
+Name:            BurstInferredVerboseSummary
+DebugLoc:        { File: pynq_2DConvolution/source/conv2d_edge.cpp, Line: 32, 
+                   Column: 19 }
+Function:        _Z11conv2d_edgePA256_K7ap_uintILi8EEPA254_S0_
+Args:            
+  - String:          'Multiple burst '
+  - Direction:       reads
+  - String:          ' of length '
+  - Length:          '65536'
+  - String:          ' and bit width '
+  - Width:           '8'
+  - String:          ' has been inferred.'
+  - String:          ' These burst requests might be further partitioned into multiple requests during RTL generation, based on max_read_burst_length or max_write_burst_length settings.'
+  - String:          ' _XLX_SEP_ '
+  - AccessID:        seq
+  - ArrayName:       ''
+  - String:          ' '
+  - BundleName:      gmem0
+  - String:          ' '
+  - LoopName:        VITIS_LOOP_32_1
+  - String:          ' '
+  - LoopLoc:         'pynq_2DConvolution/source/conv2d_edge.cpp:32:19'
+  - String:          ' '
+  - Function:        'conv2d_edge(ap_uint<8> const (*) [256], ap_uint<8> (*) [254])'
+    DebugLoc:        { File: pynq_2DConvolution/source/conv2d_edge.cpp, 
+                       Line: 7, Column: 0 }
+  - String:          ' '
+...
+--- !Passed
+Pass:            reflow-burst-summary
+Name:            BurstInferredSummary
+DebugLoc:        { File: pynq_2DConvolution/source/conv2d_edge.cpp, Line: 32, 
+                   Column: 19 }
+Function:        _Z11conv2d_edgePA256_K7ap_uintILi8EEPA254_S0_
+Args:            
+  - String:          'Multiple burst '
+  - Direction:       reads
+  - String:          ' of length '
+  - Length:          '65536'
+  - String:          ' and bit width '
+  - Width:           '8'
+  - String:          ' in loop '''
+  - LoopName:        VITIS_LOOP_32_1
+  - String:          '''('
+  - LoopLoc:         'pynq_2DConvolution/source/conv2d_edge.cpp:32:19'
+  - String:          ')'
+  - String:          ' has been inferred on bundle '''
+  - BundleName:      gmem0
+  - String:          '''.'
+  - String:          ' These burst requests might be further partitioned into multiple requests during RTL generation, based on max_read_burst_length or max_write_burst_length settings.'
+...
+--- !Passed
+Pass:            reflow-burst-summary
+Name:            BurstInferredVerboseSummary
+DebugLoc:        { File: pynq_2DConvolution/source/conv2d_edge.cpp, Line: 32, 
+                   Column: 19 }
+Function:        _Z11conv2d_edgePA256_K7ap_uintILi8EEPA254_S0_
+Args:            
+  - String:          'Multiple burst '
+  - Direction:       writes
+  - String:          ' of length '
+  - Length:          '64516'
+  - String:          ' and bit width '
+  - Width:           '8'
+  - String:          ' has been inferred.'
+  - String:          ' These burst requests might be further partitioned into multiple requests during RTL generation, based on max_read_burst_length or max_write_burst_length settings.'
+  - String:          ' _XLX_SEP_ '
+  - AccessID:        seq1
+  - ArrayName:       ''
+  - String:          ' '
+  - BundleName:      gmem1
+  - String:          ' '
+  - LoopName:        VITIS_LOOP_32_1
+  - String:          ' '
+  - LoopLoc:         'pynq_2DConvolution/source/conv2d_edge.cpp:32:19'
+  - String:          ' '
+  - Function:        'conv2d_edge(ap_uint<8> const (*) [256], ap_uint<8> (*) [254])'
+    DebugLoc:        { File: pynq_2DConvolution/source/conv2d_edge.cpp, 
+                       Line: 7, Column: 0 }
+  - String:          ' '
+...
+--- !Passed
+Pass:            reflow-burst-summary
+Name:            BurstInferredSummary
+DebugLoc:        { File: pynq_2DConvolution/source/conv2d_edge.cpp, Line: 32, 
+                   Column: 19 }
+Function:        _Z11conv2d_edgePA256_K7ap_uintILi8EEPA254_S0_
+Args:            
+  - String:          'Multiple burst '
+  - Direction:       writes
+  - String:          ' of length '
+  - Length:          '64516'
+  - String:          ' and bit width '
+  - Width:           '8'
+  - String:          ' in loop '''
+  - LoopName:        VITIS_LOOP_32_1
+  - String:          '''('
+  - LoopLoc:         'pynq_2DConvolution/source/conv2d_edge.cpp:32:19'
+  - String:          ')'
+  - String:          ' has been inferred on bundle '''
+  - BundleName:      gmem1
+  - String:          '''.'
+  - String:          ' These burst requests might be further partitioned into multiple requests during RTL generation, based on max_read_burst_length or max_write_burst_length settings.'
+...

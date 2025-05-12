@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<vivadoHLSLog:LogRoot xmlns:vivadoHLSLog="www.xilinx.com/vivadoHLSLog">
+  <errorLogs>
+    <logs>
+      <synLog/>
+      <simLog/>
+      <mgLog/>
+      <packageLog/>
+      <csimLog/>
+    </logs>
+  </errorLogs>
+  <warningLogs>
+    <logs>
+      <synLog>
+        <logs message="WARNING: [RTGEN 206-101] Design contains AXI ports. Reset is fixed to synchronous and active low." projectName="pynq_2DConvolution" solutionName="solution1" date="2025-05-12T13:59:45.578+0200" type="Warning"/>
+        <logs message="WARNING: [HLS 200-40] Skipped source file 'test1.PNG'. Source files must have extensions .c, .C, .cc, .cpp, .c++, .cp, or .cxx." projectName="pynq_2DConvolution" solutionName="solution1" date="2025-05-12T13:59:28.999+0200" type="Warning"/>
+        <logs message="WARNING: [HLS 200-484] The 'set_directive_top -location' command is deprecated and will be removed in a future release." projectName="pynq_2DConvolution" solutionName="solution1" date="2025-05-12T13:59:28.877+0200" type="Warning"/>
+        <logs message="WARNING: [HLS 200-484] The 'set_directive_top -name' command is deprecated and will be removed in a future release." projectName="pynq_2DConvolution" solutionName="solution1" date="2025-05-12T13:59:28.858+0200" type="Warning"/>
+        <logs message="WARNING: [HLS 200-2053] The vitis_hls executable is deprecated. Consider using vitis-run --mode hls --tcl&#xD;&#xA;Sourcing Tcl script 'C:/DevWorks/HAC/pynq_2DConvolution/solution1/csynth.tcl'" projectName="pynq_2DConvolution" solutionName="solution1" date="2025-05-12T13:59:27.743+0200" type="Warning"/>
+      </synLog>
+      <simLog/>
+      <mgLog/>
+      <packageLog>
+        <logs message="WARNING: [HLS 200-484] The 'set_directive_top -location' command is deprecated and will be removed in a future release." projectName="pynq_2DConvolution" solutionName="solution1" date="2025-05-12T14:01:27.933+0200" type="Warning"/>
+        <logs message="WARNING: [HLS 200-484] The 'set_directive_top -name' command is deprecated and will be removed in a future release." projectName="pynq_2DConvolution" solutionName="solution1" date="2025-05-12T14:01:27.916+0200" type="Warning"/>
+        <logs message="WARNING: [HLS 200-2053] The vitis_hls executable is deprecated. Consider using vitis-run --mode hls --tcl&#xD;&#xA;Sourcing Tcl script 'C:/DevWorks/HAC/pynq_2DConvolution/solution1/export.tcl'" projectName="pynq_2DConvolution" solutionName="solution1" date="2025-05-12T14:01:26.912+0200" type="Warning"/>
+      </packageLog>
+      <csimLog/>
+    </logs>
+  </warningLogs>
+</vivadoHLSLog:LogRoot>

@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<autopilotfilemapping:AutoPilotFileMapping xmlns:autopilotfilemapping="www.autoesl.com/autopilotfilemapping">
+  <source>
+    <originFiles name="conv2d_edge.cpp" path="C:\DevWorks\HAC\pynq_2DConvolution\source\conv2d_edge.cpp"/>
+    <originFiles name="conv2d_edge.h" path="C:\DevWorks\HAC\pynq_2DConvolution\source\conv2d_edge.h"/>
+    <originFiles name="test1.PNG" path="C:\DevWorks\HAC\pynq_2DConvolution\source\test1.PNG"/>
+  </source>
+  <testbench>
+    <originFiles name="conv2d_edge_tb.cpp" path="C:\DevWorks\HAC\pynq_2DConvolution\source\conv2d_edge_tb.cpp"/>
+  </testbench>
+</autopilotfilemapping:AutoPilotFileMapping>

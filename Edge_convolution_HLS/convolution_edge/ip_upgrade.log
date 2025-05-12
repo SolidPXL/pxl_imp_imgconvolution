@@ -1,0 +1,353 @@
+Copyright 1986-2022 Xilinx, Inc. All Rights Reserved. Copyright 2022-2024 Advanced Micro Devices, Inc. All Rights Reserved.
+---------------------------------------------------------------------------------------------------------------------------------------------
+| Tool Version : Vivado v.2024.1 (win64) Build 5076996 Wed May 22 18:37:14 MDT 2024
+| Date         : Mon May 12 14:03:49 2025
+| Host         : 5CD322B22T running 64-bit major release  (build 9200)
+| Command      : upgrade_ip
+| Device       : xc7z020clg400-1
+---------------------------------------------------------------------------------------------------------------------------------------------
+
+Upgrade Log for IP 'design_1_conv2d_edge_0_0'
+
+1. Summary
+----------
+
+SUCCESS in the upgrade of design_1_conv2d_edge_0_0 (xilinx.com:hls:conv2d_edge:1.0) from (Rev. 2114078568) to (Rev. 2114080021)
+
+
+
+
+
+
+Copyright 1986-2022 Xilinx, Inc. All Rights Reserved. Copyright 2022-2024 Advanced Micro Devices, Inc. All Rights Reserved.
+---------------------------------------------------------------------------------------------------------------------------------------------
+| Tool Version : Vivado v.2024.1 (win64) Build 5076996 Wed May 22 18:37:14 MDT 2024
+| Date         : Sun May 11 13:50:10 2025
+| Host         : 5CD322B22T running 64-bit major release  (build 9200)
+| Command      : upgrade_ip
+| Device       : xc7z020clg400-1
+---------------------------------------------------------------------------------------------------------------------------------------------
+
+Upgrade Log for IP 'design_1_conv2d_edge_0_0'
+
+1. Summary
+----------
+
+SUCCESS in the upgrade of design_1_conv2d_edge_0_0 (xilinx.com:hls:conv2d_edge:1.0) from (Rev. 2114077152) to (Rev. 2114078568)
+
+
+
+
+
+
+Copyright 1986-2022 Xilinx, Inc. All Rights Reserved. Copyright 2022-2024 Advanced Micro Devices, Inc. All Rights Reserved.
+---------------------------------------------------------------------------------------------------------------------------------------------
+| Tool Version : Vivado v.2024.1 (win64) Build 5076996 Wed May 22 18:37:14 MDT 2024
+| Date         : Sat May 10 14:13:00 2025
+| Host         : 5CD322B22T running 64-bit major release  (build 9200)
+| Command      : upgrade_ip
+| Device       : xc7z020clg400-1
+---------------------------------------------------------------------------------------------------------------------------------------------
+
+Upgrade Log for IP 'design_1_conv2d_edge_0_0'
+
+1. Summary
+----------
+
+CAUTION (success, with warnings) in the upgrade of design_1_conv2d_edge_0_0 (xilinx.com:hls:conv2d_edge:1.0) from (Rev. 2114077141) to (Rev. 2114077152)
+
+After upgrade, an IP may have parameter and port differences compared to the original customization. Please review the parameters within the IP customization GUI to ensure proper functionality. Also, please review the updated IP instantiation template to ensure proper connectivity, and update your design if required.
+
+2. Interface Information
+------------------------
+
+Detected external interface differences while upgrading 'design_1_conv2d_edge_0_0'.
+
+
+-Upgrade has removed interface 'input_r_PORTA'
+
+-Upgrade has removed interface 'output_r_PORTA'
+
+-Upgrade has removed interface 's_axi_CTRL'
+
+-Upgrade has added interface 'm_axi_gmem0' (xilinx.com:interface:aximm:1.0)
+
+-Upgrade has added interface 'm_axi_gmem1' (xilinx.com:interface:aximm:1.0)
+
+-Upgrade has added interface 's_axi_control' (xilinx.com:interface:aximm:1.0)
+
+
+3. Connection Warnings
+----------------------
+
+Detected external port differences while upgrading 'design_1_conv2d_edge_0_0'. These changes may impact your design.
+
+
+-Upgrade has removed port 'input_r_Addr_A'
+
+-Upgrade has removed port 'input_r_Clk_A'
+
+-Upgrade has removed port 'input_r_Din_A'
+
+-Upgrade has removed port 'input_r_Dout_A'
+
+-Upgrade has removed port 'input_r_EN_A'
+
+-Upgrade has removed port 'input_r_Rst_A'
+
+-Upgrade has removed port 'input_r_WEN_A'
+
+-Upgrade has removed port 'output_r_Addr_A'
+
+-Upgrade has removed port 'output_r_Clk_A'
+
+-Upgrade has removed port 'output_r_Din_A'
+
+-Upgrade has removed port 'output_r_Dout_A'
+
+-Upgrade has removed port 'output_r_EN_A'
+
+-Upgrade has removed port 'output_r_Rst_A'
+
+-Upgrade has removed port 'output_r_WEN_A'
+
+-Upgrade has removed port 's_axi_CTRL_ARADDR'
+
+-Upgrade has removed port 's_axi_CTRL_ARREADY'
+
+-Upgrade has removed port 's_axi_CTRL_ARVALID'
+
+-Upgrade has removed port 's_axi_CTRL_AWADDR'
+
+-Upgrade has removed port 's_axi_CTRL_AWREADY'
+
+-Upgrade has removed port 's_axi_CTRL_AWVALID'
+
+-Upgrade has removed port 's_axi_CTRL_BREADY'
+
+-Upgrade has removed port 's_axi_CTRL_BRESP'
+
+-Upgrade has removed port 's_axi_CTRL_BVALID'
+
+-Upgrade has removed port 's_axi_CTRL_RDATA'
+
+-Upgrade has removed port 's_axi_CTRL_RREADY'
+
+-Upgrade has removed port 's_axi_CTRL_RRESP'
+
+-Upgrade has removed port 's_axi_CTRL_RVALID'
+
+-Upgrade has removed port 's_axi_CTRL_WDATA'
+
+-Upgrade has removed port 's_axi_CTRL_WREADY'
+
+-Upgrade has removed port 's_axi_CTRL_WSTRB'
+
+-Upgrade has removed port 's_axi_CTRL_WVALID'
+
+-Upgrade has added port 'm_axi_gmem0_ARADDR'
+
+-Upgrade has added port 'm_axi_gmem0_ARBURST'
+
+-Upgrade has added port 'm_axi_gmem0_ARCACHE'
+
+-Upgrade has added port 'm_axi_gmem0_ARID'
+
+-Upgrade has added port 'm_axi_gmem0_ARLEN'
+
+-Upgrade has added port 'm_axi_gmem0_ARLOCK'
+
+-Upgrade has added port 'm_axi_gmem0_ARPROT'
+
+-Upgrade has added port 'm_axi_gmem0_ARQOS'
+
+-Upgrade has added port 'm_axi_gmem0_ARREADY'
+
+-Upgrade has added port 'm_axi_gmem0_ARREGION'
+
+-Upgrade has added port 'm_axi_gmem0_ARSIZE'
+
+-Upgrade has added port 'm_axi_gmem0_ARVALID'
+
+-Upgrade has added port 'm_axi_gmem0_AWADDR'
+
+-Upgrade has added port 'm_axi_gmem0_AWBURST'
+
+-Upgrade has added port 'm_axi_gmem0_AWCACHE'
+
+-Upgrade has added port 'm_axi_gmem0_AWID'
+
+-Upgrade has added port 'm_axi_gmem0_AWLEN'
+
+-Upgrade has added port 'm_axi_gmem0_AWLOCK'
+
+-Upgrade has added port 'm_axi_gmem0_AWPROT'
+
+-Upgrade has added port 'm_axi_gmem0_AWQOS'
+
+-Upgrade has added port 'm_axi_gmem0_AWREADY'
+
+-Upgrade has added port 'm_axi_gmem0_AWREGION'
+
+-Upgrade has added port 'm_axi_gmem0_AWSIZE'
+
+-Upgrade has added port 'm_axi_gmem0_AWVALID'
+
+-Upgrade has added port 'm_axi_gmem0_BID'
+
+-Upgrade has added port 'm_axi_gmem0_BREADY'
+
+-Upgrade has added port 'm_axi_gmem0_BRESP'
+
+-Upgrade has added port 'm_axi_gmem0_BVALID'
+
+-Upgrade has added port 'm_axi_gmem0_RDATA'
+
+-Upgrade has added port 'm_axi_gmem0_RID'
+
+-Upgrade has added port 'm_axi_gmem0_RLAST'
+
+-Upgrade has added port 'm_axi_gmem0_RREADY'
+
+-Upgrade has added port 'm_axi_gmem0_RRESP'
+
+-Upgrade has added port 'm_axi_gmem0_RVALID'
+
+-Upgrade has added port 'm_axi_gmem0_WDATA'
+
+-Upgrade has added port 'm_axi_gmem0_WID'
+
+-Upgrade has added port 'm_axi_gmem0_WLAST'
+
+-Upgrade has added port 'm_axi_gmem0_WREADY'
+
+-Upgrade has added port 'm_axi_gmem0_WSTRB'
+
+-Upgrade has added port 'm_axi_gmem0_WVALID'
+
+-Upgrade has added port 'm_axi_gmem1_ARADDR'
+
+-Upgrade has added port 'm_axi_gmem1_ARBURST'
+
+-Upgrade has added port 'm_axi_gmem1_ARCACHE'
+
+-Upgrade has added port 'm_axi_gmem1_ARID'
+
+-Upgrade has added port 'm_axi_gmem1_ARLEN'
+
+-Upgrade has added port 'm_axi_gmem1_ARLOCK'
+
+-Upgrade has added port 'm_axi_gmem1_ARPROT'
+
+-Upgrade has added port 'm_axi_gmem1_ARQOS'
+
+-Upgrade has added port 'm_axi_gmem1_ARREADY'
+
+-Upgrade has added port 'm_axi_gmem1_ARREGION'
+
+-Upgrade has added port 'm_axi_gmem1_ARSIZE'
+
+-Upgrade has added port 'm_axi_gmem1_ARVALID'
+
+-Upgrade has added port 'm_axi_gmem1_AWADDR'
+
+-Upgrade has added port 'm_axi_gmem1_AWBURST'
+
+-Upgrade has added port 'm_axi_gmem1_AWCACHE'
+
+-Upgrade has added port 'm_axi_gmem1_AWID'
+
+-Upgrade has added port 'm_axi_gmem1_AWLEN'
+
+-Upgrade has added port 'm_axi_gmem1_AWLOCK'
+
+-Upgrade has added port 'm_axi_gmem1_AWPROT'
+
+-Upgrade has added port 'm_axi_gmem1_AWQOS'
+
+-Upgrade has added port 'm_axi_gmem1_AWREADY'
+
+-Upgrade has added port 'm_axi_gmem1_AWREGION'
+
+-Upgrade has added port 'm_axi_gmem1_AWSIZE'
+
+-Upgrade has added port 'm_axi_gmem1_AWVALID'
+
+-Upgrade has added port 'm_axi_gmem1_BID'
+
+-Upgrade has added port 'm_axi_gmem1_BREADY'
+
+-Upgrade has added port 'm_axi_gmem1_BRESP'
+
+-Upgrade has added port 'm_axi_gmem1_BVALID'
+
+-Upgrade has added port 'm_axi_gmem1_RDATA'
+
+-Upgrade has added port 'm_axi_gmem1_RID'
+
+-Upgrade has added port 'm_axi_gmem1_RLAST'
+
+-Upgrade has added port 'm_axi_gmem1_RREADY'
+
+-Upgrade has added port 'm_axi_gmem1_RRESP'
+
+-Upgrade has added port 'm_axi_gmem1_RVALID'
+
+-Upgrade has added port 'm_axi_gmem1_WDATA'
+
+-Upgrade has added port 'm_axi_gmem1_WID'
+
+-Upgrade has added port 'm_axi_gmem1_WLAST'
+
+-Upgrade has added port 'm_axi_gmem1_WREADY'
+
+-Upgrade has added port 'm_axi_gmem1_WSTRB'
+
+-Upgrade has added port 'm_axi_gmem1_WVALID'
+
+-Upgrade has added port 's_axi_control_ARADDR'
+
+-Upgrade has added port 's_axi_control_ARREADY'
+
+-Upgrade has added port 's_axi_control_ARVALID'
+
+-Upgrade has added port 's_axi_control_AWADDR'
+
+-Upgrade has added port 's_axi_control_AWREADY'
+
+-Upgrade has added port 's_axi_control_AWVALID'
+
+-Upgrade has added port 's_axi_control_BREADY'
+
+-Upgrade has added port 's_axi_control_BRESP'
+
+-Upgrade has added port 's_axi_control_BVALID'
+
+-Upgrade has added port 's_axi_control_RDATA'
+
+-Upgrade has added port 's_axi_control_RREADY'
+
+-Upgrade has added port 's_axi_control_RRESP'
+
+-Upgrade has added port 's_axi_control_RVALID'
+
+-Upgrade has added port 's_axi_control_WDATA'
+
+-Upgrade has added port 's_axi_control_WREADY'
+
+-Upgrade has added port 's_axi_control_WSTRB'
+
+-Upgrade has added port 's_axi_control_WVALID'
+
+
+4. Addressing Information
+-------------------------
+
+Detected addressing differences while upgrading 'design_1_conv2d_edge_0_0'. These changes may impact your design.
+
+
+-Upgrade has removed address block 's_axi_CTRL/Reg'
+
+-Upgrade has added address block 's_axi_control/Reg'
+
+
