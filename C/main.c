@@ -4,7 +4,7 @@
 #include <math.h>
 
 //compile using 
-//gcc main.c -pg functions/tasklib.c functions/convolution.c functions/pooling.c -o main -lm
+//gcc main.c -g -pg -O functions/tasklib.c functions/convolution.c functions/pooling.c -o main -lm
 
 #define STB_IMAGE_IMPLEMENTATION
 #include "tools/stb_image.h"
@@ -17,12 +17,19 @@
 // -p flag to perform max pooling and provide a path to the output file
 // -a flag to perform average pooling and provide a path to the output file
 
+//./main img3.jpg -c img3_convolution.jpg -p img3_maxpooled.jpg -a img3_avgpooled.jpg -m img3_minpooled.jpg
+
+//profiling
+//gprof ./main gmon.out > report.txt
+
 int main(int argc, char* argv[]){
     char* file;
     int convolution_selected = 0;
     char* convolution_output;
     int max_pooling_selected = 0;
     char* max_pooling_output;
+    int min_pooling_selected = 0;
+    char* min_pooling_output;
     int average_pooling_selected = 0;
     char* average_pooling_output;
 
@@ -44,6 +51,9 @@ int main(int argc, char* argv[]){
         } else if(strcmp(argv[i],"-a")==0){
             average_pooling_selected = 1;
             average_pooling_output = argv[i+1];
+        } else if(strcmp(argv[i],"-m")==0){
+            min_pooling_selected = 1;
+            min_pooling_output = argv[i+1];
         }
     }
 
@@ -66,7 +76,7 @@ int main(int argc, char* argv[]){
         int success = stbi_write_jpg(convolution_output, width+4, height+4, 3, imageDataCopy, 90); // 90 is the quality
 
         if (success) {
-            printf("Image saved successfully.\n");
+            //printf("Image saved successfully.\n");
         } else {
             printf("Failed to save image.\n");
         }
@@ -83,7 +93,23 @@ int main(int argc, char* argv[]){
         int success = stbi_write_jpg(max_pooling_output, width/2, height/2, 3, imageDataCopy, 90); // 90 is the quality
 
         if (success) {
-            printf("Image saved successfully.\n");
+            //printf("Image saved successfully.\n");
+        } else {
+            printf("Failed to save image.\n");
+        }
+
+        // Clean up
+        free(imageDataCopy);
+    }
+    if(min_pooling_selected){
+        unsigned char* imageDataCopy = malloc((width/2)*(height/2)*channels); //Basic size + borders(2px)
+        image_pooling_min(imageDataCopy,imageData,width,height,channels);
+
+        //write image
+        int success = stbi_write_jpg(min_pooling_output, width/2, height/2, 3, imageDataCopy, 90); // 90 is the quality
+
+        if (success) {
+            //printf("Image saved successfully.\n");
         } else {
             printf("Failed to save image.\n");
         }
@@ -100,7 +126,7 @@ int main(int argc, char* argv[]){
         int success = stbi_write_jpg(average_pooling_output, width/2, height/2, 3, imageDataCopy, 90); // 90 is the quality
 
         if (success) {
-            printf("Image saved successfully.\n");
+            //printf("Image saved successfully.\n");
         } else {
             printf("Failed to save image.\n");
         }
