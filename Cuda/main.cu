@@ -5,7 +5,7 @@
 #include <math.h>
 
 //compile command
-// nvcc -G main.cu functions/convolution.cu functions/pooling.cu functions/tasklib.cu functions/tasklib.cu -o main
+// nvcc -g -G -lineinfo main.cu functions/convolution.cu functions/pooling.cu functions/tasklib.cu functions/tasklib.cu -o main
 
 #define STB_IMAGE_IMPLEMENTATION
 #include "tools/stb_image.h"
@@ -17,6 +17,9 @@
 // -c flag to perform convolution and provide a path to the output file
 // -p flag to perform max pooling and provide a path to the output file
 // -a flag to perform average pooling and provide a path to the output file
+
+//profiling
+//nsys profile -t cuda,osrt,cudnn --trace-fork-before-exec true ./main img3.jpg -c img3_convolution.jpg -p img3_maxpooled.jpg -a img3_avgpooled.jpg -m img3_minpooled.jpg
 
 int deviceIdx = 0;
 cudaDeviceProp deviceProp;
@@ -93,18 +96,18 @@ int main(int argc, char* argv[]){
     if(max_pooling_selected){
         cudaMalloc(&maxpool_outbuffer,(width/2)*(height/2)*channels); //half the original size
 
-        image_pooling_max<<<16,32>>>((uint8_t*)maxpool_outbuffer,(uint8_t*)imageData_gpu,width,height,channels,(width/2)*(height/2)*channels);
+        image_pooling_max<<<256,128>>>((uint8_t*)maxpool_outbuffer,(uint8_t*)imageData_gpu,width,height,channels,(width/2)*(height/2)*channels);
     }
     if(min_pooling_selected){
         printf("performing min pooling on img %s [0]: %d [1]: %d [2]: %d\n",file, imageData[0],imageData[1], imageData[2]);
         cudaMalloc(&minpool_outbuffer,(width/2)*(height/2)*channels); //half the original size
 
-        image_pooling_min<<<16,32>>>((uint8_t*)minpool_outbuffer,(uint8_t*)imageData_gpu,width,height,channels,(width/2)*(height/2)*channels);
+        image_pooling_min<<<1256,128>>>((uint8_t*)minpool_outbuffer,(uint8_t*)imageData_gpu,width,height,channels,(width/2)*(height/2)*channels);
     }
     if(average_pooling_selected){
         cudaMalloc(&avgpool_outbuffer,(width/2)*(height/2)*channels); //Half the original size
 
-        image_pooling_average<<<16,32>>>((uint8_t*)avgpool_outbuffer,(uint8_t*)imageData_gpu,width,height,channels,(width/2)*(height/2)*channels);
+        image_pooling_average<<<256,128>>>((uint8_t*)avgpool_outbuffer,(uint8_t*)imageData_gpu,width,height,channels,(width/2)*(height/2)*channels);
     }
 
     //synq devices
