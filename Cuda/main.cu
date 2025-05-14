@@ -19,7 +19,7 @@
 // -a flag to perform average pooling and provide a path to the output file
 
 //profiling
-//nsys profile -t cuda,osrt,cudnn --trace-fork-before-exec true ./main img3.jpg -c img3_convolution.jpg -p img3_maxpooled.jpg -a img3_avgpooled.jpg -m img3_minpooled.jpg
+//nsys profile -t cuda,osrt,cudnn --trace-fork-before-exec true -o cuda_stream ./main img3.jpg -c img3_convolution.jpg -p img3_maxpooled.jpg -a img3_avgpooled.jpg -m img3_minpooled.jpg
 
 int deviceIdx = 0;
 cudaDeviceProp deviceProp;
@@ -83,61 +83,76 @@ int main(int argc, char* argv[]){
     void* minpool_outbuffer = NULL;
     void* avgpool_outbuffer = NULL;
 
+    void* convolution_imgout = NULL;
+    void* maxpool_imgout = NULL;
+    void* minpool_imgout = NULL;
+    void* avgpool_imgout = NULL;
 
+    cudaStream_t stream_convolution;
+    cudaStream_t stream_maxpool;
+    cudaStream_t stream_minpool;
+    cudaStream_t stream_avgpool;
+    
 
     //perform convolution
     if(convolution_selected){
+        cudaStreamCreate(&stream_convolution);
         cudaMalloc(&convolution_outbuffer,width*height*channels);
+        convolution_imgout = malloc(width*height*channels);
 
         //perform convolution on GPU
-        convolution_2d<<<512,256>>>((uint8_t*)convolution_outbuffer,(uint8_t*)imageData_gpu,width,height,channels,width*height*channels);
+        convolution_2d<<<256,128,0,stream_convolution>>>((uint8_t*)convolution_outbuffer,(uint8_t*)imageData_gpu,width,height,channels,width*height*channels);
+
+        cudaMemcpyAsync(convolution_imgout, convolution_outbuffer, width * height * channels, cudaMemcpyDeviceToHost, stream_convolution);
     }
     //perform pooling
     if(max_pooling_selected){
+        cudaStreamCreate(&stream_maxpool);
         cudaMalloc(&maxpool_outbuffer,(width/2)*(height/2)*channels); //half the original size
+        maxpool_imgout = malloc((width/2)*(height/2)*channels);
 
-        image_pooling_max<<<256,128>>>((uint8_t*)maxpool_outbuffer,(uint8_t*)imageData_gpu,width,height,channels,(width/2)*(height/2)*channels);
+        image_pooling_max<<<256,128,0,stream_maxpool>>>((uint8_t*)maxpool_outbuffer,(uint8_t*)imageData_gpu,width,height,channels,(width/2)*(height/2)*channels);
+
+        cudaMemcpyAsync(maxpool_imgout, maxpool_outbuffer, (width/2)*(height/2)*channels, cudaMemcpyDeviceToHost, stream_maxpool);
     }
     if(min_pooling_selected){
-        printf("performing min pooling on img %s [0]: %d [1]: %d [2]: %d\n",file, imageData[0],imageData[1], imageData[2]);
+        cudaStreamCreate(&stream_minpool);
         cudaMalloc(&minpool_outbuffer,(width/2)*(height/2)*channels); //half the original size
+        minpool_imgout = malloc((width/2)*(height/2)*channels);
 
-        image_pooling_min<<<1256,128>>>((uint8_t*)minpool_outbuffer,(uint8_t*)imageData_gpu,width,height,channels,(width/2)*(height/2)*channels);
+        image_pooling_min<<<256,128,0,stream_minpool>>>((uint8_t*)minpool_outbuffer,(uint8_t*)imageData_gpu,width,height,channels,(width/2)*(height/2)*channels);
+        cudaMemcpyAsync(minpool_imgout, minpool_outbuffer, (width/2)*(height/2)*channels, cudaMemcpyDeviceToHost, stream_minpool);
     }
     if(average_pooling_selected){
-        cudaMalloc(&avgpool_outbuffer,(width/2)*(height/2)*channels); //Half the original size
+        cudaStreamCreate(&stream_avgpool);
+        cudaMalloc(&avgpool_outbuffer,(width/2)*(height/2)*channels); //half the original size
+        avgpool_imgout = malloc((width/2)*(height/2)*channels);
 
-        image_pooling_average<<<256,128>>>((uint8_t*)avgpool_outbuffer,(uint8_t*)imageData_gpu,width,height,channels,(width/2)*(height/2)*channels);
+        image_pooling_average<<<256,128,0,stream_avgpool>>>((uint8_t*)avgpool_outbuffer,(uint8_t*)imageData_gpu,width,height,channels,(width/2)*(height/2)*channels);
+        cudaMemcpyAsync(avgpool_imgout, avgpool_outbuffer, (width/2)*(height/2)*channels, cudaMemcpyDeviceToHost, stream_avgpool);
     }
-
-    //synq devices
-    cudaDeviceSynchronize();
 
     //write images
     if(convolution_selected){
-        //write image
-        void* imageDataResult = malloc(width*height*channels);
-        cudaMemcpy(imageDataResult,convolution_outbuffer,width*height*channels,cudaMemcpyDeviceToHost);
-
-        int success = stbi_write_jpg(convolution_output, width, height, 3, imageDataResult, 90); // 90 is the quality
+        cudaStreamSynchronize(stream_convolution);
+        int success = stbi_write_jpg(convolution_output, width, height, 3, convolution_imgout, 90); // 90 is the quality
 
         if (success) {
             //printf("Image saved successfully.\n");
         } else {
             printf("Failed to save image.\n");
         }
-
+        
         // Clean up
-        free(imageDataResult);
+        free(convolution_imgout);
+        cudaStreamDestroy(stream_convolution);
         cudaFree(convolution_outbuffer);
     }
 
     if(max_pooling_selected){
         //write image
-        void* imageDataResult = malloc((width/2)*(height/2)*channels);
-        cudaMemcpy(imageDataResult,maxpool_outbuffer,(width/2)*(height/2)*channels,cudaMemcpyDeviceToHost);
-
-        int success = stbi_write_jpg(max_pooling_output, width/2, height/2, 3, imageDataResult, 90); // 90 is the quality
+        cudaStreamSynchronize(stream_maxpool);
+        int success = stbi_write_jpg(max_pooling_output, width/2, height/2, 3, maxpool_imgout, 90); // 90 is the quality
 
         if (success) {
             //printf("Image saved successfully.\n");
@@ -146,16 +161,15 @@ int main(int argc, char* argv[]){
         }
 
         // Clean up
-        free(imageDataResult);
+        free(maxpool_imgout);
+        cudaStreamDestroy(stream_maxpool);
         cudaFree(maxpool_outbuffer);
     }
 
     if(min_pooling_selected){
         //write image
-        void* imageDataResult = malloc((width/2)*(height/2)*channels);
-        cudaMemcpy(imageDataResult,minpool_outbuffer,(width/2)*(height/2)*channels,cudaMemcpyDeviceToHost);
-
-        int success = stbi_write_jpg(min_pooling_output, width/2, height/2, 3, imageDataResult, 90); // 90 is the quality
+        cudaStreamSynchronize(stream_minpool);
+        int success = stbi_write_jpg(min_pooling_output, width/2, height/2, 3, minpool_imgout, 90); // 90 is the quality
 
         if (success) {
             //printf("Image saved successfully.\n");
@@ -164,16 +178,15 @@ int main(int argc, char* argv[]){
         }
 
         // Clean up
-        free(imageDataResult);
+        free(minpool_imgout);
+        cudaStreamDestroy(stream_minpool);
         cudaFree(minpool_outbuffer);
     }
 
     if(average_pooling_selected){
         //write image
-        void* imageDataResult = malloc((width/2)*(height/2)*channels);
-        cudaMemcpy(imageDataResult,avgpool_outbuffer,(width/2)*(height/2)*channels,cudaMemcpyDeviceToHost);
-
-        int success = stbi_write_jpg(average_pooling_output, width/2, height/2, 3, imageDataResult, 90); // 90 is the quality
+        cudaStreamSynchronize(stream_avgpool);
+        int success = stbi_write_jpg(average_pooling_output, width/2, height/2, 3, avgpool_imgout, 90); // 90 is the quality
 
         if (success) {
             //printf("Image saved successfully.\n");
@@ -181,7 +194,8 @@ int main(int argc, char* argv[]){
             printf("Failed to save image.\n");
         }
         // Clean up
-        free(imageDataResult);
+        free(avgpool_imgout);
+        cudaStreamDestroy(stream_avgpool);
         cudaFree(avgpool_outbuffer);
 
     }
