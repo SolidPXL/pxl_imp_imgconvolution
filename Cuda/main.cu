@@ -5,7 +5,7 @@
 #include <math.h>
 
 //compile command
-// nvcc -G main.cu functions/convolution.cu functions/tasklib.cu functions/tasklib.cu -o main
+// nvcc -G main.cu functions/convolution.cu functions/pooling.cu functions/tasklib.cu functions/tasklib.cu -o main
 
 #define STB_IMAGE_IMPLEMENTATION
 #include "tools/stb_image.h"
@@ -28,6 +28,8 @@ int main(int argc, char* argv[]){
     char* convolution_output;
     int max_pooling_selected = 0;
     char* max_pooling_output;
+    int min_pooling_selected = 0;
+    char* min_pooling_output;
     int average_pooling_selected = 0;
     char* average_pooling_output;
 
@@ -55,6 +57,9 @@ int main(int argc, char* argv[]){
         } else if(strcmp(argv[i],"-a")==0){
             average_pooling_selected = 1;
             average_pooling_output = argv[i+1];
+        } else if(strcmp(argv[i],"-m")==0){
+            min_pooling_selected = 1;
+            min_pooling_output = argv[i+1];
         }
     }
 
@@ -65,80 +70,118 @@ int main(int argc, char* argv[]){
 
     //Gpu memory pointer used only if a function has to execute kernels on the original image, which is not every function
     uint8_t* imageData_gpu = NULL;
-    if(max_pooling_selected||average_pooling_selected){
-        cudaMalloc(&imageData_gpu,width*height*channels);
-        cudaMemcpy(imageData_gpu, imageData, width * height * channels, cudaMemcpyHostToDevice);
-    }
+    cudaMalloc(&imageData_gpu,width*height*channels);
+    cudaMemcpy(imageData_gpu, imageData, width * height * channels, cudaMemcpyHostToDevice);
 
     
+    //Schedule all operations
+    void* convolution_outbuffer = NULL;
+    void* maxpool_outbuffer = NULL;
+    void* minpool_outbuffer = NULL;
+    void* avgpool_outbuffer = NULL;
+
+
 
     //perform convolution
     if(convolution_selected){
-        uint8_t* imageDataCopy; 
-        cudaMallocManaged(&imageDataCopy,(width+4)*(height+4)*channels); //Basic size + borders(2px)
-
-        //create black edges around image on CPU since it doesnt take as much compute time
-        black_borders(imageDataCopy,imageData,width,height,channels);
+        cudaMalloc(&convolution_outbuffer,width*height*channels);
 
         //perform convolution on GPU
-        convolution_2d<<<8,16>>>(imageDataCopy,(width+4),(height+4),channels);
-
-        //write image
-        int success = stbi_write_jpg(convolution_output, width+4, height+4, 3, imageDataCopy, 90); // 90 is the quality
-
-        if (success) {
-            printf("Image saved successfully.\n");
-        } else {
-            printf("Failed to save image.\n");
-        }
-
-        // Clean up
-        cudaFree(imageDataCopy);
+        convolution_2d<<<512,256>>>((uint8_t*)convolution_outbuffer,(uint8_t*)imageData_gpu,width,height,channels,width*height*channels);
     }
     //perform pooling
     if(max_pooling_selected){
-        uint8_t* imageDataCopy;
-        cudaMalloc(&imageDataCopy,(width/2)*(height/2)*channels); //half the original size
-        image_pooling_max<<<8,16>>>(imageDataCopy,imageData,width,height,channels);
+        cudaMalloc(&maxpool_outbuffer,(width/2)*(height/2)*channels); //half the original size
 
+        image_pooling_max<<<16,32>>>((uint8_t*)maxpool_outbuffer,(uint8_t*)imageData_gpu,width,height,channels,(width/2)*(height/2)*channels);
+    }
+    if(min_pooling_selected){
+        printf("performing min pooling on img %s [0]: %d [1]: %d [2]: %d\n",file, imageData[0],imageData[1], imageData[2]);
+        cudaMalloc(&minpool_outbuffer,(width/2)*(height/2)*channels); //half the original size
+
+        image_pooling_min<<<16,32>>>((uint8_t*)minpool_outbuffer,(uint8_t*)imageData_gpu,width,height,channels,(width/2)*(height/2)*channels);
+    }
+    if(average_pooling_selected){
+        cudaMalloc(&avgpool_outbuffer,(width/2)*(height/2)*channels); //Half the original size
+
+        image_pooling_average<<<16,32>>>((uint8_t*)avgpool_outbuffer,(uint8_t*)imageData_gpu,width,height,channels,(width/2)*(height/2)*channels);
+    }
+
+    //synq devices
+    cudaDeviceSynchronize();
+
+    //write images
+    if(convolution_selected){
+        //write image
+        void* imageDataResult = malloc(width*height*channels);
+        cudaMemcpy(imageDataResult,convolution_outbuffer,width*height*channels,cudaMemcpyDeviceToHost);
+
+        int success = stbi_write_jpg(convolution_output, width, height, 3, imageDataResult, 90); // 90 is the quality
+
+        if (success) {
+            //printf("Image saved successfully.\n");
+        } else {
+            printf("Failed to save image.\n");
+        }
+
+        // Clean up
+        free(imageDataResult);
+        cudaFree(convolution_outbuffer);
+    }
+
+    if(max_pooling_selected){
         //write image
         void* imageDataResult = malloc((width/2)*(height/2)*channels);
-        cudaMemcpy(imageDataResult,imageDataCopy,(width/2)*(height/2)*channels,cudaMemcpyDeviceToHost);
+        cudaMemcpy(imageDataResult,maxpool_outbuffer,(width/2)*(height/2)*channels,cudaMemcpyDeviceToHost);
+
         int success = stbi_write_jpg(max_pooling_output, width/2, height/2, 3, imageDataResult, 90); // 90 is the quality
 
         if (success) {
-            printf("Image saved successfully.\n");
+            //printf("Image saved successfully.\n");
         } else {
             printf("Failed to save image.\n");
         }
 
         // Clean up
         free(imageDataResult);
-        cudaFree(imageDataCopy);
+        cudaFree(maxpool_outbuffer);
     }
-    if(average_pooling_selected){
-        uint8_t* imageDataCopy;
-        cudaMalloc(&imageDataCopy,(width/2)*(height/2)*channels); //Half the original size
 
-
-        image_pooling_average<<<8,16>>>(imageDataCopy,imageData,width,height,channels);
-
+    if(min_pooling_selected){
         //write image
         void* imageDataResult = malloc((width/2)*(height/2)*channels);
-        cudaMemcpy(imageDataResult,imageDataCopy,(width/2)*(height/2)*channels,cudaMemcpyDeviceToHost);
+        cudaMemcpy(imageDataResult,minpool_outbuffer,(width/2)*(height/2)*channels,cudaMemcpyDeviceToHost);
+
+        int success = stbi_write_jpg(min_pooling_output, width/2, height/2, 3, imageDataResult, 90); // 90 is the quality
+
+        if (success) {
+            //printf("Image saved successfully.\n");
+        } else {
+            printf("Failed to save image.\n");
+        }
+
+        // Clean up
+        free(imageDataResult);
+        cudaFree(minpool_outbuffer);
+    }
+
+    if(average_pooling_selected){
+        //write image
+        void* imageDataResult = malloc((width/2)*(height/2)*channels);
+        cudaMemcpy(imageDataResult,avgpool_outbuffer,(width/2)*(height/2)*channels,cudaMemcpyDeviceToHost);
+
         int success = stbi_write_jpg(average_pooling_output, width/2, height/2, 3, imageDataResult, 90); // 90 is the quality
 
         if (success) {
-            printf("Image saved successfully.\n");
+            //printf("Image saved successfully.\n");
         } else {
             printf("Failed to save image.\n");
         }
         // Clean up
         free(imageDataResult);
-        cudaFree(imageDataCopy);
-    }
+        cudaFree(avgpool_outbuffer);
 
-    //write images
+    }
 
 
 
