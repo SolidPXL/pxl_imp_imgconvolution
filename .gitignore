@@ -2,5 +2,7 @@
 .vscode/*
 *.exe
 *.o
-
 **/main
+**/*.nsys-rep
+
+main
