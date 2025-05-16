@@ -88,6 +88,36 @@ Once images get bigger than 0.5MP you see that the performance isn't within acce
 
 #### Acceleration without streams
 
+Running the first cuda implementation of the algoritm we can immeatly see clear changes. The current implementation only makes use of grid-stride loops and kernel calls, not mmuch thought has been given to optimization
+
+img1.jpg
+
+```
+real	0m0.493s
+user	0m0.198s
+sys	    0m0.270s
+```
+
+img2.jpg
+
+```
+real	0m0.345s
+user	0m0.050s
+sys	    0m0.258s
+```
+
+img3.jpg
+
+```
+real	0m1.997s
+user	0m1.594s
+sys	    0m0.332s
+```
+
+In this version only the big files clearly denote a big improvement, the copying of files is just very slow and the threads and blocks count are fairly low (only 64 threads and 32 blocks per kernel) which can be increased significantly already.
+
+It is interesting to see how the smaller files currently perform better when done on the CPU only. With this implementation the turning point is at around images of 5MP in size
+
 ### Acceleration with streams
 
 img1.jpg
@@ -114,7 +144,7 @@ user    0m1.431s
 sys        0m0.322s
 ```
 
-Noteworthy here is again that there is a turning point where for smaller images the data copy speed is taking longer than the performance benefit gained of paralelism. it is clear that for smaller imagaes that are smaller than 0.5MP the CPU version actually performs faster.
+Noteworthy here is again that there is a turning point where for smaller images the data copy speed is taking longer than the performance benefit gained of paralelism. While the turning point has shifted drastictly it is still clear that for smaller images that are smaller than 0.8MP the CPU version actually performs faster.
 
 ### Output
 
