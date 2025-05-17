@@ -1,0 +1,760 @@
+
+*** Running vivado
+    with args -log design_1_image_pooling_0_0.vds -m64 -product Vivado -mode batch -messageDb vivado.pb -notrace -source design_1_image_pooling_0_0.tcl
+
+
+
+****** Vivado v2024.1 (64-bit)
+  **** SW Build 5076996 on Wed May 22 18:37:14 MDT 2024
+  **** IP Build 5075265 on Wed May 22 21:45:21 MDT 2024
+  **** SharedData Build 5076995 on Wed May 22 18:29:18 MDT 2024
+  **** Start of session at: Wed May 14 11:20:50 2025
+    ** Copyright 1986-2022 Xilinx, Inc. All Rights Reserved.
+    ** Copyright 2022-2024 Advanced Micro Devices, Inc. All Rights Reserved.
+
+source design_1_image_pooling_0_0.tcl -notrace
+create_project: Time (s): cpu = 00:00:11 ; elapsed = 00:00:11 . Memory (MB): peak = 487.363 ; gain = 201.910
+INFO: [IP_Flow 19-234] Refreshing IP repositories
+INFO: [IP_Flow 19-1700] Loaded user IP repository 'c:/DevWorks/HAC/pynq_pooling/ip_repo/export'.
+INFO: [IP_Flow 19-2313] Loaded Vivado IP repository 'C:/Xilinx/Vivado/2024.1/data/ip'.
+INFO: [IP_Flow 19-6924] IPCACHE: Running cache check for IP inst: design_1_image_pooling_0_0
+Command: synth_design -top design_1_image_pooling_0_0 -part xc7z020clg400-1 -incremental_mode off -mode out_of_context
+Starting synth_design
+Attempting to get a license for feature 'Synthesis' and/or device 'xc7z020'
+INFO: [Common 17-349] Got license for feature 'Synthesis' and/or device 'xc7z020'
+INFO: [Device 21-403] Loading part xc7z020clg400-1
+INFO: [Device 21-9227] Part: xc7z020clg400-1 does not have CEAM library.
+INFO: [Synth 8-7079] Multithreading enabled for synth_design using a maximum of 2 processes.
+INFO: [Synth 8-7078] Launching helper process for spawning children vivado processes
+INFO: [Synth 8-7075] Helper process launched with PID 21120
+---------------------------------------------------------------------------------
+Starting RTL Elaboration : Time (s): cpu = 00:00:10 ; elapsed = 00:00:14 . Memory (MB): peak = 1377.719 ; gain = 448.309
+---------------------------------------------------------------------------------
+INFO: [Synth 8-638] synthesizing module 'design_1_image_pooling_0_0' [c:/DevWorks/pooling_min_max/pooling_min_max.gen/sources_1/bd/design_1/ip/design_1_image_pooling_0_0/synth/design_1_image_pooling_0_0.vhd:121]
+	Parameter C_S_AXI_CONTROL_ADDR_WIDTH bound to: 6 - type: integer 
+	Parameter C_S_AXI_CONTROL_DATA_WIDTH bound to: 32 - type: integer 
+	Parameter C_M_AXI_GMEM_ID_WIDTH bound to: 1 - type: integer 
+	Parameter C_M_AXI_GMEM_ADDR_WIDTH bound to: 64 - type: integer 
+	Parameter C_M_AXI_GMEM_DATA_WIDTH bound to: 32 - type: integer 
+	Parameter C_M_AXI_GMEM_AWUSER_WIDTH bound to: 1 - type: integer 
+	Parameter C_M_AXI_GMEM_ARUSER_WIDTH bound to: 1 - type: integer 
+	Parameter C_M_AXI_GMEM_WUSER_WIDTH bound to: 1 - type: integer 
+	Parameter C_M_AXI_GMEM_RUSER_WIDTH bound to: 1 - type: integer 
+	Parameter C_M_AXI_GMEM_BUSER_WIDTH bound to: 1 - type: integer 
+	Parameter C_M_AXI_GMEM_USER_VALUE bound to: 0 - type: integer 
+	Parameter C_M_AXI_GMEM_PROT_VALUE bound to: 0 - type: integer 
+	Parameter C_M_AXI_GMEM_CACHE_VALUE bound to: 3 - type: integer 
+INFO: [Synth 8-3491] module 'image_pooling' declared at 'c:/DevWorks/pooling_min_max/pooling_min_max.gen/sources_1/bd/design_1/ipshared/7b99/hdl/vhdl/image_pooling.vhd:11' bound to instance 'U0' of component 'image_pooling' [c:/DevWorks/pooling_min_max/pooling_min_max.gen/sources_1/bd/design_1/ip/design_1_image_pooling_0_0/synth/design_1_image_pooling_0_0.vhd:290]
+INFO: [Synth 8-638] synthesizing module 'image_pooling' [c:/DevWorks/pooling_min_max/pooling_min_max.gen/sources_1/bd/design_1/ipshared/7b99/hdl/vhdl/image_pooling.vhd:95]
+	Parameter DataWidth bound to: 8 - type: integer 
+	Parameter AddressRange bound to: 256 - type: integer 
+	Parameter AddressWidth bound to: 8 - type: integer 
+INFO: [Synth 8-3491] module 'image_pooling_linebuf_RAM_AUTO_1R1W' declared at 'c:/DevWorks/pooling_min_max/pooling_min_max.gen/sources_1/bd/design_1/ipshared/7b99/hdl/vhdl/image_pooling_linebuf_RAM_AUTO_1R1W.vhd:11' bound to instance 'linebuf_U' of component 'image_pooling_linebuf_RAM_AUTO_1R1W' [c:/DevWorks/pooling_min_max/pooling_min_max.gen/sources_1/bd/design_1/ipshared/7b99/hdl/vhdl/image_pooling.vhd:526]
+INFO: [Synth 8-638] synthesizing module 'image_pooling_linebuf_RAM_AUTO_1R1W' [c:/DevWorks/pooling_min_max/pooling_min_max.gen/sources_1/bd/design_1/ipshared/7b99/hdl/vhdl/image_pooling_linebuf_RAM_AUTO_1R1W.vhd:31]
+INFO: [Synth 8-256] done synthesizing module 'image_pooling_linebuf_RAM_AUTO_1R1W' (0#1) [c:/DevWorks/pooling_min_max/pooling_min_max.gen/sources_1/bd/design_1/ipshared/7b99/hdl/vhdl/image_pooling_linebuf_RAM_AUTO_1R1W.vhd:31]
+	Parameter DataWidth bound to: 8 - type: integer 
+	Parameter AddressRange bound to: 256 - type: integer 
+	Parameter AddressWidth bound to: 8 - type: integer 
+INFO: [Synth 8-3491] module 'image_pooling_linebuf_1_RAM_AUTO_1R1W' declared at 'c:/DevWorks/pooling_min_max/pooling_min_max.gen/sources_1/bd/design_1/ipshared/7b99/hdl/vhdl/image_pooling_linebuf_1_RAM_AUTO_1R1W.vhd:11' bound to instance 'linebuf_1_U' of component 'image_pooling_linebuf_1_RAM_AUTO_1R1W' [c:/DevWorks/pooling_min_max/pooling_min_max.gen/sources_1/bd/design_1/ipshared/7b99/hdl/vhdl/image_pooling.vhd:542]
+INFO: [Synth 8-638] synthesizing module 'image_pooling_linebuf_1_RAM_AUTO_1R1W' [c:/DevWorks/pooling_min_max/pooling_min_max.gen/sources_1/bd/design_1/ipshared/7b99/hdl/vhdl/image_pooling_linebuf_1_RAM_AUTO_1R1W.vhd:32]
+INFO: [Synth 8-256] done synthesizing module 'image_pooling_linebuf_1_RAM_AUTO_1R1W' (0#1) [c:/DevWorks/pooling_min_max/pooling_min_max.gen/sources_1/bd/design_1/ipshared/7b99/hdl/vhdl/image_pooling_linebuf_1_RAM_AUTO_1R1W.vhd:32]
+INFO: [Synth 8-3491] module 'image_pooling_pooling_2x2' declared at 'c:/DevWorks/pooling_min_max/pooling_min_max.gen/sources_1/bd/design_1/ipshared/7b99/hdl/vhdl/image_pooling_pooling_2x2.vhd:11' bound to instance 'grp_pooling_2x2_fu_286' of component 'image_pooling_pooling_2x2' [c:/DevWorks/pooling_min_max/pooling_min_max.gen/sources_1/bd/design_1/ipshared/7b99/hdl/vhdl/image_pooling.vhd:559]
+INFO: [Synth 8-638] synthesizing module 'image_pooling_pooling_2x2' [c:/DevWorks/pooling_min_max/pooling_min_max.gen/sources_1/bd/design_1/ipshared/7b99/hdl/vhdl/image_pooling_pooling_2x2.vhd:35]
+INFO: [Synth 8-3491] module 'image_pooling_pooling_2x2_Block_entry_split_proc' declared at 'c:/DevWorks/pooling_min_max/pooling_min_max.gen/sources_1/bd/design_1/ipshared/7b99/hdl/vhdl/image_pooling_pooling_2x2_Block_entry_split_proc.vhd:11' bound to instance 'pooling_2x2_Block_entry_split_proc_U0' of component 'image_pooling_pooling_2x2_Block_entry_split_proc' [c:/DevWorks/pooling_min_max/pooling_min_max.gen/sources_1/bd/design_1/ipshared/7b99/hdl/vhdl/image_pooling_pooling_2x2.vhd:72]
+INFO: [Synth 8-638] synthesizing module 'image_pooling_pooling_2x2_Block_entry_split_proc' [c:/DevWorks/pooling_min_max/pooling_min_max.gen/sources_1/bd/design_1/ipshared/7b99/hdl/vhdl/image_pooling_pooling_2x2_Block_entry_split_proc.vhd:31]
+INFO: [Synth 8-256] done synthesizing module 'image_pooling_pooling_2x2_Block_entry_split_proc' (0#1) [c:/DevWorks/pooling_min_max/pooling_min_max.gen/sources_1/bd/design_1/ipshared/7b99/hdl/vhdl/image_pooling_pooling_2x2_Block_entry_split_proc.vhd:31]
+INFO: [Synth 8-256] done synthesizing module 'image_pooling_pooling_2x2' (0#1) [c:/DevWorks/pooling_min_max/pooling_min_max.gen/sources_1/bd/design_1/ipshared/7b99/hdl/vhdl/image_pooling_pooling_2x2.vhd:35]
+	Parameter C_S_AXI_ADDR_WIDTH bound to: 6 - type: integer 
+	Parameter C_S_AXI_DATA_WIDTH bound to: 32 - type: integer 
+INFO: [Synth 8-3491] module 'image_pooling_control_s_axi' declared at 'c:/DevWorks/pooling_min_max/pooling_min_max.gen/sources_1/bd/design_1/ipshared/7b99/hdl/vhdl/image_pooling_control_s_axi.vhd:12' bound to instance 'control_s_axi_U' of component 'image_pooling_control_s_axi' [c:/DevWorks/pooling_min_max/pooling_min_max.gen/sources_1/bd/design_1/ipshared/7b99/hdl/vhdl/image_pooling.vhd:581]
+INFO: [Synth 8-638] synthesizing module 'image_pooling_control_s_axi' [c:/DevWorks/pooling_min_max/pooling_min_max.gen/sources_1/bd/design_1/ipshared/7b99/hdl/vhdl/image_pooling_control_s_axi.vhd:87]
+INFO: [Synth 8-256] done synthesizing module 'image_pooling_control_s_axi' (0#1) [c:/DevWorks/pooling_min_max/pooling_min_max.gen/sources_1/bd/design_1/ipshared/7b99/hdl/vhdl/image_pooling_control_s_axi.vhd:87]
+	Parameter CONSERVATIVE bound to: 1 - type: integer 
+	Parameter USER_MAXREQS bound to: 7 - type: integer 
+	Parameter MAX_READ_BURST_LENGTH bound to: 16 - type: integer 
+	Parameter MAX_WRITE_BURST_LENGTH bound to: 16 - type: integer 
+	Parameter C_M_AXI_ID_WIDTH bound to: 1 - type: integer 
+	Parameter C_M_AXI_ADDR_WIDTH bound to: 64 - type: integer 
+	Parameter C_M_AXI_DATA_WIDTH bound to: 32 - type: integer 
+	Parameter C_M_AXI_AWUSER_WIDTH bound to: 1 - type: integer 
+	Parameter C_M_AXI_ARUSER_WIDTH bound to: 1 - type: integer 
+	Parameter C_M_AXI_WUSER_WIDTH bound to: 1 - type: integer 
+	Parameter C_M_AXI_RUSER_WIDTH bound to: 1 - type: integer 
+	Parameter C_M_AXI_BUSER_WIDTH bound to: 1 - type: integer 
+	Parameter C_USER_VALUE bound to: 0 - type: integer 
+	Parameter C_PROT_VALUE bound to: 0 - type: integer 
+	Parameter C_CACHE_VALUE bound to: 3 - type: integer 
+	Parameter CH0_USER_RFIFONUM_WIDTH bound to: 11 - type: integer 
+	Parameter CH0_USER_DW bound to: 8 - type: integer 
+	Parameter CH0_USER_AW bound to: 64 - type: integer 
+	Parameter NUM_READ_OUTSTANDING bound to: 16 - type: integer 
+	Parameter NUM_WRITE_OUTSTANDING bound to: 16 - type: integer 
+INFO: [Synth 8-3491] module 'image_pooling_gmem_m_axi' declared at 'c:/DevWorks/pooling_min_max/pooling_min_max.gen/sources_1/bd/design_1/ipshared/7b99/hdl/vhdl/image_pooling_gmem_m_axi.vhd:15' bound to instance 'gmem_m_axi_U' of component 'image_pooling_gmem_m_axi' [c:/DevWorks/pooling_min_max/pooling_min_max.gen/sources_1/bd/design_1/ipshared/7b99/hdl/vhdl/image_pooling.vhd:615]
+INFO: [Synth 8-638] synthesizing module 'image_pooling_gmem_m_axi' [c:/DevWorks/pooling_min_max/pooling_min_max.gen/sources_1/bd/design_1/ipshared/7b99/hdl/vhdl/image_pooling_gmem_m_axi.vhd:124]
+	Parameter C_TARGET_ADDR bound to: 0 - type: integer 
+	Parameter NUM_READ_OUTSTANDING bound to: 16 - type: integer 
+	Parameter MAX_READ_BURST_LENGTH bound to: 16 - type: integer 
+	Parameter BUS_ADDR_WIDTH bound to: 64 - type: integer 
+	Parameter BUS_DATA_WIDTH bound to: 32 - type: integer 
+	Parameter USER_DW bound to: 8 - type: integer 
+	Parameter USER_AW bound to: 64 - type: integer 
+	Parameter USER_MAXREQS bound to: 7 - type: integer 
+	Parameter USER_RFIFONUM_WIDTH bound to: 11 - type: integer 
+	Parameter BUFFER_IMPL bound to: block - type: string 
+INFO: [Synth 8-3491] module 'image_pooling_gmem_m_axi_load' declared at 'c:/DevWorks/pooling_min_max/pooling_min_max.gen/sources_1/bd/design_1/ipshared/7b99/hdl/vhdl/image_pooling_gmem_m_axi.vhd:521' bound to instance 'load_unit' of component 'image_pooling_gmem_m_axi_load' [c:/DevWorks/pooling_min_max/pooling_min_max.gen/sources_1/bd/design_1/ipshared/7b99/hdl/vhdl/image_pooling_gmem_m_axi.vhd:327]
+INFO: [Synth 8-638] synthesizing module 'image_pooling_gmem_m_axi_load' [c:/DevWorks/pooling_min_max/pooling_min_max.gen/sources_1/bd/design_1/ipshared/7b99/hdl/vhdl/image_pooling_gmem_m_axi.vhd:558]
+	Parameter DATA_WIDTH bound to: 96 - type: integer 
+	Parameter ADDR_WIDTH bound to: 3 - type: integer 
+	Parameter DEPTH bound to: 7 - type: integer 
+INFO: [Synth 8-3491] module 'image_pooling_gmem_m_axi_fifo' declared at 'c:/DevWorks/pooling_min_max/pooling_min_max.gen/sources_1/bd/design_1/ipshared/7b99/hdl/vhdl/image_pooling_gmem_m_axi.vhd:3257' bound to instance 'fifo_rreq' of component 'image_pooling_gmem_m_axi_fifo' [c:/DevWorks/pooling_min_max/pooling_min_max.gen/sources_1/bd/design_1/ipshared/7b99/hdl/vhdl/image_pooling_gmem_m_axi.vhd:660]
+INFO: [Synth 8-638] synthesizing module 'image_pooling_gmem_m_axi_fifo' [c:/DevWorks/pooling_min_max/pooling_min_max.gen/sources_1/bd/design_1/ipshared/7b99/hdl/vhdl/image_pooling_gmem_m_axi.vhd:3276]
+	Parameter DATA_WIDTH bound to: 96 - type: integer 
+	Parameter ADDR_WIDTH bound to: 3 - type: integer 
+	Parameter DEPTH bound to: 7 - type: integer 
+INFO: [Synth 8-3491] module 'image_pooling_gmem_m_axi_srl' declared at 'c:/DevWorks/pooling_min_max/pooling_min_max.gen/sources_1/bd/design_1/ipshared/7b99/hdl/vhdl/image_pooling_gmem_m_axi.vhd:3497' bound to instance 'U_ffo_srl' of component 'image_pooling_gmem_m_axi_srl' [c:/DevWorks/pooling_min_max/pooling_min_max.gen/sources_1/bd/design_1/ipshared/7b99/hdl/vhdl/image_pooling_gmem_m_axi.vhd:3391]
+INFO: [Synth 8-638] synthesizing module 'image_pooling_gmem_m_axi_srl' [c:/DevWorks/pooling_min_max/pooling_min_max.gen/sources_1/bd/design_1/ipshared/7b99/hdl/vhdl/image_pooling_gmem_m_axi.vhd:3513]
+INFO: [Synth 8-256] done synthesizing module 'image_pooling_gmem_m_axi_srl' (0#1) [c:/DevWorks/pooling_min_max/pooling_min_max.gen/sources_1/bd/design_1/ipshared/7b99/hdl/vhdl/image_pooling_gmem_m_axi.vhd:3513]
+INFO: [Synth 8-256] done synthesizing module 'image_pooling_gmem_m_axi_fifo' (0#1) [c:/DevWorks/pooling_min_max/pooling_min_max.gen/sources_1/bd/design_1/ipshared/7b99/hdl/vhdl/image_pooling_gmem_m_axi.vhd:3276]
+	Parameter MEM_STYLE bound to: block - type: string 
+	Parameter DATA_WIDTH bound to: 34 - type: integer 
+	Parameter ADDR_WIDTH bound to: 8 - type: integer 
+	Parameter DEPTH bound to: 256 - type: integer 
+INFO: [Synth 8-3491] module 'image_pooling_gmem_m_axi_fifo' declared at 'c:/DevWorks/pooling_min_max/pooling_min_max.gen/sources_1/bd/design_1/ipshared/7b99/hdl/vhdl/image_pooling_gmem_m_axi.vhd:3257' bound to instance 'buff_rdata' of component 'image_pooling_gmem_m_axi_fifo' [c:/DevWorks/pooling_min_max/pooling_min_max.gen/sources_1/bd/design_1/ipshared/7b99/hdl/vhdl/image_pooling_gmem_m_axi.vhd:727]
+INFO: [Synth 8-638] synthesizing module 'image_pooling_gmem_m_axi_fifo__parameterized1' [c:/DevWorks/pooling_min_max/pooling_min_max.gen/sources_1/bd/design_1/ipshared/7b99/hdl/vhdl/image_pooling_gmem_m_axi.vhd:3276]
+	Parameter MEM_STYLE bound to: block - type: string 
+	Parameter DATA_WIDTH bound to: 34 - type: integer 
+	Parameter ADDR_WIDTH bound to: 8 - type: integer 
+	Parameter DEPTH bound to: 256 - type: integer 
+INFO: [Synth 8-3491] module 'image_pooling_gmem_m_axi_mem' declared at 'c:/DevWorks/pooling_min_max/pooling_min_max.gen/sources_1/bd/design_1/ipshared/7b99/hdl/vhdl/image_pooling_gmem_m_axi.vhd:3564' bound to instance 'U_ffo_mem' of component 'image_pooling_gmem_m_axi_mem' [c:/DevWorks/pooling_min_max/pooling_min_max.gen/sources_1/bd/design_1/ipshared/7b99/hdl/vhdl/image_pooling_gmem_m_axi.vhd:3446]
+INFO: [Synth 8-638] synthesizing module 'image_pooling_gmem_m_axi_mem' [c:/DevWorks/pooling_min_max/pooling_min_max.gen/sources_1/bd/design_1/ipshared/7b99/hdl/vhdl/image_pooling_gmem_m_axi.vhd:3582]
+INFO: [Synth 8-256] done synthesizing module 'image_pooling_gmem_m_axi_mem' (0#1) [c:/DevWorks/pooling_min_max/pooling_min_max.gen/sources_1/bd/design_1/ipshared/7b99/hdl/vhdl/image_pooling_gmem_m_axi.vhd:3582]
+INFO: [Synth 8-256] done synthesizing module 'image_pooling_gmem_m_axi_fifo__parameterized1' (0#1) [c:/DevWorks/pooling_min_max/pooling_min_max.gen/sources_1/bd/design_1/ipshared/7b99/hdl/vhdl/image_pooling_gmem_m_axi.vhd:3276]
+	Parameter DATA_WIDTH bound to: 4 - type: integer 
+	Parameter ADDR_WIDTH bound to: 4 - type: integer 
+	Parameter DEPTH bound to: 16 - type: integer 
+INFO: [Synth 8-3491] module 'image_pooling_gmem_m_axi_fifo' declared at 'c:/DevWorks/pooling_min_max/pooling_min_max.gen/sources_1/bd/design_1/ipshared/7b99/hdl/vhdl/image_pooling_gmem_m_axi.vhd:3257' bound to instance 'rreq_offset' of component 'image_pooling_gmem_m_axi_fifo' [c:/DevWorks/pooling_min_max/pooling_min_max.gen/sources_1/bd/design_1/ipshared/7b99/hdl/vhdl/image_pooling_gmem_m_axi.vhd:827]
+INFO: [Synth 8-638] synthesizing module 'image_pooling_gmem_m_axi_fifo__parameterized3' [c:/DevWorks/pooling_min_max/pooling_min_max.gen/sources_1/bd/design_1/ipshared/7b99/hdl/vhdl/image_pooling_gmem_m_axi.vhd:3276]
+	Parameter DATA_WIDTH bound to: 4 - type: integer 
+	Parameter ADDR_WIDTH bound to: 4 - type: integer 
+	Parameter DEPTH bound to: 16 - type: integer 
+INFO: [Synth 8-3491] module 'image_pooling_gmem_m_axi_srl' declared at 'c:/DevWorks/pooling_min_max/pooling_min_max.gen/sources_1/bd/design_1/ipshared/7b99/hdl/vhdl/image_pooling_gmem_m_axi.vhd:3497' bound to instance 'U_ffo_srl' of component 'image_pooling_gmem_m_axi_srl' [c:/DevWorks/pooling_min_max/pooling_min_max.gen/sources_1/bd/design_1/ipshared/7b99/hdl/vhdl/image_pooling_gmem_m_axi.vhd:3391]
+INFO: [Synth 8-638] synthesizing module 'image_pooling_gmem_m_axi_srl__parameterized1' [c:/DevWorks/pooling_min_max/pooling_min_max.gen/sources_1/bd/design_1/ipshared/7b99/hdl/vhdl/image_pooling_gmem_m_axi.vhd:3513]
+INFO: [Synth 8-256] done synthesizing module 'image_pooling_gmem_m_axi_srl__parameterized1' (0#1) [c:/DevWorks/pooling_min_max/pooling_min_max.gen/sources_1/bd/design_1/ipshared/7b99/hdl/vhdl/image_pooling_gmem_m_axi.vhd:3513]
+INFO: [Synth 8-256] done synthesizing module 'image_pooling_gmem_m_axi_fifo__parameterized3' (0#1) [c:/DevWorks/pooling_min_max/pooling_min_max.gen/sources_1/bd/design_1/ipshared/7b99/hdl/vhdl/image_pooling_gmem_m_axi.vhd:3276]
+	Parameter DATA_WIDTH bound to: 33 - type: integer 
+INFO: [Synth 8-3491] module 'image_pooling_gmem_m_axi_reg_slice' declared at 'c:/DevWorks/pooling_min_max/pooling_min_max.gen/sources_1/bd/design_1/ipshared/7b99/hdl/vhdl/image_pooling_gmem_m_axi.vhd:3132' bound to instance 'rs_tmp_rdata' of component 'image_pooling_gmem_m_axi_reg_slice' [c:/DevWorks/pooling_min_max/pooling_min_max.gen/sources_1/bd/design_1/ipshared/7b99/hdl/vhdl/image_pooling_gmem_m_axi.vhd:844]
+INFO: [Synth 8-638] synthesizing module 'image_pooling_gmem_m_axi_reg_slice' [c:/DevWorks/pooling_min_max/pooling_min_max.gen/sources_1/bd/design_1/ipshared/7b99/hdl/vhdl/image_pooling_gmem_m_axi.vhd:3149]
+INFO: [Synth 8-256] done synthesizing module 'image_pooling_gmem_m_axi_reg_slice' (0#1) [c:/DevWorks/pooling_min_max/pooling_min_max.gen/sources_1/bd/design_1/ipshared/7b99/hdl/vhdl/image_pooling_gmem_m_axi.vhd:3149]
+INFO: [Synth 8-256] done synthesizing module 'image_pooling_gmem_m_axi_load' (0#1) [c:/DevWorks/pooling_min_max/pooling_min_max.gen/sources_1/bd/design_1/ipshared/7b99/hdl/vhdl/image_pooling_gmem_m_axi.vhd:558]
+	Parameter C_TARGET_ADDR bound to: 0 - type: integer 
+	Parameter NUM_WRITE_OUTSTANDING bound to: 16 - type: integer 
+	Parameter MAX_WRITE_BURST_LENGTH bound to: 16 - type: integer 
+	Parameter BUS_ADDR_WIDTH bound to: 64 - type: integer 
+	Parameter BUS_DATA_WIDTH bound to: 32 - type: integer 
+	Parameter USER_DW bound to: 8 - type: integer 
+	Parameter USER_AW bound to: 64 - type: integer 
+	Parameter USER_MAXREQS bound to: 7 - type: integer 
+	Parameter BUFFER_IMPL bound to: block - type: string 
+INFO: [Synth 8-3491] module 'image_pooling_gmem_m_axi_store' declared at 'c:/DevWorks/pooling_min_max/pooling_min_max.gen/sources_1/bd/design_1/ipshared/7b99/hdl/vhdl/image_pooling_gmem_m_axi.vhd:1111' bound to instance 'store_unit' of component 'image_pooling_gmem_m_axi_store' [c:/DevWorks/pooling_min_max/pooling_min_max.gen/sources_1/bd/design_1/ipshared/7b99/hdl/vhdl/image_pooling_gmem_m_axi.vhd:363]
+INFO: [Synth 8-638] synthesizing module 'image_pooling_gmem_m_axi_store' [c:/DevWorks/pooling_min_max/pooling_min_max.gen/sources_1/bd/design_1/ipshared/7b99/hdl/vhdl/image_pooling_gmem_m_axi.vhd:1150]
+	Parameter DATA_WIDTH bound to: 96 - type: integer 
+	Parameter ADDR_WIDTH bound to: 3 - type: integer 
+	Parameter DEPTH bound to: 7 - type: integer 
+INFO: [Synth 8-3491] module 'image_pooling_gmem_m_axi_fifo' declared at 'c:/DevWorks/pooling_min_max/pooling_min_max.gen/sources_1/bd/design_1/ipshared/7b99/hdl/vhdl/image_pooling_gmem_m_axi.vhd:3257' bound to instance 'fifo_wreq' of component 'image_pooling_gmem_m_axi_fifo' [c:/DevWorks/pooling_min_max/pooling_min_max.gen/sources_1/bd/design_1/ipshared/7b99/hdl/vhdl/image_pooling_gmem_m_axi.vhd:1258]
+	Parameter MEM_STYLE bound to: block - type: string 
+	Parameter DATA_WIDTH bound to: 9 - type: integer 
+	Parameter ADDR_WIDTH bound to: 6 - type: integer 
+	Parameter DEPTH bound to: 64 - type: integer 
+INFO: [Synth 8-3491] module 'image_pooling_gmem_m_axi_fifo' declared at 'c:/DevWorks/pooling_min_max/pooling_min_max.gen/sources_1/bd/design_1/ipshared/7b99/hdl/vhdl/image_pooling_gmem_m_axi.vhd:3257' bound to instance 'buff_wdata' of component 'image_pooling_gmem_m_axi_fifo' [c:/DevWorks/pooling_min_max/pooling_min_max.gen/sources_1/bd/design_1/ipshared/7b99/hdl/vhdl/image_pooling_gmem_m_axi.vhd:1325]
+INFO: [Synth 8-638] synthesizing module 'image_pooling_gmem_m_axi_fifo__parameterized6' [c:/DevWorks/pooling_min_max/pooling_min_max.gen/sources_1/bd/design_1/ipshared/7b99/hdl/vhdl/image_pooling_gmem_m_axi.vhd:3276]
+	Parameter MEM_STYLE bound to: block - type: string 
+	Parameter DATA_WIDTH bound to: 9 - type: integer 
+	Parameter ADDR_WIDTH bound to: 6 - type: integer 
+	Parameter DEPTH bound to: 64 - type: integer 
+INFO: [Synth 8-3491] module 'image_pooling_gmem_m_axi_mem' declared at 'c:/DevWorks/pooling_min_max/pooling_min_max.gen/sources_1/bd/design_1/ipshared/7b99/hdl/vhdl/image_pooling_gmem_m_axi.vhd:3564' bound to instance 'U_ffo_mem' of component 'image_pooling_gmem_m_axi_mem' [c:/DevWorks/pooling_min_max/pooling_min_max.gen/sources_1/bd/design_1/ipshared/7b99/hdl/vhdl/image_pooling_gmem_m_axi.vhd:3446]
+INFO: [Synth 8-638] synthesizing module 'image_pooling_gmem_m_axi_mem__parameterized1' [c:/DevWorks/pooling_min_max/pooling_min_max.gen/sources_1/bd/design_1/ipshared/7b99/hdl/vhdl/image_pooling_gmem_m_axi.vhd:3582]
+INFO: [Synth 8-256] done synthesizing module 'image_pooling_gmem_m_axi_mem__parameterized1' (0#1) [c:/DevWorks/pooling_min_max/pooling_min_max.gen/sources_1/bd/design_1/ipshared/7b99/hdl/vhdl/image_pooling_gmem_m_axi.vhd:3582]
+INFO: [Synth 8-256] done synthesizing module 'image_pooling_gmem_m_axi_fifo__parameterized6' (0#1) [c:/DevWorks/pooling_min_max/pooling_min_max.gen/sources_1/bd/design_1/ipshared/7b99/hdl/vhdl/image_pooling_gmem_m_axi.vhd:3276]
+	Parameter DATA_WIDTH bound to: 34 - type: integer 
+	Parameter ADDR_WIDTH bound to: 4 - type: integer 
+	Parameter DEPTH bound to: 16 - type: integer 
+INFO: [Synth 8-3491] module 'image_pooling_gmem_m_axi_fifo' declared at 'c:/DevWorks/pooling_min_max/pooling_min_max.gen/sources_1/bd/design_1/ipshared/7b99/hdl/vhdl/image_pooling_gmem_m_axi.vhd:3257' bound to instance 'wreq_offset' of component 'image_pooling_gmem_m_axi_fifo' [c:/DevWorks/pooling_min_max/pooling_min_max.gen/sources_1/bd/design_1/ipshared/7b99/hdl/vhdl/image_pooling_gmem_m_axi.vhd:1422]
+INFO: [Synth 8-638] synthesizing module 'image_pooling_gmem_m_axi_fifo__parameterized8' [c:/DevWorks/pooling_min_max/pooling_min_max.gen/sources_1/bd/design_1/ipshared/7b99/hdl/vhdl/image_pooling_gmem_m_axi.vhd:3276]
+	Parameter DATA_WIDTH bound to: 34 - type: integer 
+	Parameter ADDR_WIDTH bound to: 4 - type: integer 
+	Parameter DEPTH bound to: 16 - type: integer 
+INFO: [Synth 8-3491] module 'image_pooling_gmem_m_axi_srl' declared at 'c:/DevWorks/pooling_min_max/pooling_min_max.gen/sources_1/bd/design_1/ipshared/7b99/hdl/vhdl/image_pooling_gmem_m_axi.vhd:3497' bound to instance 'U_ffo_srl' of component 'image_pooling_gmem_m_axi_srl' [c:/DevWorks/pooling_min_max/pooling_min_max.gen/sources_1/bd/design_1/ipshared/7b99/hdl/vhdl/image_pooling_gmem_m_axi.vhd:3391]
+INFO: [Synth 8-638] synthesizing module 'image_pooling_gmem_m_axi_srl__parameterized3' [c:/DevWorks/pooling_min_max/pooling_min_max.gen/sources_1/bd/design_1/ipshared/7b99/hdl/vhdl/image_pooling_gmem_m_axi.vhd:3513]
+INFO: [Synth 8-256] done synthesizing module 'image_pooling_gmem_m_axi_srl__parameterized3' (0#1) [c:/DevWorks/pooling_min_max/pooling_min_max.gen/sources_1/bd/design_1/ipshared/7b99/hdl/vhdl/image_pooling_gmem_m_axi.vhd:3513]
+INFO: [Synth 8-256] done synthesizing module 'image_pooling_gmem_m_axi_fifo__parameterized8' (0#1) [c:/DevWorks/pooling_min_max/pooling_min_max.gen/sources_1/bd/design_1/ipshared/7b99/hdl/vhdl/image_pooling_gmem_m_axi.vhd:3276]
+INFO: [Synth 8-6054] Found Dynamic range expression with variable size [c:/DevWorks/pooling_min_max/pooling_min_max.gen/sources_1/bd/design_1/ipshared/7b99/hdl/vhdl/image_pooling_gmem_m_axi.vhd:1368]
+WARNING: [Synth 8-614] signal 'ACLK_EN' is read in the process but is not in the sensitivity list [c:/DevWorks/pooling_min_max/pooling_min_max.gen/sources_1/bd/design_1/ipshared/7b99/hdl/vhdl/image_pooling_gmem_m_axi.vhd:1608]
+WARNING: [Synth 8-614] signal 'ACLK_EN' is read in the process but is not in the sensitivity list [c:/DevWorks/pooling_min_max/pooling_min_max.gen/sources_1/bd/design_1/ipshared/7b99/hdl/vhdl/image_pooling_gmem_m_axi.vhd:1608]
+WARNING: [Synth 8-614] signal 'ACLK_EN' is read in the process but is not in the sensitivity list [c:/DevWorks/pooling_min_max/pooling_min_max.gen/sources_1/bd/design_1/ipshared/7b99/hdl/vhdl/image_pooling_gmem_m_axi.vhd:1608]
+WARNING: [Synth 8-614] signal 'ACLK_EN' is read in the process but is not in the sensitivity list [c:/DevWorks/pooling_min_max/pooling_min_max.gen/sources_1/bd/design_1/ipshared/7b99/hdl/vhdl/image_pooling_gmem_m_axi.vhd:1608]
+	Parameter DATA_WIDTH bound to: 1 - type: integer 
+	Parameter ADDR_WIDTH bound to: 4 - type: integer 
+	Parameter DEPTH bound to: 16 - type: integer 
+INFO: [Synth 8-3491] module 'image_pooling_gmem_m_axi_fifo' declared at 'c:/DevWorks/pooling_min_max/pooling_min_max.gen/sources_1/bd/design_1/ipshared/7b99/hdl/vhdl/image_pooling_gmem_m_axi.vhd:3257' bound to instance 'fifo_wrsp' of component 'image_pooling_gmem_m_axi_fifo' [c:/DevWorks/pooling_min_max/pooling_min_max.gen/sources_1/bd/design_1/ipshared/7b99/hdl/vhdl/image_pooling_gmem_m_axi.vhd:1780]
+INFO: [Synth 8-638] synthesizing module 'image_pooling_gmem_m_axi_fifo__parameterized10' [c:/DevWorks/pooling_min_max/pooling_min_max.gen/sources_1/bd/design_1/ipshared/7b99/hdl/vhdl/image_pooling_gmem_m_axi.vhd:3276]
+	Parameter DATA_WIDTH bound to: 1 - type: integer 
+	Parameter ADDR_WIDTH bound to: 4 - type: integer 
+	Parameter DEPTH bound to: 16 - type: integer 
+INFO: [Synth 8-3491] module 'image_pooling_gmem_m_axi_srl' declared at 'c:/DevWorks/pooling_min_max/pooling_min_max.gen/sources_1/bd/design_1/ipshared/7b99/hdl/vhdl/image_pooling_gmem_m_axi.vhd:3497' bound to instance 'U_ffo_srl' of component 'image_pooling_gmem_m_axi_srl' [c:/DevWorks/pooling_min_max/pooling_min_max.gen/sources_1/bd/design_1/ipshared/7b99/hdl/vhdl/image_pooling_gmem_m_axi.vhd:3391]
+INFO: [Synth 8-638] synthesizing module 'image_pooling_gmem_m_axi_srl__parameterized5' [c:/DevWorks/pooling_min_max/pooling_min_max.gen/sources_1/bd/design_1/ipshared/7b99/hdl/vhdl/image_pooling_gmem_m_axi.vhd:3513]
+INFO: [Synth 8-256] done synthesizing module 'image_pooling_gmem_m_axi_srl__parameterized5' (0#1) [c:/DevWorks/pooling_min_max/pooling_min_max.gen/sources_1/bd/design_1/ipshared/7b99/hdl/vhdl/image_pooling_gmem_m_axi.vhd:3513]
+INFO: [Synth 8-256] done synthesizing module 'image_pooling_gmem_m_axi_fifo__parameterized10' (0#1) [c:/DevWorks/pooling_min_max/pooling_min_max.gen/sources_1/bd/design_1/ipshared/7b99/hdl/vhdl/image_pooling_gmem_m_axi.vhd:3276]
+	Parameter DATA_WIDTH bound to: 1 - type: integer 
+	Parameter ADDR_WIDTH bound to: 3 - type: integer 
+	Parameter DEPTH bound to: 7 - type: integer 
+INFO: [Synth 8-3491] module 'image_pooling_gmem_m_axi_fifo' declared at 'c:/DevWorks/pooling_min_max/pooling_min_max.gen/sources_1/bd/design_1/ipshared/7b99/hdl/vhdl/image_pooling_gmem_m_axi.vhd:3257' bound to instance 'user_resp' of component 'image_pooling_gmem_m_axi_fifo' [c:/DevWorks/pooling_min_max/pooling_min_max.gen/sources_1/bd/design_1/ipshared/7b99/hdl/vhdl/image_pooling_gmem_m_axi.vhd:1797]
+INFO: [Synth 8-638] synthesizing module 'image_pooling_gmem_m_axi_fifo__parameterized12' [c:/DevWorks/pooling_min_max/pooling_min_max.gen/sources_1/bd/design_1/ipshared/7b99/hdl/vhdl/image_pooling_gmem_m_axi.vhd:3276]
+	Parameter DATA_WIDTH bound to: 1 - type: integer 
+	Parameter ADDR_WIDTH bound to: 3 - type: integer 
+	Parameter DEPTH bound to: 7 - type: integer 
+INFO: [Synth 8-3491] module 'image_pooling_gmem_m_axi_srl' declared at 'c:/DevWorks/pooling_min_max/pooling_min_max.gen/sources_1/bd/design_1/ipshared/7b99/hdl/vhdl/image_pooling_gmem_m_axi.vhd:3497' bound to instance 'U_ffo_srl' of component 'image_pooling_gmem_m_axi_srl' [c:/DevWorks/pooling_min_max/pooling_min_max.gen/sources_1/bd/design_1/ipshared/7b99/hdl/vhdl/image_pooling_gmem_m_axi.vhd:3391]
+INFO: [Synth 8-638] synthesizing module 'image_pooling_gmem_m_axi_srl__parameterized7' [c:/DevWorks/pooling_min_max/pooling_min_max.gen/sources_1/bd/design_1/ipshared/7b99/hdl/vhdl/image_pooling_gmem_m_axi.vhd:3513]
+INFO: [Synth 8-256] done synthesizing module 'image_pooling_gmem_m_axi_srl__parameterized7' (0#1) [c:/DevWorks/pooling_min_max/pooling_min_max.gen/sources_1/bd/design_1/ipshared/7b99/hdl/vhdl/image_pooling_gmem_m_axi.vhd:3513]
+INFO: [Synth 8-256] done synthesizing module 'image_pooling_gmem_m_axi_fifo__parameterized12' (0#1) [c:/DevWorks/pooling_min_max/pooling_min_max.gen/sources_1/bd/design_1/ipshared/7b99/hdl/vhdl/image_pooling_gmem_m_axi.vhd:3276]
+INFO: [Synth 8-256] done synthesizing module 'image_pooling_gmem_m_axi_store' (0#1) [c:/DevWorks/pooling_min_max/pooling_min_max.gen/sources_1/bd/design_1/ipshared/7b99/hdl/vhdl/image_pooling_gmem_m_axi.vhd:1150]
+	Parameter NUM_READ_OUTSTANDING bound to: 16 - type: integer 
+	Parameter MAX_READ_BURST_LENGTH bound to: 16 - type: integer 
+	Parameter C_M_AXI_ID_WIDTH bound to: 1 - type: integer 
+	Parameter C_M_AXI_ARUSER_WIDTH bound to: 1 - type: integer 
+	Parameter C_M_AXI_RUSER_WIDTH bound to: 1 - type: integer 
+	Parameter C_USER_VALUE bound to: 0 - type: integer 
+	Parameter C_PROT_VALUE bound to: 0 - type: integer 
+	Parameter C_CACHE_VALUE bound to: 3 - type: integer 
+	Parameter BUS_ADDR_WIDTH bound to: 64 - type: integer 
+	Parameter BUS_DATA_WIDTH bound to: 32 - type: integer 
+INFO: [Synth 8-3491] module 'image_pooling_gmem_m_axi_read' declared at 'c:/DevWorks/pooling_min_max/pooling_min_max.gen/sources_1/bd/design_1/ipshared/7b99/hdl/vhdl/image_pooling_gmem_m_axi.vhd:1833' bound to instance 'bus_read' of component 'image_pooling_gmem_m_axi_read' [c:/DevWorks/pooling_min_max/pooling_min_max.gen/sources_1/bd/design_1/ipshared/7b99/hdl/vhdl/image_pooling_gmem_m_axi.vhd:401]
+INFO: [Synth 8-638] synthesizing module 'image_pooling_gmem_m_axi_read' [c:/DevWorks/pooling_min_max/pooling_min_max.gen/sources_1/bd/design_1/ipshared/7b99/hdl/vhdl/image_pooling_gmem_m_axi.vhd:1881]
+	Parameter DATA_WIDTH bound to: 32 - type: integer 
+	Parameter ADDR_WIDTH bound to: 64 - type: integer 
+	Parameter MAX_BURST_LENGTH bound to: 16 - type: integer 
+INFO: [Synth 8-3491] module 'image_pooling_gmem_m_axi_burst_converter' declared at 'c:/DevWorks/pooling_min_max/pooling_min_max.gen/sources_1/bd/design_1/ipshared/7b99/hdl/vhdl/image_pooling_gmem_m_axi.vhd:2499' bound to instance 'rreq_burst_conv' of component 'image_pooling_gmem_m_axi_burst_converter' [c:/DevWorks/pooling_min_max/pooling_min_max.gen/sources_1/bd/design_1/ipshared/7b99/hdl/vhdl/image_pooling_gmem_m_axi.vhd:1980]
+INFO: [Synth 8-638] synthesizing module 'image_pooling_gmem_m_axi_burst_converter' [c:/DevWorks/pooling_min_max/pooling_min_max.gen/sources_1/bd/design_1/ipshared/7b99/hdl/vhdl/image_pooling_gmem_m_axi.vhd:2526]
+	Parameter DATA_WIDTH bound to: 96 - type: integer 
+INFO: [Synth 8-3491] module 'image_pooling_gmem_m_axi_reg_slice' declared at 'c:/DevWorks/pooling_min_max/pooling_min_max.gen/sources_1/bd/design_1/ipshared/7b99/hdl/vhdl/image_pooling_gmem_m_axi.vhd:3132' bound to instance 'rs_req' of component 'image_pooling_gmem_m_axi_reg_slice' [c:/DevWorks/pooling_min_max/pooling_min_max.gen/sources_1/bd/design_1/ipshared/7b99/hdl/vhdl/image_pooling_gmem_m_axi.vhd:2602]
+INFO: [Synth 8-638] synthesizing module 'image_pooling_gmem_m_axi_reg_slice__parameterized1' [c:/DevWorks/pooling_min_max/pooling_min_max.gen/sources_1/bd/design_1/ipshared/7b99/hdl/vhdl/image_pooling_gmem_m_axi.vhd:3149]
+INFO: [Synth 8-256] done synthesizing module 'image_pooling_gmem_m_axi_reg_slice__parameterized1' (0#1) [c:/DevWorks/pooling_min_max/pooling_min_max.gen/sources_1/bd/design_1/ipshared/7b99/hdl/vhdl/image_pooling_gmem_m_axi.vhd:3149]
+INFO: [Synth 8-256] done synthesizing module 'image_pooling_gmem_m_axi_burst_converter' (0#1) [c:/DevWorks/pooling_min_max/pooling_min_max.gen/sources_1/bd/design_1/ipshared/7b99/hdl/vhdl/image_pooling_gmem_m_axi.vhd:2526]
+	Parameter DATA_WIDTH bound to: 33 - type: integer 
+INFO: [Synth 8-3491] module 'image_pooling_gmem_m_axi_reg_slice' declared at 'c:/DevWorks/pooling_min_max/pooling_min_max.gen/sources_1/bd/design_1/ipshared/7b99/hdl/vhdl/image_pooling_gmem_m_axi.vhd:3132' bound to instance 'rs_rdata' of component 'image_pooling_gmem_m_axi_reg_slice' [c:/DevWorks/pooling_min_max/pooling_min_max.gen/sources_1/bd/design_1/ipshared/7b99/hdl/vhdl/image_pooling_gmem_m_axi.vhd:2019]
+	Parameter DATA_WIDTH bound to: 1 - type: integer 
+	Parameter ADDR_WIDTH bound to: 4 - type: integer 
+	Parameter DEPTH bound to: 16 - type: integer 
+INFO: [Synth 8-3491] module 'image_pooling_gmem_m_axi_fifo' declared at 'c:/DevWorks/pooling_min_max/pooling_min_max.gen/sources_1/bd/design_1/ipshared/7b99/hdl/vhdl/image_pooling_gmem_m_axi.vhd:3257' bound to instance 'fifo_rctl' of component 'image_pooling_gmem_m_axi_fifo' [c:/DevWorks/pooling_min_max/pooling_min_max.gen/sources_1/bd/design_1/ipshared/7b99/hdl/vhdl/image_pooling_gmem_m_axi.vhd:2032]
+	Parameter DATA_WIDTH bound to: 1 - type: integer 
+	Parameter ADDR_WIDTH bound to: 4 - type: integer 
+	Parameter DEPTH bound to: 16 - type: integer 
+INFO: [Synth 8-3491] module 'image_pooling_gmem_m_axi_fifo' declared at 'c:/DevWorks/pooling_min_max/pooling_min_max.gen/sources_1/bd/design_1/ipshared/7b99/hdl/vhdl/image_pooling_gmem_m_axi.vhd:3257' bound to instance 'fifo_burst' of component 'image_pooling_gmem_m_axi_fifo' [c:/DevWorks/pooling_min_max/pooling_min_max.gen/sources_1/bd/design_1/ipshared/7b99/hdl/vhdl/image_pooling_gmem_m_axi.vhd:2049]
+INFO: [Synth 8-256] done synthesizing module 'image_pooling_gmem_m_axi_read' (0#1) [c:/DevWorks/pooling_min_max/pooling_min_max.gen/sources_1/bd/design_1/ipshared/7b99/hdl/vhdl/image_pooling_gmem_m_axi.vhd:1881]
+	Parameter CONSERVATIVE bound to: 1 - type: integer 
+	Parameter C_M_AXI_ID_WIDTH bound to: 1 - type: integer 
+	Parameter C_M_AXI_AWUSER_WIDTH bound to: 1 - type: integer 
+	Parameter C_M_AXI_WUSER_WIDTH bound to: 1 - type: integer 
+	Parameter C_M_AXI_BUSER_WIDTH bound to: 1 - type: integer 
+	Parameter C_USER_VALUE bound to: 0 - type: integer 
+	Parameter C_PROT_VALUE bound to: 0 - type: integer 
+	Parameter C_CACHE_VALUE bound to: 3 - type: integer 
+	Parameter BUS_ADDR_WIDTH bound to: 64 - type: integer 
+	Parameter BUS_DATA_WIDTH bound to: 32 - type: integer 
+	Parameter NUM_WRITE_OUTSTANDING bound to: 16 - type: integer 
+	Parameter MAX_WRITE_BURST_LENGTH bound to: 16 - type: integer 
+INFO: [Synth 8-3491] module 'image_pooling_gmem_m_axi_write' declared at 'c:/DevWorks/pooling_min_max/pooling_min_max.gen/sources_1/bd/design_1/ipshared/7b99/hdl/vhdl/image_pooling_gmem_m_axi.vhd:2087' bound to instance 'bus_write' of component 'image_pooling_gmem_m_axi_write' [c:/DevWorks/pooling_min_max/pooling_min_max.gen/sources_1/bd/design_1/ipshared/7b99/hdl/vhdl/image_pooling_gmem_m_axi.vhd:451]
+INFO: [Synth 8-638] synthesizing module 'image_pooling_gmem_m_axi_write' [c:/DevWorks/pooling_min_max/pooling_min_max.gen/sources_1/bd/design_1/ipshared/7b99/hdl/vhdl/image_pooling_gmem_m_axi.vhd:2143]
+	Parameter DATA_WIDTH bound to: 32 - type: integer 
+	Parameter ADDR_WIDTH bound to: 64 - type: integer 
+	Parameter MAX_BURST_LENGTH bound to: 16 - type: integer 
+INFO: [Synth 8-3491] module 'image_pooling_gmem_m_axi_burst_converter' declared at 'c:/DevWorks/pooling_min_max/pooling_min_max.gen/sources_1/bd/design_1/ipshared/7b99/hdl/vhdl/image_pooling_gmem_m_axi.vhd:2499' bound to instance 'wreq_burst_conv' of component 'image_pooling_gmem_m_axi_burst_converter' [c:/DevWorks/pooling_min_max/pooling_min_max.gen/sources_1/bd/design_1/ipshared/7b99/hdl/vhdl/image_pooling_gmem_m_axi.vhd:2289]
+	Parameter DATA_WIDTH bound to: 8 - type: integer 
+	Parameter ADDR_WIDTH bound to: 4 - type: integer 
+	Parameter DEPTH bound to: 16 - type: integer 
+INFO: [Synth 8-3491] module 'image_pooling_gmem_m_axi_fifo' declared at 'c:/DevWorks/pooling_min_max/pooling_min_max.gen/sources_1/bd/design_1/ipshared/7b99/hdl/vhdl/image_pooling_gmem_m_axi.vhd:3257' bound to instance 'fifo_burst' of component 'image_pooling_gmem_m_axi_fifo' [c:/DevWorks/pooling_min_max/pooling_min_max.gen/sources_1/bd/design_1/ipshared/7b99/hdl/vhdl/image_pooling_gmem_m_axi.vhd:2327]
+INFO: [Synth 8-638] synthesizing module 'image_pooling_gmem_m_axi_fifo__parameterized14' [c:/DevWorks/pooling_min_max/pooling_min_max.gen/sources_1/bd/design_1/ipshared/7b99/hdl/vhdl/image_pooling_gmem_m_axi.vhd:3276]
+	Parameter DATA_WIDTH bound to: 8 - type: integer 
+	Parameter ADDR_WIDTH bound to: 4 - type: integer 
+	Parameter DEPTH bound to: 16 - type: integer 
+INFO: [Synth 8-3491] module 'image_pooling_gmem_m_axi_srl' declared at 'c:/DevWorks/pooling_min_max/pooling_min_max.gen/sources_1/bd/design_1/ipshared/7b99/hdl/vhdl/image_pooling_gmem_m_axi.vhd:3497' bound to instance 'U_ffo_srl' of component 'image_pooling_gmem_m_axi_srl' [c:/DevWorks/pooling_min_max/pooling_min_max.gen/sources_1/bd/design_1/ipshared/7b99/hdl/vhdl/image_pooling_gmem_m_axi.vhd:3391]
+INFO: [Synth 8-638] synthesizing module 'image_pooling_gmem_m_axi_srl__parameterized9' [c:/DevWorks/pooling_min_max/pooling_min_max.gen/sources_1/bd/design_1/ipshared/7b99/hdl/vhdl/image_pooling_gmem_m_axi.vhd:3513]
+INFO: [Synth 8-256] done synthesizing module 'image_pooling_gmem_m_axi_srl__parameterized9' (0#1) [c:/DevWorks/pooling_min_max/pooling_min_max.gen/sources_1/bd/design_1/ipshared/7b99/hdl/vhdl/image_pooling_gmem_m_axi.vhd:3513]
+INFO: [Synth 8-256] done synthesizing module 'image_pooling_gmem_m_axi_fifo__parameterized14' (0#1) [c:/DevWorks/pooling_min_max/pooling_min_max.gen/sources_1/bd/design_1/ipshared/7b99/hdl/vhdl/image_pooling_gmem_m_axi.vhd:3276]
+	Parameter CONSERVATIVE bound to: 1 - type: integer 
+	Parameter USED_FIX bound to: 0 - type: bool 
+	Parameter ADDR_WIDTH bound to: 64 - type: integer 
+	Parameter DATA_WIDTH bound to: 32 - type: integer 
+	Parameter DEPTH bound to: 16 - type: integer 
+	Parameter MAXREQS bound to: 16 - type: integer 
+	Parameter AVERAGE_MODE bound to: 0 - type: bool 
+INFO: [Synth 8-3491] module 'image_pooling_gmem_m_axi_throttle' declared at 'c:/DevWorks/pooling_min_max/pooling_min_max.gen/sources_1/bd/design_1/ipshared/7b99/hdl/vhdl/image_pooling_gmem_m_axi.vhd:2848' bound to instance 'wreq_throttl' of component 'image_pooling_gmem_m_axi_throttle' [c:/DevWorks/pooling_min_max/pooling_min_max.gen/sources_1/bd/design_1/ipshared/7b99/hdl/vhdl/image_pooling_gmem_m_axi.vhd:2417]
+INFO: [Synth 8-638] synthesizing module 'image_pooling_gmem_m_axi_throttle' [c:/DevWorks/pooling_min_max/pooling_min_max.gen/sources_1/bd/design_1/ipshared/7b99/hdl/vhdl/image_pooling_gmem_m_axi.vhd:2905]
+	Parameter DATA_WIDTH bound to: 72 - type: integer 
+	Parameter ADDR_WIDTH bound to: 4 - type: integer 
+	Parameter DEPTH bound to: 16 - type: integer 
+INFO: [Synth 8-3491] module 'image_pooling_gmem_m_axi_fifo' declared at 'c:/DevWorks/pooling_min_max/pooling_min_max.gen/sources_1/bd/design_1/ipshared/7b99/hdl/vhdl/image_pooling_gmem_m_axi.vhd:3257' bound to instance 'req_fifo' of component 'image_pooling_gmem_m_axi_fifo' [c:/DevWorks/pooling_min_max/pooling_min_max.gen/sources_1/bd/design_1/ipshared/7b99/hdl/vhdl/image_pooling_gmem_m_axi.vhd:3047]
+INFO: [Synth 8-638] synthesizing module 'image_pooling_gmem_m_axi_fifo__parameterized16' [c:/DevWorks/pooling_min_max/pooling_min_max.gen/sources_1/bd/design_1/ipshared/7b99/hdl/vhdl/image_pooling_gmem_m_axi.vhd:3276]
+	Parameter DATA_WIDTH bound to: 72 - type: integer 
+	Parameter ADDR_WIDTH bound to: 4 - type: integer 
+	Parameter DEPTH bound to: 16 - type: integer 
+INFO: [Synth 8-3491] module 'image_pooling_gmem_m_axi_srl' declared at 'c:/DevWorks/pooling_min_max/pooling_min_max.gen/sources_1/bd/design_1/ipshared/7b99/hdl/vhdl/image_pooling_gmem_m_axi.vhd:3497' bound to instance 'U_ffo_srl' of component 'image_pooling_gmem_m_axi_srl' [c:/DevWorks/pooling_min_max/pooling_min_max.gen/sources_1/bd/design_1/ipshared/7b99/hdl/vhdl/image_pooling_gmem_m_axi.vhd:3391]
+INFO: [Synth 8-638] synthesizing module 'image_pooling_gmem_m_axi_srl__parameterized11' [c:/DevWorks/pooling_min_max/pooling_min_max.gen/sources_1/bd/design_1/ipshared/7b99/hdl/vhdl/image_pooling_gmem_m_axi.vhd:3513]
+INFO: [Synth 8-256] done synthesizing module 'image_pooling_gmem_m_axi_srl__parameterized11' (0#1) [c:/DevWorks/pooling_min_max/pooling_min_max.gen/sources_1/bd/design_1/ipshared/7b99/hdl/vhdl/image_pooling_gmem_m_axi.vhd:3513]
+INFO: [Synth 8-256] done synthesizing module 'image_pooling_gmem_m_axi_fifo__parameterized16' (0#1) [c:/DevWorks/pooling_min_max/pooling_min_max.gen/sources_1/bd/design_1/ipshared/7b99/hdl/vhdl/image_pooling_gmem_m_axi.vhd:3276]
+	Parameter DATA_WIDTH bound to: 72 - type: integer 
+INFO: [Synth 8-3491] module 'image_pooling_gmem_m_axi_reg_slice' declared at 'c:/DevWorks/pooling_min_max/pooling_min_max.gen/sources_1/bd/design_1/ipshared/7b99/hdl/vhdl/image_pooling_gmem_m_axi.vhd:3132' bound to instance 'rs_req' of component 'image_pooling_gmem_m_axi_reg_slice' [c:/DevWorks/pooling_min_max/pooling_min_max.gen/sources_1/bd/design_1/ipshared/7b99/hdl/vhdl/image_pooling_gmem_m_axi.vhd:3064]
+INFO: [Synth 8-638] synthesizing module 'image_pooling_gmem_m_axi_reg_slice__parameterized4' [c:/DevWorks/pooling_min_max/pooling_min_max.gen/sources_1/bd/design_1/ipshared/7b99/hdl/vhdl/image_pooling_gmem_m_axi.vhd:3149]
+INFO: [Synth 8-256] done synthesizing module 'image_pooling_gmem_m_axi_reg_slice__parameterized4' (0#1) [c:/DevWorks/pooling_min_max/pooling_min_max.gen/sources_1/bd/design_1/ipshared/7b99/hdl/vhdl/image_pooling_gmem_m_axi.vhd:3149]
+	Parameter DATA_WIDTH bound to: 37 - type: integer 
+	Parameter ADDR_WIDTH bound to: 4 - type: integer 
+	Parameter DEPTH bound to: 16 - type: integer 
+INFO: [Synth 8-3491] module 'image_pooling_gmem_m_axi_fifo' declared at 'c:/DevWorks/pooling_min_max/pooling_min_max.gen/sources_1/bd/design_1/ipshared/7b99/hdl/vhdl/image_pooling_gmem_m_axi.vhd:3257' bound to instance 'data_fifo' of component 'image_pooling_gmem_m_axi_fifo' [c:/DevWorks/pooling_min_max/pooling_min_max.gen/sources_1/bd/design_1/ipshared/7b99/hdl/vhdl/image_pooling_gmem_m_axi.vhd:3106]
+INFO: [Synth 8-638] synthesizing module 'image_pooling_gmem_m_axi_fifo__parameterized18' [c:/DevWorks/pooling_min_max/pooling_min_max.gen/sources_1/bd/design_1/ipshared/7b99/hdl/vhdl/image_pooling_gmem_m_axi.vhd:3276]
+	Parameter DATA_WIDTH bound to: 37 - type: integer 
+	Parameter ADDR_WIDTH bound to: 4 - type: integer 
+	Parameter DEPTH bound to: 16 - type: integer 
+INFO: [Synth 8-3491] module 'image_pooling_gmem_m_axi_srl' declared at 'c:/DevWorks/pooling_min_max/pooling_min_max.gen/sources_1/bd/design_1/ipshared/7b99/hdl/vhdl/image_pooling_gmem_m_axi.vhd:3497' bound to instance 'U_ffo_srl' of component 'image_pooling_gmem_m_axi_srl' [c:/DevWorks/pooling_min_max/pooling_min_max.gen/sources_1/bd/design_1/ipshared/7b99/hdl/vhdl/image_pooling_gmem_m_axi.vhd:3391]
+INFO: [Synth 8-638] synthesizing module 'image_pooling_gmem_m_axi_srl__parameterized13' [c:/DevWorks/pooling_min_max/pooling_min_max.gen/sources_1/bd/design_1/ipshared/7b99/hdl/vhdl/image_pooling_gmem_m_axi.vhd:3513]
+INFO: [Synth 8-256] done synthesizing module 'image_pooling_gmem_m_axi_srl__parameterized13' (0#1) [c:/DevWorks/pooling_min_max/pooling_min_max.gen/sources_1/bd/design_1/ipshared/7b99/hdl/vhdl/image_pooling_gmem_m_axi.vhd:3513]
+INFO: [Synth 8-256] done synthesizing module 'image_pooling_gmem_m_axi_fifo__parameterized18' (0#1) [c:/DevWorks/pooling_min_max/pooling_min_max.gen/sources_1/bd/design_1/ipshared/7b99/hdl/vhdl/image_pooling_gmem_m_axi.vhd:3276]
+INFO: [Synth 8-256] done synthesizing module 'image_pooling_gmem_m_axi_throttle' (0#1) [c:/DevWorks/pooling_min_max/pooling_min_max.gen/sources_1/bd/design_1/ipshared/7b99/hdl/vhdl/image_pooling_gmem_m_axi.vhd:2905]
+	Parameter DATA_WIDTH bound to: 1 - type: integer 
+INFO: [Synth 8-3491] module 'image_pooling_gmem_m_axi_reg_slice' declared at 'c:/DevWorks/pooling_min_max/pooling_min_max.gen/sources_1/bd/design_1/ipshared/7b99/hdl/vhdl/image_pooling_gmem_m_axi.vhd:3132' bound to instance 'rs_resp' of component 'image_pooling_gmem_m_axi_reg_slice' [c:/DevWorks/pooling_min_max/pooling_min_max.gen/sources_1/bd/design_1/ipshared/7b99/hdl/vhdl/image_pooling_gmem_m_axi.vhd:2455]
+INFO: [Synth 8-638] synthesizing module 'image_pooling_gmem_m_axi_reg_slice__parameterized6' [c:/DevWorks/pooling_min_max/pooling_min_max.gen/sources_1/bd/design_1/ipshared/7b99/hdl/vhdl/image_pooling_gmem_m_axi.vhd:3149]
+INFO: [Synth 8-256] done synthesizing module 'image_pooling_gmem_m_axi_reg_slice__parameterized6' (0#1) [c:/DevWorks/pooling_min_max/pooling_min_max.gen/sources_1/bd/design_1/ipshared/7b99/hdl/vhdl/image_pooling_gmem_m_axi.vhd:3149]
+	Parameter DATA_WIDTH bound to: 1 - type: integer 
+	Parameter ADDR_WIDTH bound to: 4 - type: integer 
+	Parameter DEPTH bound to: 16 - type: integer 
+INFO: [Synth 8-3491] module 'image_pooling_gmem_m_axi_fifo' declared at 'c:/DevWorks/pooling_min_max/pooling_min_max.gen/sources_1/bd/design_1/ipshared/7b99/hdl/vhdl/image_pooling_gmem_m_axi.vhd:3257' bound to instance 'fifo_resp' of component 'image_pooling_gmem_m_axi_fifo' [c:/DevWorks/pooling_min_max/pooling_min_max.gen/sources_1/bd/design_1/ipshared/7b99/hdl/vhdl/image_pooling_gmem_m_axi.vhd:2468]
+INFO: [Synth 8-256] done synthesizing module 'image_pooling_gmem_m_axi_write' (0#1) [c:/DevWorks/pooling_min_max/pooling_min_max.gen/sources_1/bd/design_1/ipshared/7b99/hdl/vhdl/image_pooling_gmem_m_axi.vhd:2143]
+INFO: [Synth 8-256] done synthesizing module 'image_pooling_gmem_m_axi' (0#1) [c:/DevWorks/pooling_min_max/pooling_min_max.gen/sources_1/bd/design_1/ipshared/7b99/hdl/vhdl/image_pooling_gmem_m_axi.vhd:124]
+INFO: [Synth 8-256] done synthesizing module 'image_pooling' (0#1) [c:/DevWorks/pooling_min_max/pooling_min_max.gen/sources_1/bd/design_1/ipshared/7b99/hdl/vhdl/image_pooling.vhd:95]
+INFO: [Synth 8-256] done synthesizing module 'design_1_image_pooling_0_0' (0#1) [c:/DevWorks/pooling_min_max/pooling_min_max.gen/sources_1/bd/design_1/ip/design_1_image_pooling_0_0/synth/design_1_image_pooling_0_0.vhd:121]
+WARNING: [Synth 8-6014] Unused sequential element int_ap_done_reg was removed.  [c:/DevWorks/pooling_min_max/pooling_min_max.gen/sources_1/bd/design_1/ipshared/7b99/hdl/vhdl/image_pooling_control_s_axi.vhd:328]
+WARNING: [Synth 8-7129] Port in_BUS_BID[0] in module image_pooling_gmem_m_axi_write is either unconnected or has no load
+WARNING: [Synth 8-7129] Port in_BUS_BRESP[1] in module image_pooling_gmem_m_axi_write is either unconnected or has no load
+WARNING: [Synth 8-7129] Port in_BUS_BRESP[0] in module image_pooling_gmem_m_axi_write is either unconnected or has no load
+WARNING: [Synth 8-7129] Port in_BUS_BUSER[0] in module image_pooling_gmem_m_axi_write is either unconnected or has no load
+WARNING: [Synth 8-7129] Port in_BUS_RID[0] in module image_pooling_gmem_m_axi_read is either unconnected or has no load
+WARNING: [Synth 8-7129] Port in_BUS_RRESP[1] in module image_pooling_gmem_m_axi_read is either unconnected or has no load
+WARNING: [Synth 8-7129] Port in_BUS_RRESP[0] in module image_pooling_gmem_m_axi_read is either unconnected or has no load
+WARNING: [Synth 8-7129] Port in_BUS_RUSER[0] in module image_pooling_gmem_m_axi_read is either unconnected or has no load
+WARNING: [Synth 8-7129] Port AWADDR[1] in module image_pooling_control_s_axi is either unconnected or has no load
+WARNING: [Synth 8-7129] Port AWADDR[0] in module image_pooling_control_s_axi is either unconnected or has no load
+WARNING: [Synth 8-7129] Port window_0_0_0_0_0_0_val_ap_vld in module image_pooling_pooling_2x2 is either unconnected or has no load
+WARNING: [Synth 8-7129] Port window_0_1_0_0_0_0_val_ap_vld in module image_pooling_pooling_2x2 is either unconnected or has no load
+WARNING: [Synth 8-7129] Port window_1_0_0_0_0_0_val_ap_vld in module image_pooling_pooling_2x2 is either unconnected or has no load
+WARNING: [Synth 8-7129] Port window_1_1_0_0_0_0_val_ap_vld in module image_pooling_pooling_2x2 is either unconnected or has no load
+WARNING: [Synth 8-7129] Port reset in module image_pooling_linebuf_1_RAM_AUTO_1R1W is either unconnected or has no load
+WARNING: [Synth 8-7129] Port reset in module image_pooling_linebuf_RAM_AUTO_1R1W is either unconnected or has no load
+---------------------------------------------------------------------------------
+Finished RTL Elaboration : Time (s): cpu = 00:00:15 ; elapsed = 00:00:18 . Memory (MB): peak = 1527.359 ; gain = 597.949
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Start Handling Custom Attributes
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Finished Handling Custom Attributes : Time (s): cpu = 00:00:15 ; elapsed = 00:00:19 . Memory (MB): peak = 1527.359 ; gain = 597.949
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Finished RTL Optimization Phase 1 : Time (s): cpu = 00:00:15 ; elapsed = 00:00:19 . Memory (MB): peak = 1527.359 ; gain = 597.949
+---------------------------------------------------------------------------------
+Netlist sorting complete. Time (s): cpu = 00:00:00 ; elapsed = 00:00:00.188 . Memory (MB): peak = 1527.359 ; gain = 0.000
+INFO: [Project 1-570] Preparing netlist for logic optimization
+
+Processing XDC Constraints
+Initializing timing engine
+Parsing XDC File [c:/DevWorks/pooling_min_max/pooling_min_max.gen/sources_1/bd/design_1/ip/design_1_image_pooling_0_0/constraints/image_pooling_ooc.xdc] for cell 'U0'
+Finished Parsing XDC File [c:/DevWorks/pooling_min_max/pooling_min_max.gen/sources_1/bd/design_1/ip/design_1_image_pooling_0_0/constraints/image_pooling_ooc.xdc] for cell 'U0'
+Parsing XDC File [C:/DevWorks/pooling_min_max/pooling_min_max.runs/design_1_image_pooling_0_0_synth_1/dont_touch.xdc]
+Finished Parsing XDC File [C:/DevWorks/pooling_min_max/pooling_min_max.runs/design_1_image_pooling_0_0_synth_1/dont_touch.xdc]
+Completed Processing XDC Constraints
+
+Netlist sorting complete. Time (s): cpu = 00:00:00 ; elapsed = 00:00:00.004 . Memory (MB): peak = 1641.703 ; gain = 0.000
+INFO: [Project 1-111] Unisim Transformation Summary:
+No Unisim elements were transformed.
+
+Constraint Validation Runtime : Time (s): cpu = 00:00:01 ; elapsed = 00:00:00.229 . Memory (MB): peak = 1642.180 ; gain = 0.477
+INFO: [Designutils 20-5008] Incremental synthesis strategy off
+---------------------------------------------------------------------------------
+Finished Constraint Validation : Time (s): cpu = 00:00:30 ; elapsed = 00:00:35 . Memory (MB): peak = 1642.180 ; gain = 712.770
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Start Loading Part and Timing Information
+---------------------------------------------------------------------------------
+Loading part: xc7z020clg400-1
+---------------------------------------------------------------------------------
+Finished Loading Part and Timing Information : Time (s): cpu = 00:00:30 ; elapsed = 00:00:35 . Memory (MB): peak = 1642.180 ; gain = 712.770
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Start Applying 'set_property' XDC Constraints
+---------------------------------------------------------------------------------
+Applied set_property KEEP_HIERARCHY = SOFT for U0. (constraint file  C:/DevWorks/pooling_min_max/pooling_min_max.runs/design_1_image_pooling_0_0_synth_1/dont_touch.xdc, line 9).
+---------------------------------------------------------------------------------
+Finished applying 'set_property' XDC Constraints : Time (s): cpu = 00:00:30 ; elapsed = 00:00:35 . Memory (MB): peak = 1642.180 ; gain = 712.770
+---------------------------------------------------------------------------------
+INFO: [Synth 8-4490] FSM extraction disabled for register 'ap_CS_fsm_reg' through user attribute
+INFO: [Synth 8-4490] FSM extraction disabled for register 'ap_CS_fsm_reg' through user attribute
+INFO: [Synth 8-802] inferred FSM for state register 'wstate_reg' in module 'image_pooling_control_s_axi'
+INFO: [Synth 8-802] inferred FSM for state register 'rstate_reg' in module 'image_pooling_control_s_axi'
+INFO: [Synth 8-802] inferred FSM for state register 'state_reg' in module 'image_pooling_gmem_m_axi_reg_slice'
+INFO: [Synth 8-802] inferred FSM for state register 'state_reg' in module 'image_pooling_gmem_m_axi_reg_slice__parameterized1'
+INFO: [Synth 8-802] inferred FSM for state register 'state_reg' in module 'image_pooling_gmem_m_axi_reg_slice__parameterized4'
+INFO: [Synth 8-802] inferred FSM for state register 'state_reg' in module 'image_pooling_gmem_m_axi_reg_slice__parameterized6'
+INFO: [Synth 8-4490] FSM extraction disabled for register 'ap_CS_fsm_reg' through user attribute
+INFO: [Synth 8-4490] FSM extraction disabled for register 'ap_CS_fsm_reg' through user attribute
+---------------------------------------------------------------------------------------------------
+                   State |                     New Encoding |                Previous Encoding 
+---------------------------------------------------------------------------------------------------
+                  iSTATE |                             0001 |                              011
+*
+                  wridle |                             0010 |                              000
+                  wrdata |                             0100 |                              001
+                  wrresp |                             1000 |                              010
+---------------------------------------------------------------------------------------------------
+INFO: [Synth 8-3354] encoded FSM with state register 'wstate_reg' using encoding 'one-hot' in module 'image_pooling_control_s_axi'
+---------------------------------------------------------------------------------------------------
+                   State |                     New Encoding |                Previous Encoding 
+---------------------------------------------------------------------------------------------------
+                  iSTATE |                              001 |                              110
+*
+                  rdidle |                              010 |                              100
+                  rddata |                              100 |                              101
+---------------------------------------------------------------------------------------------------
+INFO: [Synth 8-3354] encoded FSM with state register 'rstate_reg' using encoding 'one-hot' in module 'image_pooling_control_s_axi'
+---------------------------------------------------------------------------------------------------
+                   State |                     New Encoding |                Previous Encoding 
+---------------------------------------------------------------------------------------------------
+                    zero |                               00 |                               10
+                     one |                               10 |                               11
+                     two |                               01 |                               01
+---------------------------------------------------------------------------------------------------
+INFO: [Synth 8-3354] encoded FSM with state register 'state_reg' using encoding 'sequential' in module 'image_pooling_gmem_m_axi_reg_slice'
+INFO: [Synth 8-7082] The signal mem_reg is implemented as Block RAM but is better mapped onto distributed LUT RAM for the following reason(s): The depth (6 address bits) is shallow. Please use attribute (* ram_style = "distributed" *) to instruct Vivado to infer distributed LUT RAM.
+---------------------------------------------------------------------------------------------------
+                   State |                     New Encoding |                Previous Encoding 
+---------------------------------------------------------------------------------------------------
+                    zero |                               00 |                               10
+                     one |                               10 |                               11
+                     two |                               01 |                               01
+---------------------------------------------------------------------------------------------------
+INFO: [Synth 8-3354] encoded FSM with state register 'state_reg' using encoding 'sequential' in module 'image_pooling_gmem_m_axi_reg_slice__parameterized1'
+---------------------------------------------------------------------------------------------------
+                   State |                     New Encoding |                Previous Encoding 
+---------------------------------------------------------------------------------------------------
+                    zero |                               00 |                               10
+                     one |                               10 |                               11
+                     two |                               01 |                               01
+---------------------------------------------------------------------------------------------------
+INFO: [Synth 8-3354] encoded FSM with state register 'state_reg' using encoding 'sequential' in module 'image_pooling_gmem_m_axi_reg_slice__parameterized4'
+---------------------------------------------------------------------------------------------------
+                   State |                     New Encoding |                Previous Encoding 
+---------------------------------------------------------------------------------------------------
+                    zero |                               00 |                               10
+                     one |                               10 |                               11
+                     two |                               01 |                               01
+---------------------------------------------------------------------------------------------------
+INFO: [Synth 8-3354] encoded FSM with state register 'state_reg' using encoding 'sequential' in module 'image_pooling_gmem_m_axi_reg_slice__parameterized6'
+---------------------------------------------------------------------------------
+Finished RTL Optimization Phase 2 : Time (s): cpu = 00:00:32 ; elapsed = 00:00:37 . Memory (MB): peak = 1642.180 ; gain = 712.770
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Start RTL Component Statistics 
+---------------------------------------------------------------------------------
+Detailed RTL Component Info : 
++---Adders : 
+	   2 Input   64 Bit       Adders := 2     
+	   2 Input   52 Bit       Adders := 2     
+	   2 Input   32 Bit       Adders := 7     
+	   2 Input   16 Bit       Adders := 1     
+	   2 Input   12 Bit       Adders := 4     
+	   2 Input   11 Bit       Adders := 1     
+	   2 Input    9 Bit       Adders := 5     
+	   2 Input    8 Bit       Adders := 4     
+	   2 Input    7 Bit       Adders := 2     
+	   2 Input    6 Bit       Adders := 4     
+	   2 Input    5 Bit       Adders := 21    
+	   2 Input    4 Bit       Adders := 15    
+	   2 Input    3 Bit       Adders := 9     
+	   3 Input    3 Bit       Adders := 1     
+	   2 Input    2 Bit       Adders := 3     
++---XORs : 
+	   2 Input      1 Bit         XORs := 6     
++---Registers : 
+	               96 Bit    Registers := 6     
+	               72 Bit    Registers := 3     
+	               64 Bit    Registers := 12    
+	               52 Bit    Registers := 2     
+	               37 Bit    Registers := 1     
+	               34 Bit    Registers := 3     
+	               33 Bit    Registers := 4     
+	               32 Bit    Registers := 14    
+	               23 Bit    Registers := 1     
+	               20 Bit    Registers := 2     
+	               16 Bit    Registers := 2     
+	               11 Bit    Registers := 3     
+	               10 Bit    Registers := 8     
+	                9 Bit    Registers := 7     
+	                8 Bit    Registers := 24    
+	                7 Bit    Registers := 1     
+	                6 Bit    Registers := 5     
+	                5 Bit    Registers := 10    
+	                4 Bit    Registers := 17    
+	                3 Bit    Registers := 4     
+	                2 Bit    Registers := 9     
+	                1 Bit    Registers := 108   
++---RAMs : 
+	               8K Bit	(255 X 34 bit)          RAMs := 1     
+	               2K Bit	(256 X 8 bit)          RAMs := 2     
+	              567 Bit	(63 X 9 bit)          RAMs := 1     
++---Muxes : 
+	   2 Input   96 Bit        Muxes := 2     
+	   2 Input   72 Bit        Muxes := 1     
+	   2 Input   64 Bit        Muxes := 7     
+	   2 Input   52 Bit        Muxes := 2     
+	   2 Input   33 Bit        Muxes := 2     
+	   2 Input   32 Bit        Muxes := 2     
+	   2 Input   30 Bit        Muxes := 1     
+	   2 Input   23 Bit        Muxes := 3     
+	   3 Input   23 Bit        Muxes := 1     
+	   2 Input   20 Bit        Muxes := 2     
+	   2 Input   19 Bit        Muxes := 1     
+	   2 Input   18 Bit        Muxes := 1     
+	   2 Input   17 Bit        Muxes := 1     
+	   2 Input   15 Bit        Muxes := 1     
+	   4 Input   12 Bit        Muxes := 2     
+	   2 Input   11 Bit        Muxes := 4     
+	   2 Input   10 Bit        Muxes := 6     
+	   2 Input    9 Bit        Muxes := 4     
+	   2 Input    8 Bit        Muxes := 16    
+	   2 Input    7 Bit        Muxes := 2     
+	   2 Input    6 Bit        Muxes := 4     
+	   2 Input    5 Bit        Muxes := 18    
+	   4 Input    4 Bit        Muxes := 1     
+	   2 Input    4 Bit        Muxes := 16    
+	   3 Input    4 Bit        Muxes := 1     
+	   3 Input    3 Bit        Muxes := 1     
+	   2 Input    3 Bit        Muxes := 7     
+	   5 Input    3 Bit        Muxes := 1     
+	   4 Input    3 Bit        Muxes := 1     
+	   4 Input    2 Bit        Muxes := 7     
+	   2 Input    2 Bit        Muxes := 86    
+	   3 Input    2 Bit        Muxes := 18    
+	   5 Input    2 Bit        Muxes := 1     
+	   2 Input    1 Bit        Muxes := 133   
+	   3 Input    1 Bit        Muxes := 15    
+---------------------------------------------------------------------------------
+Finished RTL Component Statistics 
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Start Part Resource Summary
+---------------------------------------------------------------------------------
+Part Resources:
+DSPs: 220 (col length:60)
+BRAMs: 280 (col length: RAMB18 60 RAMB36 30)
+---------------------------------------------------------------------------------
+Finished Part Resource Summary
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Start Cross Boundary and Area Optimization
+---------------------------------------------------------------------------------
+WARNING: [Synth 8-7080] Parallel synthesis criteria is not met
+WARNING: [Synth 8-7129] Port in_BUS_BID[0] in module image_pooling_gmem_m_axi_write is either unconnected or has no load
+WARNING: [Synth 8-7129] Port in_BUS_BRESP[1] in module image_pooling_gmem_m_axi_write is either unconnected or has no load
+WARNING: [Synth 8-7129] Port in_BUS_BRESP[0] in module image_pooling_gmem_m_axi_write is either unconnected or has no load
+WARNING: [Synth 8-7129] Port in_BUS_BUSER[0] in module image_pooling_gmem_m_axi_write is either unconnected or has no load
+WARNING: [Synth 8-7129] Port in_BUS_RID[0] in module image_pooling_gmem_m_axi_read is either unconnected or has no load
+WARNING: [Synth 8-7129] Port in_BUS_RRESP[1] in module image_pooling_gmem_m_axi_read is either unconnected or has no load
+WARNING: [Synth 8-7129] Port in_BUS_RRESP[0] in module image_pooling_gmem_m_axi_read is either unconnected or has no load
+WARNING: [Synth 8-7129] Port in_BUS_RUSER[0] in module image_pooling_gmem_m_axi_read is either unconnected or has no load
+WARNING: [Synth 8-7129] Port AWADDR[1] in module image_pooling_control_s_axi is either unconnected or has no load
+WARNING: [Synth 8-7129] Port AWADDR[0] in module image_pooling_control_s_axi is either unconnected or has no load
+WARNING: [Synth 8-7129] Port window_0_0_0_0_0_0_val_ap_vld in module image_pooling_pooling_2x2 is either unconnected or has no load
+WARNING: [Synth 8-7129] Port window_0_1_0_0_0_0_val_ap_vld in module image_pooling_pooling_2x2 is either unconnected or has no load
+WARNING: [Synth 8-7129] Port window_1_0_0_0_0_0_val_ap_vld in module image_pooling_pooling_2x2 is either unconnected or has no load
+WARNING: [Synth 8-7129] Port window_1_1_0_0_0_0_val_ap_vld in module image_pooling_pooling_2x2 is either unconnected or has no load
+INFO: [Synth 8-7082] The signal store_unit/buff_wdata/fifo_mem_gen.U_ffo_mem/mem_reg is implemented as Block RAM but is better mapped onto distributed LUT RAM for the following reason(s): The depth (6 address bits) is shallow. Please use attribute (* ram_style = "distributed" *) to instruct Vivado to infer distributed LUT RAM.
+WARNING: [Synth 8-3332] Sequential element (FSM_onehot_wstate_reg[0]) is unused and will be removed from module image_pooling_control_s_axi.
+WARNING: [Synth 8-3332] Sequential element (FSM_onehot_rstate_reg[0]) is unused and will be removed from module image_pooling_control_s_axi.
+---------------------------------------------------------------------------------
+Finished Cross Boundary and Area Optimization : Time (s): cpu = 00:00:46 ; elapsed = 00:00:52 . Memory (MB): peak = 1642.180 ; gain = 712.770
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Start ROM, RAM, DSP, Shift Register and Retiming Reporting
+---------------------------------------------------------------------------------
+
+Block RAM: Preliminary Mapping Report (see note below)
++----------------+------------------------------------------------------+------------------------+---+---+------------------------+---+---+------------------+--------+--------+
+|Module Name     | RTL Object                                           | PORT A (Depth x Width) | W | R | PORT B (Depth x Width) | W | R | Ports driving FF | RAMB18 | RAMB36 | 
++----------------+------------------------------------------------------+------------------------+---+---+------------------------+---+---+------------------+--------+--------+
+|U0              | linebuf_U/ram_reg                                    | 256 x 8(READ_FIRST)    | W |   | 256 x 8(WRITE_FIRST)   |   | R | Port A and B     | 1      | 0      | 
+|U0              | linebuf_1_U/ram_reg                                  | 256 x 8(READ_FIRST)    | W | R | 256 x 8(WRITE_FIRST)   |   | R | Port A and B     | 1      | 0      | 
+|U0/gmem_m_axi_U | load_unit/buff_rdata/fifo_mem_gen.U_ffo_mem/mem_reg  | 255 x 34(READ_FIRST)   | W |   | 255 x 34(WRITE_FIRST)  |   | R | Port A and B     | 1      | 0      | 
+|U0/gmem_m_axi_U | store_unit/buff_wdata/fifo_mem_gen.U_ffo_mem/mem_reg | 63 x 9(READ_FIRST)     | W |   | 63 x 9(WRITE_FIRST)    |   | R | Port A and B     | 1      | 0      | 
++----------------+------------------------------------------------------+------------------------+---+---+------------------------+---+---+------------------+--------+--------+
+
+Note: The table above is a preliminary report that shows the Block RAMs at the current stage of the synthesis flow. Some Block RAMs may be reimplemented as non Block RAM primitives later in the synthesis flow. Multiple instantiated Block RAMs are reported only once. 
+---------------------------------------------------------------------------------
+Finished ROM, RAM, DSP, Shift Register and Retiming Reporting
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Start Applying XDC Timing Constraints
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Finished Applying XDC Timing Constraints : Time (s): cpu = 00:00:54 ; elapsed = 00:01:01 . Memory (MB): peak = 1642.180 ; gain = 712.770
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Start Timing Optimization
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Finished Timing Optimization : Time (s): cpu = 00:01:01 ; elapsed = 00:01:07 . Memory (MB): peak = 1642.180 ; gain = 712.770
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Start ROM, RAM, DSP, Shift Register and Retiming Reporting
+---------------------------------------------------------------------------------
+
+Block RAM: Final Mapping Report
++----------------+------------------------------------------------------+------------------------+---+---+------------------------+---+---+------------------+--------+--------+
+|Module Name     | RTL Object                                           | PORT A (Depth x Width) | W | R | PORT B (Depth x Width) | W | R | Ports driving FF | RAMB18 | RAMB36 | 
++----------------+------------------------------------------------------+------------------------+---+---+------------------------+---+---+------------------+--------+--------+
+|U0              | linebuf_U/ram_reg                                    | 256 x 8(READ_FIRST)    | W |   | 256 x 8(WRITE_FIRST)   |   | R | Port A and B     | 1      | 0      | 
+|U0              | linebuf_1_U/ram_reg                                  | 256 x 8(READ_FIRST)    | W | R | 256 x 8(WRITE_FIRST)   |   | R | Port A and B     | 1      | 0      | 
+|U0/gmem_m_axi_U | load_unit/buff_rdata/fifo_mem_gen.U_ffo_mem/mem_reg  | 255 x 34(READ_FIRST)   | W |   | 255 x 34(WRITE_FIRST)  |   | R | Port A and B     | 1      | 0      | 
+|U0/gmem_m_axi_U | store_unit/buff_wdata/fifo_mem_gen.U_ffo_mem/mem_reg | 63 x 9(READ_FIRST)     | W |   | 63 x 9(WRITE_FIRST)    |   | R | Port A and B     | 1      | 0      | 
++----------------+------------------------------------------------------+------------------------+---+---+------------------------+---+---+------------------+--------+--------+
+
+---------------------------------------------------------------------------------
+Finished ROM, RAM, DSP, Shift Register and Retiming Reporting
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Start Technology Mapping
+---------------------------------------------------------------------------------
+INFO: [Synth 8-7052] The timing for the instance U0/gmem_m_axi_U/load_unit/buff_rdata/fifo_mem_gen.U_ffo_mem/mem_reg (implemented as a Block RAM) might be sub-optimal as no optional output register could be merged into the ram block. Providing additional output register may help in improving timing.
+INFO: [Synth 8-7052] The timing for the instance U0/gmem_m_axi_U/store_unit/buff_wdata/fifo_mem_gen.U_ffo_mem/mem_reg (implemented as a Block RAM) might be sub-optimal as no optional output register could be merged into the ram block. Providing additional output register may help in improving timing.
+---------------------------------------------------------------------------------
+Finished Technology Mapping : Time (s): cpu = 00:01:03 ; elapsed = 00:01:10 . Memory (MB): peak = 1642.180 ; gain = 712.770
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Start IO Insertion
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Start Flattening Before IO Insertion
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Finished Flattening Before IO Insertion
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Start Final Netlist Cleanup
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Finished Final Netlist Cleanup
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Finished IO Insertion : Time (s): cpu = 00:01:11 ; elapsed = 00:01:17 . Memory (MB): peak = 1642.180 ; gain = 712.770
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Start Renaming Generated Instances
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Finished Renaming Generated Instances : Time (s): cpu = 00:01:11 ; elapsed = 00:01:17 . Memory (MB): peak = 1642.180 ; gain = 712.770
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Start Rebuilding User Hierarchy
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Finished Rebuilding User Hierarchy : Time (s): cpu = 00:01:11 ; elapsed = 00:01:18 . Memory (MB): peak = 1642.180 ; gain = 712.770
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Start Renaming Generated Ports
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Finished Renaming Generated Ports : Time (s): cpu = 00:01:11 ; elapsed = 00:01:18 . Memory (MB): peak = 1642.180 ; gain = 712.770
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Start Handling Custom Attributes
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Finished Handling Custom Attributes : Time (s): cpu = 00:01:11 ; elapsed = 00:01:18 . Memory (MB): peak = 1642.180 ; gain = 712.770
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Start Renaming Generated Nets
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Finished Renaming Generated Nets : Time (s): cpu = 00:01:11 ; elapsed = 00:01:18 . Memory (MB): peak = 1642.180 ; gain = 712.770
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Start ROM, RAM, DSP, Shift Register and Retiming Reporting
+---------------------------------------------------------------------------------
+
+Dynamic Shift Register Report:
++------------+--------------------------------+--------+------------+--------+---------+--------+--------+--------+
+|Module Name | RTL Name                       | Length | Data Width | SRL16E | SRLC32E | Mux F7 | Mux F8 | Mux F9 | 
++------------+--------------------------------+--------+------------+--------+---------+--------+--------+--------+
+|dsrl        | fifo_depth_gt1_gen.mem_reg[5]  | 96     | 96         | 96     | 0       | 0      | 0      | 0      | 
+|dsrl__1     | fifo_depth_gt1_gen.mem_reg[14] | 4      | 4          | 4      | 0       | 0      | 0      | 0      | 
+|dsrl__2     | fifo_depth_gt1_gen.mem_reg[14] | 34     | 34         | 34     | 0       | 0      | 0      | 0      | 
+|dsrl__3     | fifo_depth_gt1_gen.mem_reg[14] | 1      | 1          | 1      | 0       | 0      | 0      | 0      | 
+|dsrl__4     | fifo_depth_gt1_gen.mem_reg[5]  | 1      | 1          | 1      | 0       | 0      | 0      | 0      | 
+|dsrl__5     | fifo_depth_gt1_gen.mem_reg[14] | 8      | 8          | 8      | 0       | 0      | 0      | 0      | 
+|dsrl__6     | fifo_depth_gt1_gen.mem_reg[14] | 72     | 72         | 72     | 0       | 0      | 0      | 0      | 
+|dsrl__7     | fifo_depth_gt1_gen.mem_reg[14] | 37     | 37         | 37     | 0       | 0      | 0      | 0      | 
++------------+--------------------------------+--------+------------+--------+---------+--------+--------+--------+
+
+---------------------------------------------------------------------------------
+Finished ROM, RAM, DSP, Shift Register and Retiming Reporting
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Start Writing Synthesis Report
+---------------------------------------------------------------------------------
+
+Report BlackBoxes: 
++-+--------------+----------+
+| |BlackBox name |Instances |
++-+--------------+----------+
++-+--------------+----------+
+
+Report Cell Usage: 
++------+---------+------+
+|      |Cell     |Count |
++------+---------+------+
+|1     |CARRY4   |   185|
+|2     |LUT1     |    56|
+|3     |LUT2     |   319|
+|4     |LUT3     |   682|
+|5     |LUT4     |   472|
+|6     |LUT5     |   252|
+|7     |LUT6     |   362|
+|8     |RAMB18E1 |     4|
+|12    |SRL16E   |   278|
+|13    |FDRE     |  2840|
+|14    |FDSE     |    25|
++------+---------+------+
+---------------------------------------------------------------------------------
+Finished Writing Synthesis Report : Time (s): cpu = 00:01:11 ; elapsed = 00:01:18 . Memory (MB): peak = 1642.180 ; gain = 712.770
+---------------------------------------------------------------------------------
+Synthesis finished with 0 errors, 0 critical warnings and 17 warnings.
+Synthesis Optimization Runtime : Time (s): cpu = 00:00:52 ; elapsed = 00:01:13 . Memory (MB): peak = 1642.180 ; gain = 597.949
+Synthesis Optimization Complete : Time (s): cpu = 00:01:12 ; elapsed = 00:01:18 . Memory (MB): peak = 1642.180 ; gain = 712.770
+INFO: [Project 1-571] Translating synthesized netlist
+Netlist sorting complete. Time (s): cpu = 00:00:00 ; elapsed = 00:00:00.063 . Memory (MB): peak = 1642.180 ; gain = 0.000
+INFO: [Netlist 29-17] Analyzing 189 Unisim elements for replacement
+INFO: [Netlist 29-28] Unisim Transformation completed in 0 CPU seconds
+INFO: [Project 1-570] Preparing netlist for logic optimization
+INFO: [Opt 31-138] Pushed 0 inverter(s) to 0 load pin(s).
+Netlist sorting complete. Time (s): cpu = 00:00:00 ; elapsed = 00:00:00.001 . Memory (MB): peak = 1642.180 ; gain = 0.000
+INFO: [Project 1-111] Unisim Transformation Summary:
+No Unisim elements were transformed.
+
+Synth Design complete | Checksum: 995a866d
+INFO: [Common 17-83] Releasing license: Synthesis
+160 Infos, 38 Warnings, 0 Critical Warnings and 0 Errors encountered.
+synth_design completed successfully
+synth_design: Time (s): cpu = 00:01:20 ; elapsed = 00:01:30 . Memory (MB): peak = 1642.180 ; gain = 1139.152
+Write ShapeDB Complete: Time (s): cpu = 00:00:00 ; elapsed = 00:00:00.012 . Memory (MB): peak = 1642.180 ; gain = 0.000
+INFO: [Common 17-1381] The checkpoint 'C:/DevWorks/pooling_min_max/pooling_min_max.runs/design_1_image_pooling_0_0_synth_1/design_1_image_pooling_0_0.dcp' has been generated.
+INFO: [Coretcl 2-1648] Added synthesis output to IP cache for IP design_1_image_pooling_0_0, cache-ID = d380ec42d6ac1df3
+INFO: [Coretcl 2-1174] Renamed 46 cell refs.
+Write ShapeDB Complete: Time (s): cpu = 00:00:00 ; elapsed = 00:00:00.013 . Memory (MB): peak = 1642.180 ; gain = 0.000
+INFO: [Common 17-1381] The checkpoint 'C:/DevWorks/pooling_min_max/pooling_min_max.runs/design_1_image_pooling_0_0_synth_1/design_1_image_pooling_0_0.dcp' has been generated.
+INFO: [Vivado 12-24828] Executing command : report_utilization -file design_1_image_pooling_0_0_utilization_synth.rpt -pb design_1_image_pooling_0_0_utilization_synth.pb
+INFO: [Common 17-206] Exiting Vivado at Wed May 14 11:22:39 2025...

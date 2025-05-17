@@ -1,0 +1,7 @@
+image_pooling_linebuf_RAM_AUTO_1R1W
+image_pooling_linebuf_1_RAM_AUTO_1R1W
+image_pooling_gmem_m_axi
+image_pooling_control_s_axi
+pooling_2x2_Block_entry_split_proc
+pooling_2x2
+image_pooling

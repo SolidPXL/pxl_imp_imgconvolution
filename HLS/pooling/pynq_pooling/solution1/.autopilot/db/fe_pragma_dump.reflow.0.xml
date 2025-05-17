@@ -1,0 +1,19 @@
+<pragmas>
+<pragma file="pynq_pooling/source/pooling.cpp" line="22" pragmaType="inline" parentfunction="calc_max" off="0" region="0" recursive="0"/>
+<pragma file="" line="0" pragmaType="inline" parentfunction="bool ap_int_base<8, false>::operator><8, false>(ap_int_base<8, false> const&) const" off="0" region="0" recursive="0"/>
+<pragma file="pynq_pooling/source/pooling.cpp" line="14" pragmaType="inline" parentfunction="fill_window" off="0" region="0" recursive="0"/>
+<pragma file="" line="0" pragmaType="inline" parentfunction="bool ap_int_base<8, false>::operator<<8, false>(ap_int_base<8, false> const&) const" off="0" region="0" recursive="0"/>
+<pragma file="pynq_pooling/source/pooling.cpp" line="37" pragmaType="dataflow" parentfunction="pooling_2x2" disable_start_propagation="0"/>
+<pragma file="pynq_pooling/source/pooling.cpp" line="29" pragmaType="inline" parentfunction="calc_min" off="0" region="0" recursive="0"/>
+<pragma file="pynq_pooling/source/pooling.cpp" line="8" pragmaType="inline" parentfunction="shift_linebuf" off="0" region="0" recursive="0"/>
+<pragma file="pynq_pooling/source/pooling.cpp" line="71" pragmaType="pipeline" parentfunction="image_pooling" off="0" ii="3" rewind="0" style=""/>
+<pragma file="pynq_pooling/source/pooling.cpp" line="50" pragmaType="interface" parentfunction="image_pooling" mode="m_axi" port="src" bundle="gmem" offset="slave" name="" depth="-1" num_read_outstanding="-1" num_write_outstanding="-1" max_burst_read_length="-1" max_burst_write_length="-1" latency="-1" max_widen_bitwidth="-1" channel=""/>
+<pragma file="pynq_pooling/source/pooling.cpp" line="51" pragmaType="interface" parentfunction="image_pooling" mode="m_axi" port="dst_min" bundle="gmem" offset="slave" name="" depth="-1" num_read_outstanding="-1" num_write_outstanding="-1" max_burst_read_length="-1" max_burst_write_length="-1" latency="-1" max_widen_bitwidth="-1" channel=""/>
+<pragma file="pynq_pooling/source/pooling.cpp" line="52" pragmaType="interface" parentfunction="image_pooling" mode="m_axi" port="dst_max" bundle="gmem" offset="slave" name="" depth="-1" num_read_outstanding="-1" num_write_outstanding="-1" max_burst_read_length="-1" max_burst_write_length="-1" latency="-1" max_widen_bitwidth="-1" channel=""/>
+<pragma file="pynq_pooling/source/pooling.cpp" line="53" pragmaType="interface" parentfunction="image_pooling" mode="s_axilite" port="src" bundle="control" offset="-1" name="" clock="" impl="" register="0"/>
+<pragma file="pynq_pooling/source/pooling.cpp" line="54" pragmaType="interface" parentfunction="image_pooling" mode="s_axilite" port="dst_min" bundle="control" offset="-1" name="" clock="" impl="" register="0"/>
+<pragma file="pynq_pooling/source/pooling.cpp" line="55" pragmaType="interface" parentfunction="image_pooling" mode="s_axilite" port="dst_max" bundle="control" offset="-1" name="" clock="" impl="" register="0"/>
+<pragma file="pynq_pooling/source/pooling.cpp" line="56" pragmaType="interface" parentfunction="image_pooling" mode="s_axilite" port="" bundle="control" offset="-1" name="" clock="" impl="" register="0"/>
+<pragma file="pynq_pooling/source/pooling.cpp" line="59" pragmaType="array_partition" parentfunction="image_pooling" dim="1" factor="2" mode="block" dynamic="0" variable="linebuf"/>
+<pragma file="pynq_pooling/source/pooling.cpp" line="62" pragmaType="array_partition" parentfunction="image_pooling" dim="0" factor="0" mode="complete" dynamic="0" variable="window"/>
+</pragmas>

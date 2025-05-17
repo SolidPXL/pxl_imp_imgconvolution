@@ -1,0 +1,25 @@
+#-----------------------------------------------------------
+# Vivado v2024.1 (64-bit)
+# SW Build 5076996 on Wed May 22 18:37:14 MDT 2024
+# IP Build 5075265 on Wed May 22 21:45:21 MDT 2024
+# SharedData Build 5076995 on Wed May 22 18:29:18 MDT 2024
+# Start of session at: Thu May 15 21:45:19 2025
+# Process ID: 16152
+# Current directory: C:/DevWorks/pooling_min_max
+# Command line: vivado.exe -gui_launcher_event rodinguilauncherevent25520 C:\DevWorks\pooling_min_max\pooling_min_max.xpr
+# Log file: C:/DevWorks/pooling_min_max/vivado.log
+# Journal file: C:/DevWorks/pooling_min_max\vivado.jou
+# Running On        :5CD322B22T
+# Platform          :Windows Server 2016 or Windows 10
+# Operating System  :26100
+# Processor Detail  :AMD Ryzen 5 PRO 7530U with Radeon Graphics     
+# CPU Frequency     :1996 MHz
+# CPU Physical cores:6
+# CPU Logical cores :12
+# Host memory       :16442 MB
+# Swap memory       :18253 MB
+# Total Virtual     :34696 MB
+# Available Virtual :19239 MB
+#-----------------------------------------------------------
+start_gui
+open_project C:/DevWorks/pooling_min_max/pooling_min_max.xpr

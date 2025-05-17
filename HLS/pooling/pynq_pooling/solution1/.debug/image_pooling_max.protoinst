@@ -1,0 +1,39 @@
+{
+	"version": "1.0",
+	"modules": {
+		"image_pooling_max": {
+			"proto_instances": {
+				"/AESL_inst_image_pooling_max_activity": {
+					"interface": "xilinx.com:interface:internal_hls_dataflow:1.0",
+					"ports": {
+						"AP_CLK": { "actual": "ap_clk"},
+						"AP_DONE": { "actual": "ap_done"},
+						"AP_READY": { "actual": "ap_ready"},
+						"AP_RESET": { "actual": "ap_rst_n"},
+						"AP_START": { "actual": "ap_start"}
+					}
+				},
+				"grp_image_pooling_max_Pipeline_VITIS_LOOP_19_1_VITIS_LOOP_20_2_VITIS_LOOP_21_3_fu_103/grp_image_pooling_max_Pipeline_VITIS_LOOP_19_1_VITIS_LOOP_20_2_VITIS_LOOP_21_3_fu_103_activity": {
+					"interface": "xilinx.com:interface:internal_hls_dataflow:1.0",
+					"ports": {
+						"AP_CLK": { "actual": "ap_clk"},
+						"AP_DONE": { "actual": "ap_done"},
+						"AP_READY": { "actual": "ap_ready"},
+						"AP_RESET": { "actual": "ap_rst"},
+						"AP_START": { "actual": "ap_start"}
+					}
+				},
+				"grp_image_pooling_max_Pipeline_VITIS_LOOP_30_4_VITIS_LOOP_31_5_VITIS_LOOP_32_6_fu_113/grp_image_pooling_max_Pipeline_VITIS_LOOP_30_4_VITIS_LOOP_31_5_VITIS_LOOP_32_6_fu_113_activity": {
+					"interface": "xilinx.com:interface:internal_hls_dataflow:1.0",
+					"ports": {
+						"AP_CLK": { "actual": "ap_clk"},
+						"AP_DONE": { "actual": "ap_done"},
+						"AP_READY": { "actual": "ap_ready"},
+						"AP_RESET": { "actual": "ap_rst"},
+						"AP_START": { "actual": "ap_start"}
+					}
+				}
+			}
+		}
+	}
+}

@@ -1,0 +1,38 @@
+{
+    "1": {
+        "name": "pooling_2x2_Block_entry.split_proc",
+        "file": "pynq_pooling\/source\/pooling.cpp",
+        "fileloc": "40",
+        "instructions": "23",
+        "total_instructions": "23",
+        "calls": "",
+        "basicblocks": "1"
+    },
+    "0": {
+        "name": "image_pooling",
+        "file": "pooling.cpp",
+        "fileloc": "47",
+        "instructions": "109",
+        "total_instructions": "139",
+        "calls": "2",
+        "basicblocks": "8",
+        "loads": {
+            "L": "12"
+        },
+        "stores": {
+            "L": "14"
+        },
+        "loops": {
+            "L": "1"
+        }
+    },
+    "2": {
+        "name": "pooling_2x2",
+        "file": "pooling.cpp",
+        "fileloc": "35",
+        "instructions": "7",
+        "total_instructions": "30",
+        "calls": "1",
+        "basicblocks": "1"
+    }
+}

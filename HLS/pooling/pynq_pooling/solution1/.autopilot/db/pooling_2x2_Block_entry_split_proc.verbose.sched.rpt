@@ -1,0 +1,139 @@
+
+
+================================================================
+== Vitis HLS Report for 'pooling_2x2_Block_entry_split_proc'
+================================================================
+* Date:           Wed May 14 11:16:38 2025
+
+* Version:        2024.1 (Build 5069499 on May 21 2024)
+* Project:        pynq_pooling
+* Solution:       solution1 (Vivado IP Flow Target)
+* Product family: zynq
+* Target device:  xc7z020-clg400-1
+
+
+================================================================
+== Performance Estimates
+================================================================
++ Timing: 
+    * Summary: 
+    +--------+---------+----------+------------+
+    |  Clock |  Target | Estimated| Uncertainty|
+    +--------+---------+----------+------------+
+    |ap_clk  |  8.00 ns|  3.163 ns|     2.16 ns|
+    +--------+---------+----------+------------+
+
++ Latency: 
+    * Summary: 
+    +---------+---------+----------+----------+-----+-----+---------+
+    |  Latency (cycles) |  Latency (absolute) |  Interval | Pipeline|
+    |   min   |   max   |    min   |    max   | min | max |   Type  |
+    +---------+---------+----------+----------+-----+-----+---------+
+    |        1|        1|  8.000 ns|  8.000 ns|    1|    1|       no|
+    +---------+---------+----------+----------+-----+-----+---------+
+
+    + Detail: 
+        * Instance: 
+        N/A
+
+        * Loop: 
+        N/A
+
+============================================================
++ Verbose Summary: Synthesis Manager
+============================================================
+InlineROM: 1
+ExposeGlobal: 0
+============================================================
++ Verbose Summary: CDFG Model
+============================================================
+IsTopModel: 0
+ResetActiveHigh: 1
+IsCombinational: 2
+IsDatapathOnly: 0
+HasWiredReturn: 1
+HasMFsm: 0
+HasVarLatency: 1
+IsPipeline: 0
+IsRtlPipelined: 0
+IsInstanceOverlapped: 0
+IsDontTouch: 0
+HasImplIP: 0
+IsGatedGlobalClock: 0
+
+
+============================================================
++ Verbose Summary: Schedule
+============================================================
+* Number of FSM states : 2
+* Pipeline : 0
+* Dataflow Pipeline: 0
+
+* FSM state transitions: 
+1 --> 2 
+2 --> 
+
+* FSM state operations: 
+
+State 1 <SV = 0> <Delay = 3.16>
+ST_1 : Operation 3 [1/1] (0.00ns)   --->   "%window_1_1_0_0_0_0_val_read = read i8 @_ssdm_op_Read.ap_auto.i8, i8 %window_1_1_0_0_0_0_val" [pynq_pooling/source/pooling.cpp:23->pynq_pooling/source/pooling.cpp:40]   --->   Operation 3 'read' 'window_1_1_0_0_0_0_val_read' <Predicate = true> <Delay = 0.00>
+ST_1 : Operation 4 [1/1] (0.00ns)   --->   "%window_1_0_0_0_0_0_val_read = read i8 @_ssdm_op_Read.ap_auto.i8, i8 %window_1_0_0_0_0_0_val" [pynq_pooling/source/pooling.cpp:23->pynq_pooling/source/pooling.cpp:40]   --->   Operation 4 'read' 'window_1_0_0_0_0_0_val_read' <Predicate = true> <Delay = 0.00>
+ST_1 : Operation 5 [1/1] (0.00ns)   --->   "%window_0_1_0_0_0_0_val_read = read i8 @_ssdm_op_Read.ap_auto.i8, i8 %window_0_1_0_0_0_0_val" [pynq_pooling/source/pooling.cpp:23->pynq_pooling/source/pooling.cpp:40]   --->   Operation 5 'read' 'window_0_1_0_0_0_0_val_read' <Predicate = true> <Delay = 0.00>
+ST_1 : Operation 6 [1/1] (0.00ns)   --->   "%window_0_0_0_0_0_0_val_read = read i8 @_ssdm_op_Read.ap_auto.i8, i8 %window_0_0_0_0_0_0_val" [pynq_pooling/source/pooling.cpp:23->pynq_pooling/source/pooling.cpp:40]   --->   Operation 6 'read' 'window_0_0_0_0_0_0_val_read' <Predicate = true> <Delay = 0.00>
+ST_1 : Operation 7 [1/1] (1.91ns)   --->   "%icmp_ln23 = icmp_ult  i8 %window_0_1_0_0_0_0_val_read, i8 %window_0_0_0_0_0_0_val_read" [pynq_pooling/source/pooling.cpp:23->pynq_pooling/source/pooling.cpp:40]   --->   Operation 7 'icmp' 'icmp_ln23' <Predicate = true> <Delay = 1.91> <CoreInst = "Cmp">   --->   Core 9 'Cmp' <Latency = 0> <II = 1> <Delay = 1.91> <FuncUnit> <Opcode : 'seteq' 'setne' 'setle' 'setge' 'setlt' 'setgt'> <InPorts = 2> <OutPorts = 1>
+ST_1 : Operation 8 [1/1] (0.00ns) (grouped into LUT with out node max1)   --->   "%xor_ln23 = xor i1 %icmp_ln23, i1 1" [pynq_pooling/source/pooling.cpp:23->pynq_pooling/source/pooling.cpp:40]   --->   Operation 8 'xor' 'xor_ln23' <Predicate = true> <Delay = 0.00> <CoreInst = "LogicGate">   --->   Core 74 'LogicGate' <Latency = 0> <II = 1> <Delay = 0.97> <FuncUnit> <Opcode : 'and' 'or' 'xor'> <InPorts = 2> <OutPorts = 1>
+ST_1 : Operation 9 [1/1] (1.24ns) (out node of the LUT)   --->   "%max1 = select i1 %xor_ln23, i8 %window_0_1_0_0_0_0_val_read, i8 %window_0_0_0_0_0_0_val_read" [pynq_pooling/source/pooling.cpp:23->pynq_pooling/source/pooling.cpp:40]   --->   Operation 9 'select' 'max1' <Predicate = true> <Delay = 1.24> <CoreInst = "Sel">   --->   Core 73 'Sel' <Latency = 0> <II = 1> <Delay = 1.24> <FuncUnit> <Opcode : 'select'> <InPorts = 3> <OutPorts = 1>
+ST_1 : Operation 10 [1/1] (1.91ns)   --->   "%icmp_ln24 = icmp_ult  i8 %window_1_1_0_0_0_0_val_read, i8 %window_1_0_0_0_0_0_val_read" [pynq_pooling/source/pooling.cpp:24->pynq_pooling/source/pooling.cpp:40]   --->   Operation 10 'icmp' 'icmp_ln24' <Predicate = true> <Delay = 1.91> <CoreInst = "Cmp">   --->   Core 9 'Cmp' <Latency = 0> <II = 1> <Delay = 1.91> <FuncUnit> <Opcode : 'seteq' 'setne' 'setle' 'setge' 'setlt' 'setgt'> <InPorts = 2> <OutPorts = 1>
+ST_1 : Operation 11 [1/1] (0.00ns) (grouped into LUT with out node max2)   --->   "%xor_ln24 = xor i1 %icmp_ln24, i1 1" [pynq_pooling/source/pooling.cpp:24->pynq_pooling/source/pooling.cpp:40]   --->   Operation 11 'xor' 'xor_ln24' <Predicate = true> <Delay = 0.00> <CoreInst = "LogicGate">   --->   Core 74 'LogicGate' <Latency = 0> <II = 1> <Delay = 0.97> <FuncUnit> <Opcode : 'and' 'or' 'xor'> <InPorts = 2> <OutPorts = 1>
+ST_1 : Operation 12 [1/1] (1.24ns) (out node of the LUT)   --->   "%max2 = select i1 %xor_ln24, i8 %window_1_1_0_0_0_0_val_read, i8 %window_1_0_0_0_0_0_val_read" [pynq_pooling/source/pooling.cpp:24->pynq_pooling/source/pooling.cpp:40]   --->   Operation 12 'select' 'max2' <Predicate = true> <Delay = 1.24> <CoreInst = "Sel">   --->   Core 73 'Sel' <Latency = 0> <II = 1> <Delay = 1.24> <FuncUnit> <Opcode : 'select'> <InPorts = 3> <OutPorts = 1>
+ST_1 : Operation 13 [1/1] (1.91ns)   --->   "%icmp_ln30 = icmp_ult  i8 %window_0_0_0_0_0_0_val_read, i8 %window_0_1_0_0_0_0_val_read" [pynq_pooling/source/pooling.cpp:30->pynq_pooling/source/pooling.cpp:41]   --->   Operation 13 'icmp' 'icmp_ln30' <Predicate = true> <Delay = 1.91> <CoreInst = "Cmp">   --->   Core 9 'Cmp' <Latency = 0> <II = 1> <Delay = 1.91> <FuncUnit> <Opcode : 'seteq' 'setne' 'setle' 'setge' 'setlt' 'setgt'> <InPorts = 2> <OutPorts = 1>
+ST_1 : Operation 14 [1/1] (0.00ns) (grouped into LUT with out node min1)   --->   "%xor_ln30 = xor i1 %icmp_ln30, i1 1" [pynq_pooling/source/pooling.cpp:30->pynq_pooling/source/pooling.cpp:41]   --->   Operation 14 'xor' 'xor_ln30' <Predicate = true> <Delay = 0.00> <CoreInst = "LogicGate">   --->   Core 74 'LogicGate' <Latency = 0> <II = 1> <Delay = 0.97> <FuncUnit> <Opcode : 'and' 'or' 'xor'> <InPorts = 2> <OutPorts = 1>
+ST_1 : Operation 15 [1/1] (1.24ns) (out node of the LUT)   --->   "%min1 = select i1 %xor_ln30, i8 %window_0_1_0_0_0_0_val_read, i8 %window_0_0_0_0_0_0_val_read" [pynq_pooling/source/pooling.cpp:30->pynq_pooling/source/pooling.cpp:41]   --->   Operation 15 'select' 'min1' <Predicate = true> <Delay = 1.24> <CoreInst = "Sel">   --->   Core 73 'Sel' <Latency = 0> <II = 1> <Delay = 1.24> <FuncUnit> <Opcode : 'select'> <InPorts = 3> <OutPorts = 1>
+ST_1 : Operation 16 [1/1] (1.91ns)   --->   "%icmp_ln31 = icmp_ult  i8 %window_1_0_0_0_0_0_val_read, i8 %window_1_1_0_0_0_0_val_read" [pynq_pooling/source/pooling.cpp:31->pynq_pooling/source/pooling.cpp:41]   --->   Operation 16 'icmp' 'icmp_ln31' <Predicate = true> <Delay = 1.91> <CoreInst = "Cmp">   --->   Core 9 'Cmp' <Latency = 0> <II = 1> <Delay = 1.91> <FuncUnit> <Opcode : 'seteq' 'setne' 'setle' 'setge' 'setlt' 'setgt'> <InPorts = 2> <OutPorts = 1>
+ST_1 : Operation 17 [1/1] (0.00ns) (grouped into LUT with out node min2)   --->   "%xor_ln31 = xor i1 %icmp_ln31, i1 1" [pynq_pooling/source/pooling.cpp:31->pynq_pooling/source/pooling.cpp:41]   --->   Operation 17 'xor' 'xor_ln31' <Predicate = true> <Delay = 0.00> <CoreInst = "LogicGate">   --->   Core 74 'LogicGate' <Latency = 0> <II = 1> <Delay = 0.97> <FuncUnit> <Opcode : 'and' 'or' 'xor'> <InPorts = 2> <OutPorts = 1>
+ST_1 : Operation 18 [1/1] (1.24ns) (out node of the LUT)   --->   "%min2 = select i1 %xor_ln31, i8 %window_1_1_0_0_0_0_val_read, i8 %window_1_0_0_0_0_0_val_read" [pynq_pooling/source/pooling.cpp:31->pynq_pooling/source/pooling.cpp:41]   --->   Operation 18 'select' 'min2' <Predicate = true> <Delay = 1.24> <CoreInst = "Sel">   --->   Core 73 'Sel' <Latency = 0> <II = 1> <Delay = 1.24> <FuncUnit> <Opcode : 'select'> <InPorts = 3> <OutPorts = 1>
+
+State 2 <SV = 1> <Delay = 3.16>
+ST_2 : Operation 19 [1/1] (1.91ns)   --->   "%icmp_ln25 = icmp_ugt  i8 %max1, i8 %max2" [pynq_pooling/source/pooling.cpp:25->pynq_pooling/source/pooling.cpp:40]   --->   Operation 19 'icmp' 'icmp_ln25' <Predicate = true> <Delay = 1.91> <CoreInst = "Cmp">   --->   Core 9 'Cmp' <Latency = 0> <II = 1> <Delay = 1.91> <FuncUnit> <Opcode : 'seteq' 'setne' 'setle' 'setge' 'setlt' 'setgt'> <InPorts = 2> <OutPorts = 1>
+ST_2 : Operation 20 [1/1] (1.24ns)   --->   "%select_ln25 = select i1 %icmp_ln25, i8 %max1, i8 %max2" [pynq_pooling/source/pooling.cpp:25->pynq_pooling/source/pooling.cpp:40]   --->   Operation 20 'select' 'select_ln25' <Predicate = true> <Delay = 1.24> <CoreInst = "Sel">   --->   Core 73 'Sel' <Latency = 0> <II = 1> <Delay = 1.24> <FuncUnit> <Opcode : 'select'> <InPorts = 3> <OutPorts = 1>
+ST_2 : Operation 21 [1/1] (0.00ns)   --->   "%write_ln25 = write void @_ssdm_op_Write.ap_auto.i8P0A, i8 %max_val, i8 %select_ln25" [pynq_pooling/source/pooling.cpp:25->pynq_pooling/source/pooling.cpp:40]   --->   Operation 21 'write' 'write_ln25' <Predicate = true> <Delay = 0.00>
+ST_2 : Operation 22 [1/1] (1.91ns)   --->   "%icmp_ln32 = icmp_ult  i8 %min1, i8 %min2" [pynq_pooling/source/pooling.cpp:32->pynq_pooling/source/pooling.cpp:41]   --->   Operation 22 'icmp' 'icmp_ln32' <Predicate = true> <Delay = 1.91> <CoreInst = "Cmp">   --->   Core 9 'Cmp' <Latency = 0> <II = 1> <Delay = 1.91> <FuncUnit> <Opcode : 'seteq' 'setne' 'setle' 'setge' 'setlt' 'setgt'> <InPorts = 2> <OutPorts = 1>
+ST_2 : Operation 23 [1/1] (1.24ns)   --->   "%select_ln32 = select i1 %icmp_ln32, i8 %min1, i8 %min2" [pynq_pooling/source/pooling.cpp:32->pynq_pooling/source/pooling.cpp:41]   --->   Operation 23 'select' 'select_ln32' <Predicate = true> <Delay = 1.24> <CoreInst = "Sel">   --->   Core 73 'Sel' <Latency = 0> <II = 1> <Delay = 1.24> <FuncUnit> <Opcode : 'select'> <InPorts = 3> <OutPorts = 1>
+ST_2 : Operation 24 [1/1] (0.00ns)   --->   "%write_ln32 = write void @_ssdm_op_Write.ap_auto.i8P0A, i8 %min_val, i8 %select_ln32" [pynq_pooling/source/pooling.cpp:32->pynq_pooling/source/pooling.cpp:41]   --->   Operation 24 'write' 'write_ln32' <Predicate = true> <Delay = 0.00>
+ST_2 : Operation 25 [1/1] (0.00ns)   --->   "%ret_ln0 = ret"   --->   Operation 25 'ret' 'ret_ln0' <Predicate = true> <Delay = 0.00>
+
+
+============================================================
++ Verbose Summary: Timing violations
+============================================================
+Target clock period: 8.000ns, clock uncertainty: 2.160ns.
+
+ <State 1>: 3.163ns
+The critical path consists of the following:
+	wire read operation ('window_0_1_0_0_0_0_val_read', pynq_pooling/source/pooling.cpp:23->pynq_pooling/source/pooling.cpp:40) on port 'window_0_1_0_0_0_0_val' (pynq_pooling/source/pooling.cpp:23->pynq_pooling/source/pooling.cpp:40) [9]  (0.000 ns)
+	'icmp' operation 1 bit ('icmp_ln23', pynq_pooling/source/pooling.cpp:23->pynq_pooling/source/pooling.cpp:40) [11]  (1.915 ns)
+	'xor' operation 1 bit ('xor_ln23', pynq_pooling/source/pooling.cpp:23->pynq_pooling/source/pooling.cpp:40) [12]  (0.000 ns)
+	'select' operation 8 bit ('max1', pynq_pooling/source/pooling.cpp:23->pynq_pooling/source/pooling.cpp:40) [13]  (1.248 ns)
+
+ <State 2>: 3.163ns
+The critical path consists of the following:
+	'icmp' operation 1 bit ('icmp_ln25', pynq_pooling/source/pooling.cpp:25->pynq_pooling/source/pooling.cpp:40) [17]  (1.915 ns)
+	'select' operation 8 bit ('select_ln25', pynq_pooling/source/pooling.cpp:25->pynq_pooling/source/pooling.cpp:40) [18]  (1.248 ns)
+
+
+============================================================
++ Verbose Summary: Binding
+============================================================
+N/A
+* FSMD analyzer results:
+  - Output states:
+ - Input state : 
+  - Chain level:
+	State 1
+	State 2
+
+
+============================================================
++ Verbose Summary: Datapath Resource usage 
+============================================================
+N/A

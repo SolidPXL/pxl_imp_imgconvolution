@@ -1,0 +1,17 @@
+{
+  "0": {
+    "basicblocks": 7,
+    "calls": "",
+    "file": "conv2d_edge.cpp",
+    "fileloc": 6,
+    "instructions": 88,
+    "loads": {
+      "L": 5
+    },
+    "name": "conv2d_edge",
+    "stores": {
+      "L": 3
+    },
+    "total_instructions": 90
+  }
+}

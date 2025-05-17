@@ -1,0 +1,75 @@
+<xilinx:hls_fe_msgs>
+    <msg msg_groups="PRAGMA_VERBOSE_DUMP" msg_id="207-5471" msg_severity="WARNING" msg_loc="C:/DevWorks/HAC/pynq_2DConvolution/solution1/csynth.tcl:18:9" msg_body="HLS pragma dump">
+        <args ARG_PragmaContext="directive" ARG_PragmaFunction="conv2d_edge" ARG_PragmaIsValid="1" ARG_PragmaOptions="name=conv2d_edge" ARG_PragmaType="top" ClangWarningOption="dump-hls-pragmas"/>
+    </msg>
+    <msg msg_groups="PRAGMA_VERBOSE_DUMP" msg_id="207-5471" msg_severity="WARNING" msg_loc="C:/DevWorks/HAC/pynq_2DConvolution/solution1/directives.tcl:7:9" msg_body="HLS pragma dump">
+        <args ARG_PragmaContext="directive" ARG_PragmaFunction="conv2d_edge" ARG_PragmaIsValid="1" ARG_PragmaOptions="name=conv2d_edge" ARG_PragmaType="top" ClangWarningOption="dump-hls-pragmas"/>
+    </msg>
+    <msg msg_groups="PRAGMA_VERBOSE_DUMP" msg_id="207-5471" msg_severity="WARNING" msg_loc="pynq_2DConvolution/source/conv2d_edge.cpp:8:9" msg_body="HLS pragma dump">
+        <args ARG_PragmaFunction="conv2d_edge" ARG_PragmaIsValid="1" ARG_PragmaOptions="m_axi port=input offset=slave bundle=gmem0" ARG_PragmaType="interface" ClangWarningOption="dump-hls-pragmas"/>
+    </msg>
+    <msg msg_groups="PRAGMA_VERBOSE_DUMP" msg_id="207-5471" msg_severity="WARNING" msg_loc="pynq_2DConvolution/source/conv2d_edge.cpp:9:9" msg_body="HLS pragma dump">
+        <args ARG_PragmaFunction="conv2d_edge" ARG_PragmaIsValid="1" ARG_PragmaOptions="m_axi port=output offset=slave bundle=gmem1" ARG_PragmaType="interface" ClangWarningOption="dump-hls-pragmas"/>
+    </msg>
+    <msg msg_groups="PRAGMA_VERBOSE_DUMP" msg_id="207-5471" msg_severity="WARNING" msg_loc="pynq_2DConvolution/source/conv2d_edge.cpp:10:9" msg_body="HLS pragma dump">
+        <args ARG_PragmaFunction="conv2d_edge" ARG_PragmaIsValid="1" ARG_PragmaOptions="s_axilite port=input bundle=control" ARG_PragmaType="interface" ClangWarningOption="dump-hls-pragmas"/>
+    </msg>
+    <msg msg_groups="PRAGMA_VERBOSE_DUMP" msg_id="207-5471" msg_severity="WARNING" msg_loc="pynq_2DConvolution/source/conv2d_edge.cpp:11:9" msg_body="HLS pragma dump">
+        <args ARG_PragmaFunction="conv2d_edge" ARG_PragmaIsValid="1" ARG_PragmaOptions="s_axilite port=output bundle=control" ARG_PragmaType="interface" ClangWarningOption="dump-hls-pragmas"/>
+    </msg>
+    <msg msg_groups="PRAGMA_VERBOSE_DUMP" msg_id="207-5471" msg_severity="WARNING" msg_loc="pynq_2DConvolution/source/conv2d_edge.cpp:12:9" msg_body="HLS pragma dump">
+        <args ARG_PragmaFunction="conv2d_edge" ARG_PragmaIsValid="1" ARG_PragmaOptions="s_axilite port=return bundle=control" ARG_PragmaType="interface" ClangWarningOption="dump-hls-pragmas"/>
+    </msg>
+    <msg msg_groups="PRAGMA_VERBOSE_DUMP" msg_id="207-5471" msg_severity="WARNING" msg_loc="pynq_2DConvolution/source/conv2d_edge.cpp:24:9" msg_body="HLS pragma dump">
+        <args ARG_PragmaFunction="conv2d_edge" ARG_PragmaIsValid="1" ARG_PragmaOptions="variable=kernel type=complete dim=0" ARG_PragmaType="array_partition" ClangWarningOption="dump-hls-pragmas"/>
+    </msg>
+    <msg msg_groups="PRAGMA_VERBOSE_DUMP" msg_id="207-5471" msg_severity="WARNING" msg_loc="pynq_2DConvolution/source/conv2d_edge.cpp:25:9" msg_body="HLS pragma dump">
+        <args ARG_PragmaFunction="conv2d_edge" ARG_PragmaIsValid="1" ARG_PragmaOptions="variable=linebuf type=complete dim=1" ARG_PragmaType="array_partition" ClangWarningOption="dump-hls-pragmas"/>
+    </msg>
+    <msg msg_groups="PRAGMA_VERBOSE_DUMP" msg_id="207-5471" msg_severity="WARNING" msg_loc="pynq_2DConvolution/source/conv2d_edge.cpp:29:9" msg_body="HLS pragma dump">
+        <args ARG_PragmaFunction="conv2d_edge" ARG_PragmaIsValid="1" ARG_PragmaOptions="variable=window type=complete dim=0" ARG_PragmaType="array_partition" ClangWarningOption="dump-hls-pragmas"/>
+    </msg>
+    <msg msg_groups="PRAGMA_VERBOSE_DUMP" msg_id="207-5471" msg_severity="WARNING" msg_loc="pynq_2DConvolution/source/conv2d_edge.cpp:34:9" msg_body="HLS pragma dump">
+        <args ARG_PragmaFunction="conv2d_edge" ARG_PragmaIsValid="1" ARG_PragmaOptions="II=1" ARG_PragmaType="pipeline" ClangWarningOption="dump-hls-pragmas"/>
+    </msg>
+    <msg msg_groups="PRAGMA_VERBOSE_DUMP" msg_id="207-5471" msg_severity="WARNING" msg_loc="pynq_2DConvolution/source/conv2d_edge.cpp:45:9" msg_body="HLS pragma dump">
+        <args ARG_PragmaFunction="conv2d_edge" ARG_PragmaIsValid="1" ARG_PragmaType="unroll" ClangWarningOption="dump-hls-pragmas"/>
+    </msg>
+    <msg msg_groups="PRAGMA_VERBOSE_DUMP" msg_id="207-5471" msg_severity="WARNING" msg_loc="pynq_2DConvolution/source/conv2d_edge.cpp:47:9" msg_body="HLS pragma dump">
+        <args ARG_PragmaFunction="conv2d_edge" ARG_PragmaIsValid="1" ARG_PragmaType="unroll" ClangWarningOption="dump-hls-pragmas"/>
+    </msg>
+    <msg msg_groups="PRAGMA_VERBOSE_DUMP" msg_id="207-5471" msg_severity="WARNING" msg_loc="pynq_2DConvolution/source/conv2d_edge.cpp:54:9" msg_body="HLS pragma dump">
+        <args ARG_PragmaFunction="conv2d_edge" ARG_PragmaIsValid="1" ARG_PragmaType="unroll" ClangWarningOption="dump-hls-pragmas"/>
+    </msg>
+    <msg msg_groups="PRAGMA_VERBOSE_DUMP" msg_id="207-5471" msg_severity="WARNING" msg_loc="pynq_2DConvolution/source/conv2d_edge.cpp:56:9" msg_body="HLS pragma dump">
+        <args ARG_PragmaFunction="conv2d_edge" ARG_PragmaIsValid="1" ARG_PragmaType="unroll" ClangWarningOption="dump-hls-pragmas"/>
+    </msg>
+    <msg msg_groups="PRAGMA_UNROLL" msg_id="214-291" msg_severity="INFO" msg_loc="pynq_2DConvolution/source/conv2d_edge.cpp:44:34" msg_body="Loop 'VITIS_LOOP_44_3' is marked as complete unroll implied by the pipeline pragma">
+        <args LoopName="VITIS_LOOP_44_3"/>
+    </msg>
+    <msg msg_groups="PRAGMA_UNROLL" msg_id="214-291" msg_severity="INFO" msg_loc="pynq_2DConvolution/source/conv2d_edge.cpp:46:19" msg_body="Loop 'VITIS_LOOP_46_4' is marked as complete unroll implied by the pipeline pragma">
+        <args LoopName="VITIS_LOOP_46_4"/>
+    </msg>
+    <msg msg_groups="PRAGMA_UNROLL" msg_id="214-291" msg_severity="INFO" msg_loc="pynq_2DConvolution/source/conv2d_edge.cpp:53:34" msg_body="Loop 'VITIS_LOOP_53_5' is marked as complete unroll implied by the pipeline pragma">
+        <args LoopName="VITIS_LOOP_53_5"/>
+    </msg>
+    <msg msg_groups="PRAGMA_UNROLL" msg_id="214-291" msg_severity="INFO" msg_loc="pynq_2DConvolution/source/conv2d_edge.cpp:55:19" msg_body="Loop 'VITIS_LOOP_55_6' is marked as complete unroll implied by the pipeline pragma">
+        <args LoopName="VITIS_LOOP_55_6"/>
+    </msg>
+    <msg msg_groups="PRAGMA_UNROLL" msg_id="214-186" msg_severity="INFO" msg_loc="pynq_2DConvolution/source/conv2d_edge.cpp:7:0" msg_body="Unrolling loop 'VITIS_LOOP_44_3' (pynq_2DConvolution/source/conv2d_edge.cpp:44:34) in function 'conv2d_edge' completely with a factor of 3">
+        <args Factor="3" LoopLoc="pynq_2DConvolution/source/conv2d_edge.cpp:44:34" LoopName="VITIS_LOOP_44_3"/>
+    </msg>
+    <msg msg_groups="PRAGMA_UNROLL" msg_id="214-186" msg_severity="INFO" msg_loc="pynq_2DConvolution/source/conv2d_edge.cpp:7:0" msg_body="Unrolling loop 'VITIS_LOOP_46_4' (pynq_2DConvolution/source/conv2d_edge.cpp:46:19) in function 'conv2d_edge' completely with a factor of 3">
+        <args Factor="3" LoopLoc="pynq_2DConvolution/source/conv2d_edge.cpp:46:19" LoopName="VITIS_LOOP_46_4"/>
+    </msg>
+    <msg msg_groups="PRAGMA_UNROLL" msg_id="214-186" msg_severity="INFO" msg_loc="pynq_2DConvolution/source/conv2d_edge.cpp:7:0" msg_body="Unrolling loop 'VITIS_LOOP_53_5' (pynq_2DConvolution/source/conv2d_edge.cpp:53:34) in function 'conv2d_edge' completely with a factor of 3">
+        <args Factor="3" LoopLoc="pynq_2DConvolution/source/conv2d_edge.cpp:53:34" LoopName="VITIS_LOOP_53_5"/>
+    </msg>
+    <msg msg_groups="PRAGMA_UNROLL" msg_id="214-186" msg_severity="INFO" msg_loc="pynq_2DConvolution/source/conv2d_edge.cpp:7:0" msg_body="Unrolling loop 'VITIS_LOOP_55_6' (pynq_2DConvolution/source/conv2d_edge.cpp:55:19) in function 'conv2d_edge' completely with a factor of 3">
+        <args Factor="3" LoopLoc="pynq_2DConvolution/source/conv2d_edge.cpp:55:19" LoopName="VITIS_LOOP_55_6"/>
+    </msg>
+    <msg msg_groups="PRAGMA_MISC" msg_id="214-248" msg_severity="INFO" msg_loc="pynq_2DConvolution/source/conv2d_edge.cpp:23:10" msg_body="Applying array_partition to 'linebuf': Complete partitioning on dimension 1.">
+        <args Dim="1" Mode="Complete" UOName="linebuf"/>
+    </msg>
+</xilinx:hls_fe_msgs>
+

@@ -1,0 +1,44 @@
+[
+  {
+    "functionLabel": "",
+    "functionName": "conv2d_edge",
+    "id": 0,
+    "ifcond": "",
+    "insert_position": "",
+    "label": "",
+    "pragma": {
+      "name": "TOP",
+      "option": [
+        {
+          "name": "name",
+          "value": "conv2d_edge"
+        }
+      ]
+    },
+    "slx": false,
+    "sourceFile": "C:/DevWorks/HAC/pynq_2DConvolution/solution1/directives.tcl",
+    "sourceLine": 7,
+    "success": true
+  },
+  {
+    "functionLabel": "",
+    "functionName": "conv2d_edge",
+    "id": 1,
+    "ifcond": "",
+    "insert_position": "",
+    "label": "",
+    "pragma": {
+      "name": "TOP",
+      "option": [
+        {
+          "name": "name",
+          "value": "conv2d_edge"
+        }
+      ]
+    },
+    "slx": false,
+    "sourceFile": "C:/DevWorks/HAC/pynq_2DConvolution/solution1/csynth.tcl",
+    "sourceLine": 18,
+    "success": true
+  }
+]

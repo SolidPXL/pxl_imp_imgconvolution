@@ -1,0 +1,34 @@
+{
+  "0": {
+    "basicblocks": 15,
+    "calls": "1",
+    "file": "pooling.cpp",
+    "fileloc": 47,
+    "instructions": 107,
+    "loads": {
+      "L": 7,
+      "T": 1
+    },
+    "name": "image_pooling",
+    "stores": {
+      "L": 6,
+      "T": 2
+    },
+    "total_instructions": 204
+  },
+  "1": {
+    "basicblocks": 19,
+    "calls": "",
+    "file": "pooling.cpp",
+    "fileloc": 35,
+    "instructions": 97,
+    "loads": {
+      "L": 18
+    },
+    "name": "pooling_2x2",
+    "stores": {
+      "L": 6
+    },
+    "total_instructions": 97
+  }
+}

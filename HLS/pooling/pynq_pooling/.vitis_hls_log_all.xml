@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<vivadoHLSLog:LogRoot xmlns:vivadoHLSLog="www.xilinx.com/vivadoHLSLog">
+  <errorLogs>
+    <logs>
+      <synLog/>
+      <simLog/>
+      <mgLog/>
+      <packageLog/>
+      <csimLog/>
+    </logs>
+  </errorLogs>
+  <warningLogs>
+    <logs>
+      <synLog>
+        <logs message="WARNING: [RTGEN 206-101] Design contains AXI ports. Reset is fixed to synchronous and active low." projectName="pynq_pooling" solutionName="solution1" date="2025-05-14T11:16:38.861+0200" type="Warning"/>
+        <logs message="WARNING: [SYN 201-103] Legalizing function name 'pooling_2x2_Block_entry.split_proc' to 'pooling_2x2_Block_entry_split_proc'." projectName="pynq_pooling" solutionName="solution1" date="2025-05-14T11:16:38.048+0200" type="Warning"/>
+        <logs message="WARNING: [HLS 200-993] Function 'pooling_2x2' (pynq_pooling/source/pooling.cpp:23:1) failed dataflow checking:  A dataflow region cannot be instantiated from within a pipelined loop  (pynq_pooling/source/pooling.cpp:23:31), pipe: (pynq_pooling/source/pooling.cpp:71:9). Ignoring pipeline directive to allow the dataflow directive to take precedence. &#xD;&#xA;Resolution: For help on HLS 200-993 see docs.xilinx.com/access/sources/dita/topic?Doc_Version=2024.1%20English&amp;url=ug1448-hls-guidance&amp;resourceid=200-993.html" projectName="pynq_pooling" solutionName="solution1" date="2025-05-14T11:16:37.866+0200" type="Warning"/>
+        <logs message="WARNING: [HLS 214-273] In function 'calc_min(ap_uint&lt;8> (*) [2], ap_uint&lt;8>&amp;)', Pragma conflict happens on 'INLINE' and DATAFLOW pragmas: Inline into dataflow region may break the canonical form (pynq_pooling/source/pooling.cpp:28:0)" projectName="pynq_pooling" solutionName="solution1" date="2025-05-14T11:16:37.435+0200" type="Warning"/>
+        <logs message="WARNING: [HLS 214-273] In function 'calc_max(ap_uint&lt;8> (*) [2], ap_uint&lt;8>&amp;)', Pragma conflict happens on 'INLINE' and DATAFLOW pragmas: Inline into dataflow region may break the canonical form (pynq_pooling/source/pooling.cpp:21:0)" projectName="pynq_pooling" solutionName="solution1" date="2025-05-14T11:16:37.421+0200" type="Warning"/>
+        <logs message="WARNING: [HLS 200-40] Skipped source file 'test1.PNG'. Source files must have extensions .c, .C, .cc, .cpp, .c++, .cp, or .cxx." projectName="pynq_pooling" solutionName="solution1" date="2025-05-14T11:16:24.337+0200" type="Warning"/>
+        <logs message="WARNING: [HLS 200-484] The 'set_directive_top -location' command is deprecated and will be removed in a future release." projectName="pynq_pooling" solutionName="solution1" date="2025-05-14T11:16:24.239+0200" type="Warning"/>
+        <logs message="WARNING: [HLS 200-484] The 'set_directive_top -name' command is deprecated and will be removed in a future release." projectName="pynq_pooling" solutionName="solution1" date="2025-05-14T11:16:24.224+0200" type="Warning"/>
+        <logs message="WARNING: [HLS 200-2053] The vitis_hls executable is deprecated. Consider using vitis-run --mode hls --tcl&#xD;&#xA;Sourcing Tcl script 'C:/DevWorks/HAC/pynq_pooling/solution1/csynth.tcl'" projectName="pynq_pooling" solutionName="solution1" date="2025-05-14T11:16:23.366+0200" type="Warning"/>
+      </synLog>
+      <simLog/>
+      <mgLog/>
+      <packageLog>
+        <logs message="WARNING: [HLS 200-484] The 'set_directive_top -location' command is deprecated and will be removed in a future release." projectName="pynq_pooling" solutionName="solution1" date="2025-05-14T11:16:57.849+0200" type="Warning"/>
+        <logs message="WARNING: [HLS 200-484] The 'set_directive_top -name' command is deprecated and will be removed in a future release." projectName="pynq_pooling" solutionName="solution1" date="2025-05-14T11:16:57.834+0200" type="Warning"/>
+        <logs message="WARNING: [HLS 200-2053] The vitis_hls executable is deprecated. Consider using vitis-run --mode hls --tcl&#xD;&#xA;Sourcing Tcl script 'C:/DevWorks/HAC/pynq_pooling/solution1/export.tcl'" projectName="pynq_pooling" solutionName="solution1" date="2025-05-14T11:16:56.992+0200" type="Warning"/>
+      </packageLog>
+      <csimLog>
+        <logs message="WARNING: [HLS 200-484] The 'set_directive_top -location' command is deprecated and will be removed in a future release." projectName="pynq_pooling" solutionName="solution1" date="2025-05-14T14:53:38.327+0200" type="Warning"/>
+        <logs message="WARNING: [HLS 200-484] The 'set_directive_top -name' command is deprecated and will be removed in a future release." projectName="pynq_pooling" solutionName="solution1" date="2025-05-14T14:53:38.282+0200" type="Warning"/>
+        <logs message="WARNING: [HLS 200-2053] The vitis_hls executable is deprecated. Consider using vitis-run --mode hls --tcl&#xD;&#xA;Sourcing Tcl script 'C:/DevWorks/HAC/pynq_pooling/solution1/csim.tcl'" projectName="pynq_pooling" solutionName="solution1" date="2025-05-14T14:53:35.883+0200" type="Warning"/>
+      </csimLog>
+    </logs>
+  </warningLogs>
+</vivadoHLSLog:LogRoot>

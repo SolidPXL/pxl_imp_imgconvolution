@@ -1,0 +1,88 @@
+{
+  "0": {
+    "basicblocks": 21,
+    "calls": "5 3 1",
+    "file": "pooling.cpp",
+    "fileloc": 47,
+    "instructions": 99,
+    "loads": {
+      "L": 2,
+      "T": 1
+    },
+    "name": "image_pooling",
+    "stores": {
+      "L": 1,
+      "T": 2
+    },
+    "total_instructions": 319
+  },
+  "1": {
+    "basicblocks": 1,
+    "calls": "2 4",
+    "file": "pooling.cpp",
+    "fileloc": 35,
+    "instructions": 7,
+    "name": "pooling_2x2",
+    "total_instructions": 175
+  },
+  "2": {
+    "basicblocks": 10,
+    "calls": "",
+    "file": "pooling.cpp",
+    "fileloc": 21,
+    "instructions": 54,
+    "loads": {
+      "L": 3
+    },
+    "name": "calc_max",
+    "stores": {
+      "L": 3
+    },
+    "total_instructions": 84
+  },
+  "3": {
+    "basicblocks": 1,
+    "calls": "",
+    "file": "pooling.cpp",
+    "fileloc": 13,
+    "instructions": 31,
+    "loads": {
+      "L": 4
+    },
+    "name": "fill_window",
+    "stores": {
+      "L": 4
+    },
+    "total_instructions": 31
+  },
+  "4": {
+    "basicblocks": 10,
+    "calls": "",
+    "file": "pooling.cpp",
+    "fileloc": 28,
+    "instructions": 54,
+    "loads": {
+      "L": 3
+    },
+    "name": "calc_min",
+    "stores": {
+      "L": 3
+    },
+    "total_instructions": 84
+  },
+  "5": {
+    "basicblocks": 1,
+    "calls": "",
+    "file": "pooling.cpp",
+    "fileloc": 7,
+    "instructions": 14,
+    "loads": {
+      "L": 2
+    },
+    "name": "shift_linebuf",
+    "stores": {
+      "L": 2
+    },
+    "total_instructions": 14
+  }
+}

@@ -1,0 +1,213 @@
+
+
+================================================================
+== Synthesis Summary Report of 'image_pooling'
+================================================================
++ General Information: 
+    * Date:           Wed May 14 11:16:39 2025
+    * Version:        2024.1 (Build 5069499 on May 21 2024)
+    * Project:        pynq_pooling
+    * Solution:       solution1 (Vivado IP Flow Target)
+    * Product family: zynq
+    * Target device:  xc7z020-clg400-1
+    
+
++ Performance & Resource Estimates: 
+    
+    PS: '+' for module; 'o' for loop; '*' for dataflow
+    +-----------------------------------------+------+------+---------+-----------+----------+---------+-------+----------+--------+----+-----------+-----------+-----+
+    |                 Modules                 | Issue|      | Latency |  Latency  | Iteration|         |  Trip |          |        |    |           |           |     |
+    |                 & Loops                 | Type | Slack| (cycles)|    (ns)   |  Latency | Interval| Count | Pipelined|  BRAM  | DSP|     FF    |    LUT    | URAM|
+    +-----------------------------------------+------+------+---------+-----------+----------+---------+-------+----------+--------+----+-----------+-----------+-----+
+    |+ image_pooling                          |     -|  0.00|  1507328|  1.206e+07|         -|  1507329|      -|        no|  4 (1%)|   -|  1786 (1%)|  2279 (4%)|    -|
+    | o LOOP_ROW_LOOP_COL                     |     -|  5.84|  1507327|  1.206e+07|        23|        -|  65536|        no|       -|   -|          -|          -|    -|
+    |  + pooling_2x2*                         |     -|  2.68|        1|      8.000|         -|        2|      -|  dataflow|       -|   -|   51 (~0%)|  189 (~0%)|    -|
+    |   + pooling_2x2_Block_entry_split_proc  |     -|  2.68|        1|      8.000|         -|        1|      -|        no|       -|   -|   51 (~0%)|  189 (~0%)|    -|
+    +-----------------------------------------+------+------+---------+-----------+----------+---------+-------+----------+--------+----+-----------+-----------+-----+
+
+
+================================================================
+== HW Interfaces
+================================================================
+* M_AXI
++------------+------------+------------+---------------+---------+--------+----------+-----------+--------------+--------------+-------------+-------------+-------------------+
+| Interface  | Read/Write | Data Width | Address Width | Latency | Offset | Register | Max Widen | Max Read     | Max Write    | Num Read    | Num Write   | Resource Estimate |
+|            |            | (SW->HW)   |               |         |        |          | Bitwidth  | Burst Length | Burst Length | Outstanding | Outstanding |                   |
++------------+------------+------------+---------------+---------+--------+----------+-----------+--------------+--------------+-------------+-------------+-------------------+
+| m_axi_gmem | READ_WRITE | 8 -> 8     | 64            | 0       | slave  | 0        | 0         | 16           | 16           | 16          | 16          | BRAM=2            |
++------------+------------+------------+---------------+---------+--------+----------+-----------+--------------+--------------+-------------+-------------+-------------------+
+
+* S_AXILITE Interfaces
++---------------+------------+---------------+--------+----------+
+| Interface     | Data Width | Address Width | Offset | Register |
++---------------+------------+---------------+--------+----------+
+| s_axi_control | 32         | 6             | 16     | 0        |
++---------------+------------+---------------+--------+----------+
+
+* S_AXILITE Registers
++---------------+-----------+--------+-------+--------+----------------------------------+----------------------------------------------------------------------+
+| Interface     | Register  | Offset | Width | Access | Description                      | Bit Fields                                                           |
++---------------+-----------+--------+-------+--------+----------------------------------+----------------------------------------------------------------------+
+| s_axi_control | CTRL      | 0x00   | 32    | RW     | Control signals                  | 0=AP_START 1=AP_DONE 2=AP_IDLE 3=AP_READY 7=AUTO_RESTART 9=INTERRUPT |
+| s_axi_control | GIER      | 0x04   | 32    | RW     | Global Interrupt Enable Register | 0=Enable                                                             |
+| s_axi_control | IP_IER    | 0x08   | 32    | RW     | IP Interrupt Enable Register     | 0=CHAN0_INT_EN 1=CHAN1_INT_EN                                        |
+| s_axi_control | IP_ISR    | 0x0c   | 32    | RW     | IP Interrupt Status Register     | 0=CHAN0_INT_ST 1=CHAN1_INT_ST                                        |
+| s_axi_control | src_1     | 0x10   | 32    | W      | Data signal of src               |                                                                      |
+| s_axi_control | src_2     | 0x14   | 32    | W      | Data signal of src               |                                                                      |
+| s_axi_control | dst_min_1 | 0x1c   | 32    | W      | Data signal of dst_min           |                                                                      |
+| s_axi_control | dst_min_2 | 0x20   | 32    | W      | Data signal of dst_min           |                                                                      |
+| s_axi_control | dst_max_1 | 0x28   | 32    | W      | Data signal of dst_max           |                                                                      |
+| s_axi_control | dst_max_2 | 0x2c   | 32    | W      | Data signal of dst_max           |                                                                      |
++---------------+-----------+--------+-------+--------+----------------------------------+----------------------------------------------------------------------+
+
+* TOP LEVEL CONTROL
++-----------+------------+-----------+
+| Interface | Type       | Ports     |
++-----------+------------+-----------+
+| ap_clk    | clock      | ap_clk    |
+| ap_rst_n  | reset      | ap_rst_n  |
+| interrupt | interrupt  | interrupt |
+| ap_ctrl   | ap_ctrl_hs |           |
++-----------+------------+-----------+
+
+
+================================================================
+== SW I/O Information
+================================================================
+* Top Function Arguments
++----------+-----------+-------------+
+| Argument | Direction | Datatype    |
++----------+-----------+-------------+
+| src      | inout     | ap_uint<8>* |
+| dst_min  | inout     | ap_uint<8>* |
+| dst_max  | inout     | ap_uint<8>* |
++----------+-----------+-------------+
+
+* SW-to-HW Mapping
++----------+---------------+-----------+----------+-------------------------------------+
+| Argument | HW Interface  | HW Type   | HW Usage | HW Info                             |
++----------+---------------+-----------+----------+-------------------------------------+
+| src      | m_axi_gmem    | interface |          | channel=0                           |
+| src      | s_axi_control | register  | offset   | name=src_1 offset=0x10 range=32     |
+| src      | s_axi_control | register  | offset   | name=src_2 offset=0x14 range=32     |
+| dst_min  | m_axi_gmem    | interface |          | channel=0                           |
+| dst_min  | s_axi_control | register  | offset   | name=dst_min_1 offset=0x1c range=32 |
+| dst_min  | s_axi_control | register  | offset   | name=dst_min_2 offset=0x20 range=32 |
+| dst_max  | m_axi_gmem    | interface |          | channel=0                           |
+| dst_max  | s_axi_control | register  | offset   | name=dst_max_1 offset=0x28 range=32 |
+| dst_max  | s_axi_control | register  | offset   | name=dst_max_2 offset=0x2c range=32 |
++----------+---------------+-----------+----------+-------------------------------------+
+
+
+================================================================
+== M_AXI Burst Information
+================================================================
+ Note: All burst requests might be further partitioned into multiple requests during RTL generation based on max_read_burst_length or max_write_burst_length settings.
+
+* Inferred Burst Summary
++--------------+-----------+--------+-------+----------+--------------------------------------+
+| HW Interface | Direction | Length | Width | Loop     | Loop Location                        |
++--------------+-----------+--------+-------+----------+--------------------------------------+
+| m_axi_gmem   | read      | 65536  | 8     | LOOP_ROW | pynq_pooling/source/pooling.cpp:68:5 |
++--------------+-----------+--------+-------+----------+--------------------------------------+
+
+* All M_AXI Variable Accesses
++--------------+----------+---------------------------------------+-----------+--------------+--------+----------+--------------------------------------+------------+------------------------------------------------------------------------------------------------------+
+| HW Interface | Variable | Access Location                       | Direction | Burst Status | Length | Loop     | Loop Location                        | Resolution | Problem                                                                                              |
++--------------+----------+---------------------------------------+-----------+--------------+--------+----------+--------------------------------------+------------+------------------------------------------------------------------------------------------------------+
+| m_axi_gmem   | src      | pynq_pooling/source/pooling.cpp:10:21 | read      | Widen Fail   |        | LOOP_COL | pynq_pooling/source/pooling.cpp:70:9 | 214-353    | Could not widen since type i8 size is greater than or equal to the max_widen_bitwidth threshold of 0 |
+| m_axi_gmem   | src      | pynq_pooling/source/pooling.cpp:10:21 | read      | Inferred     | 65536  | LOOP_ROW | pynq_pooling/source/pooling.cpp:68:5 |            |                                                                                                      |
+| m_axi_gmem   | dst_min  | pynq_pooling/source/pooling.cpp:84:23 | write     | Fail         |        | LOOP_COL | pynq_pooling/source/pooling.cpp:70:9 | 214-232    | Access store is in the conditional branch                                                            |
+| m_axi_gmem   | dst_max  | pynq_pooling/source/pooling.cpp:85:23 | write     | Fail         |        | LOOP_COL | pynq_pooling/source/pooling.cpp:70:9 | 214-232    | Access store is in the conditional branch                                                            |
++--------------+----------+---------------------------------------+-----------+--------------+--------+----------+--------------------------------------+------------+------------------------------------------------------------------------------------------------------+
+
+    * Resolution URL: docs.xilinx.com/access/sources/dita/topic?Doc_Version=2024.1%20English&url=ug1448-hls-guidance&resourceid=XXX-YYY.html (replace XXX-YYY with column value)
+
+================================================================
+== Bind Op Report
+================================================================
++----------------------------------------+-----+--------+-------------+--------+----------+---------+
+| Name                                   | DSP | Pragma | Variable    | Op     | Impl     | Latency |
++----------------------------------------+-----+--------+-------------+--------+----------+---------+
+| + image_pooling                        | 0   |        |             |        |          |         |
+|   select_ln65_fu_344_p3                |     |        | select_ln65 | select | auto_sel | 0       |
+|   row_fu_371_p3                        |     |        | row         | select | auto_sel | 0       |
+|   and_ln77_fu_383_p2                   |     |        | and_ln77    | and    | auto     | 0       |
+|   add_ln68_1_fu_388_p2                 |     |        | add_ln68_1  | add    | fabric   | 0       |
+|   add_ln15_fu_394_p2                   |     |        | add_ln15    | add    | fabric   | 0       |
+|   icmp_ln82_fu_414_p2                  |     |        | icmp_ln82   | setlt  | auto     | 0       |
+|   icmp_ln82_1_fu_429_p2                |     |        | icmp_ln82_1 | setlt  | auto     | 0       |
+|   and_ln82_fu_435_p2                   |     |        | and_ln82    | and    | auto     | 0       |
+|   out_idx_fu_446_p2                    |     |        | out_idx     | add    | fabric   | 0       |
+|   add_ln84_fu_459_p2                   |     |        | add_ln84    | add    | fabric   | 0       |
+|   add_ln85_fu_470_p2                   |     |        | add_ln85    | add    | fabric   | 0       |
+|   dst_col_1_fu_451_p2                  |     |        | dst_col_1   | add    | fabric   | 0       |
+|   icmp_ln88_fu_481_p2                  |     |        | icmp_ln88   | seteq  | auto     | 0       |
+|   add_ln90_fu_486_p2                   |     |        | add_ln90    | add    | fabric   | 0       |
+|   dst_col_fu_491_p3                    |     |        | dst_col     | select | auto_sel | 0       |
+|   dst_row_fu_498_p3                    |     |        | dst_row     | select | auto_sel | 0       |
+|   col_fu_523_p2                        |     |        | col         | add    | fabric   | 0       |
+|   icmp_ln70_fu_528_p2                  |     |        | icmp_ln70   | seteq  | auto     | 0       |
+|   add_ln68_fu_534_p2                   |     |        | add_ln68    | add    | fabric   | 0       |
+|   icmp_ln68_fu_539_p2                  |     |        | icmp_ln68   | seteq  | auto     | 0       |
+|  + pooling_2x2                         | 0   |        |             |        |          |         |
+|   + pooling_2x2_Block_entry_split_proc | 0   |        |             |        |          |         |
+|     icmp_ln23_fu_56_p2                 |     |        | icmp_ln23   | setlt  | auto     | 0       |
+|     xor_ln23_fu_62_p2                  |     |        | xor_ln23    | xor    | auto     | 0       |
+|     max1_fu_68_p3                      |     |        | max1        | select | auto_sel | 0       |
+|     icmp_ln24_fu_76_p2                 |     |        | icmp_ln24   | setlt  | auto     | 0       |
+|     xor_ln24_fu_82_p2                  |     |        | xor_ln24    | xor    | auto     | 0       |
+|     max2_fu_88_p3                      |     |        | max2        | select | auto_sel | 0       |
+|     icmp_ln25_fu_136_p2                |     |        | icmp_ln25   | setgt  | auto     | 0       |
+|     select_ln25_fu_140_p3              |     |        | select_ln25 | select | auto_sel | 0       |
+|     icmp_ln30_fu_96_p2                 |     |        | icmp_ln30   | setlt  | auto     | 0       |
+|     xor_ln30_fu_102_p2                 |     |        | xor_ln30    | xor    | auto     | 0       |
+|     min1_fu_108_p3                     |     |        | min1        | select | auto_sel | 0       |
+|     icmp_ln31_fu_116_p2                |     |        | icmp_ln31   | setlt  | auto     | 0       |
+|     xor_ln31_fu_122_p2                 |     |        | xor_ln31    | xor    | auto     | 0       |
+|     min2_fu_128_p3                     |     |        | min2        | select | auto_sel | 0       |
+|     icmp_ln32_fu_147_p2                |     |        | icmp_ln32   | setlt  | auto     | 0       |
+|     select_ln32_fu_151_p3              |     |        | select_ln32 | select | auto_sel | 0       |
++----------------------------------------+-----+--------+-------------+--------+----------+---------+
+
+
+================================================================
+== Storage Report
+================================================================
++-------------------+---------------+-----------+------+------+--------+-----------+------+---------+------------------+
+| Name              | Usage         | Type      | BRAM | URAM | Pragma | Variable  | Impl | Latency | Bitwidth, Depth, |
+|                   |               |           |      |      |        |           |      |         | Banks            |
++-------------------+---------------+-----------+------+------+--------+-----------+------+---------+------------------+
+| + image_pooling   |               |           | 4    | 0    |        |           |      |         |                  |
+|   control_s_axi_U | interface     | s_axilite |      |      |        |           |      |         |                  |
+|   gmem_m_axi_U    | interface     | m_axi     | 2    |      |        |           |      |         |                  |
+|   linebuf_U       | ram_s2p array |           | 1    |      |        | linebuf   | auto | 1       | 8, 256, 1        |
+|   linebuf_1_U     | ram_s2p array |           | 1    |      |        | linebuf_1 | auto | 1       | 8, 256, 1        |
++-------------------+---------------+-----------+------+------+--------+-----------+------+---------+------------------+
+
+
+================================================================
+== Pragma Report
+================================================================
+* Valid Pragma Syntax
++-----------------+---------------------------------------------+--------------------------------------------------------------+
+| Type            | Options                                     | Location                                                     |
++-----------------+---------------------------------------------+--------------------------------------------------------------+
+| inline          |                                             | pynq_pooling/source/pooling.cpp:8 in shift_linebuf           |
+| inline          |                                             | pynq_pooling/source/pooling.cpp:14 in fill_window            |
+| inline          |                                             | pynq_pooling/source/pooling.cpp:22 in calc_max               |
+| inline          |                                             | pynq_pooling/source/pooling.cpp:29 in calc_min               |
+| dataflow        |                                             | pynq_pooling/source/pooling.cpp:37 in pooling_2x2            |
+| interface       | m_axi port=src offset=slave bundle=gmem     | pynq_pooling/source/pooling.cpp:50 in image_pooling, src     |
+| interface       | m_axi port=dst_min offset=slave bundle=gmem | pynq_pooling/source/pooling.cpp:51 in image_pooling, dst_min |
+| interface       | m_axi port=dst_max offset=slave bundle=gmem | pynq_pooling/source/pooling.cpp:52 in image_pooling, dst_max |
+| interface       | s_axilite port=src bundle=control           | pynq_pooling/source/pooling.cpp:53 in image_pooling, src     |
+| interface       | s_axilite port=dst_min bundle=control       | pynq_pooling/source/pooling.cpp:54 in image_pooling, dst_min |
+| interface       | s_axilite port=dst_max bundle=control       | pynq_pooling/source/pooling.cpp:55 in image_pooling, dst_max |
+| interface       | s_axilite port=return bundle=control        | pynq_pooling/source/pooling.cpp:56 in image_pooling, return  |
+| array_partition | variable=linebuf block factor=2 dim=1       | pynq_pooling/source/pooling.cpp:59 in image_pooling, linebuf |
+| array_partition | variable=window complete dim=0              | pynq_pooling/source/pooling.cpp:62 in image_pooling, window  |
+| pipeline        | II=3                                        | pynq_pooling/source/pooling.cpp:71 in image_pooling          |
++-----------------+---------------------------------------------+--------------------------------------------------------------+
+
+

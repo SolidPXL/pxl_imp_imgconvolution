@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<autopilotfilemapping:AutoPilotFileMapping xmlns:autopilotfilemapping="www.autoesl.com/autopilotfilemapping">
+  <source>
+    <originFiles name="pooling.cpp" path="C:\DevWorks\HAC\pynq_pooling\source\pooling.cpp"/>
+    <originFiles name="pooling.h" path="C:\DevWorks\HAC\pynq_pooling\source\pooling.h"/>
+    <originFiles name="test1.PNG" path="C:\DevWorks\HAC\pynq_pooling\source\test1.PNG"/>
+  </source>
+  <testbench>
+    <originFiles name="pooling_tb.cpp" path="C:\DevWorks\HAC\pynq_pooling\source\pooling_tb.cpp"/>
+  </testbench>
+</autopilotfilemapping:AutoPilotFileMapping>
